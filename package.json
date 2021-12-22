@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-server": "node ./server/index.js",
+    "start-server": "node ./server/index.js -w",
+    "watchServer": "watch 'npm run start-server' ./",
     "start-client": "babel -w"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HackReactor-Team-Apollo/hr-clutch-FEC.git"
   },
-  "author": "",
+  "author": "Team Apollo: Haydenn Harper, Kacy Holm, Ian McGahren and Winston Pantelakos",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/HackReactor-Team-Apollo/hr-clutch-FEC/issues"
@@ -21,11 +22,16 @@
   "dependencies": {
     "axios": "^0.24.0",
     "babel": "^6.23.0",
+    "bluebird": "^3.7.2",
     "express": "^4.17.2",
     "node": "^17.3.0",
+    "nodemon": "^2.0.15",
+    "promise": "^8.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "underscore": "^1.13.2",
-    "webpack": "^5.65.0"
+    "watch": "^0.13.0",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
   }
 }
