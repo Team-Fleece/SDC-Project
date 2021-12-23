@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 
 const config = {
-  entry: './client/index.js',
+  entry: path.resolve(__dirname, './client/index.jsx'),
   output: {
     path: path.resolve(__dirname, 'bundle'),
     filename: 'bundle.js'

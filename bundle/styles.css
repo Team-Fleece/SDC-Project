@@ -1,0 +1,156 @@
+/*###########################~~ENTIRE APP~~################################*/
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/*###########################~~HEADER~~################################*/
+.header {
+  background-color: rgb(244, 107, 3);
+  padding: 45px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*###########################~~BANNER~~################################*/
+.banner {
+  background-color: blanchedalmond;
+  padding: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*###########################~~OVERVIEW~~################################*/
+.overviewWrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: wrap;
+}
+
+.overviewLeft {
+  background-color: rgb(10, 30, 245);
+  padding: 10px;
+  /* flex-basis: 600px; */
+  flex-direction: column;
+  flex: 2;
+  flex-wrap: wrap;
+  margin-right: 10px;
+}
+
+.overviewLeft1 {
+  display: flex;
+}
+
+.productThumbs {
+  background-color: rgb(255, 255, 255);
+  margin-left: 10px;
+  justify-content: flex-start;
+  flex-basis: 10px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.overviewLeft2 {
+  display: flex;
+}
+
+.overviewRight {
+  background-color: rgb(0, 251, 255);
+  flex-wrap: wrap;
+  flex: 2;
+}
+
+/*###########################~~RELATED PRODUCTS AND COMPARISONS~~################################*/
+.rItemsCompare {
+  background-color: rgb(204, 17, 17);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.relatedProducts {
+  background-color: rgb(250, 250, 250);
+  flex: 2;
+  margin: 10px;
+}
+
+.favoriteProducts {
+  background-color: rgb(255, 255, 255);
+  flex: 2;
+  margin: 10px;
+}
+
+/*###########################~~QUESTION AND ANSWERS~~################################*/
+.questAns {
+  background-color: rgb(7, 247, 39);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.quesTop {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+}
+
+.quesMid {
+  background-color: rgb(255, 255, 255);
+  flex: 5;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.quesBot {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+/*###########################~~RATINGS AND REVIEWS~~################################*/
+.rateRev {
+  background-color: rgb(243, 8, 192);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.ratings {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px;
+  flex: 1;
+}
+
+.reviews {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px;
+  flex: 3;
+}
+
+/*###########################~~FOOTER~~################################*/
+.footer {
+  background-color: rgb(236, 252, 5);
+  padding: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
