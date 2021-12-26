@@ -8,4 +8,4 @@ import axios from 'axios'
 import {App} from './App.jsx'
 
 
-ReactDOM.render(<App />, document.getElementById(/*HTML Body element name here*/))
+ReactDOM.render(<App />, document.getElementById('app'))

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-server": "node ./server/index.js -w",
+    "start-server": "nodemon ./server/index.js",
     "watchServer": "watch 'npm run start-server' ./",
     "start-client": "babel -w",
     "build": "webpack -w --mode none"
@@ -24,6 +24,7 @@
     "axios": "^0.24.0",
     "bluebird": "^3.7.2",
     "express": "^4.17.2",
+    "jquery": "^3.6.0",
     "node": "^17.3.0",
     "nodemon": "^2.0.15",
     "promise": "^8.1.0",

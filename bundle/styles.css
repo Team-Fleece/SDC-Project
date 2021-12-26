@@ -53,10 +53,12 @@
   flex-basis: 10px;
   flex-grow: 0;
   flex-shrink: 0;
+  display: flex;
 }
 
 .overviewLeft2 {
   display: flex;
+  background-color: blueviolet;
 }
 
 .overviewRight {
@@ -107,14 +109,12 @@
   background-color: rgb(255, 255, 255);
   flex: 5;
   margin: 10px;
-  flex-wrap: wrap;
 }
 
 .quesBot {
   background-color: rgb(255, 255, 255);
   flex: 1;
   margin: 10px;
-  flex-wrap: wrap;
 }
 
 /*###########################~~RATINGS AND REVIEWS~~################################*/
