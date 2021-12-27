@@ -15,27 +15,15 @@ const config = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+  // fix "process is not defined" error:
+  // (do "npm install process" before running the build)
+  new webpack.ProvidePlugin({
+    process: 'process/browser'
+  })
+]
+
 }
 module.exports = config
 
-// module.exports = {
-//   entry: path.join(SRC_DIR, 'index.js'),
-//   output: {
-//     path: OUT_DIR,
-//     filename: 'bundle.js'
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test:/\.(js|jsx)$/,
-//         exclude: /node_modules/,
-//         use: 'babel-loader'
-//       }
-//     ]
-//   },
-//   mode: 'development',
-//   resolve: {
-//     extensions: ['.js', '.jsx']
-//   }
-// };
