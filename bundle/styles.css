@@ -117,6 +117,34 @@
   margin: 10px;
 }
 
+.quesSearchForm {
+  display: flex;
+  flex-direction: row;
+}
+
+.quesSearchField {
+  width: 100%;
+  padding: 10px 35px 10px 15px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+}
+
+
+.quesSearchButton {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -33px;
+}
+
+.quesSearchButton img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
+
 /*###########################~~RATINGS AND REVIEWS~~################################*/
 .rateRev {
   background-color: rgb(243, 8, 192);
