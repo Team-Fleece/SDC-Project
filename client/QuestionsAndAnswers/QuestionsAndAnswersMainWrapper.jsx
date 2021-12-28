@@ -4,7 +4,7 @@ import React from 'react'
 
 //Import Component
 import QuestionsAndAnswersHeader from './QuestionsAndAnswersHeader.jsx'
-import QuestionAnswerElement from './QuestionAnswerElement.jsx'
+import QuestionAnswerBody from './QuestionAnswerBody.jsx'
 import QALoadAndAdd from './QALoadAndAdd.jsx'
 
 class QuestionsAndAnswers extends React.Component {
@@ -56,7 +56,7 @@ class QuestionsAndAnswers extends React.Component {
     return (
       <div>
         <QuestionsAndAnswersHeader />
-        <QuestionAnswerElement />
+        <QuestionAnswerBody />
         <QALoadAndAdd />
       </div>
     );

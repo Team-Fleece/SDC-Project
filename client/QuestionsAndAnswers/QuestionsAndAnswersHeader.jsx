@@ -12,6 +12,7 @@ class QuestionsAndAnswersHeader extends React.Component {
   render () {
     return (
       <div>
+        <h4 className='quesAnsHeader'> Questions and Answers </h4>
         <div className='quesSearchForm'>
           <button className='quesSearchButton' type='submit'>
             <img src={QASearchButtonIcon} />
