@@ -43706,7 +43706,7 @@ var QuestionsAndAnswersHeader = /*#__PURE__*/function (_React$Component) {
         className: "quesSearchButton",
         type: "submit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        source: _assets_QASearchButtonIcon_png__WEBPACK_IMPORTED_MODULE_1__["default"]
+        src: _assets_QASearchButtonIcon_png__WEBPACK_IMPORTED_MODULE_1__["default"]
       }))));
     }
   }]);
