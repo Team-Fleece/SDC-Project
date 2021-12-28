@@ -1,5 +1,5 @@
 const axios = require('axios');
-const config = require('./config.js');
+const {authToken} = require('./config.js');
 // needs to be updated with imported config file so can submit requests with proper authorization
 
 let getReviews = function (productId, callback) {
@@ -7,7 +7,7 @@ let getReviews = function (productId, callback) {
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
-      'Authorization': `${config.TOKEN}`
+      'Authorization': `${authToken}`
     },
     params: { 'product_id': productId}
   }
@@ -26,7 +26,7 @@ let getMetadata = function(productId, callback) {
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
-      'Authorization': `${config.TOKEN}`
+      'Authorization': `${authToken}`
     },
     params: { 'product_id': productId}
   }
@@ -45,7 +45,7 @@ let createReview = function(review, callback) {
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
-      'Authorization': `${config.TOKEN}`
+      'Authorization': `${authToken}`
     },
     params: {
       'product_id': review.productId,
@@ -74,7 +74,7 @@ let markHelpful = function(reviewId, callback) {
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
-      'Authorization': `${config.TOKEN}`
+      'Authorization': `${authToken}`
     };
   axios.put(optionsURL, optionsConfig)
     .then(function (response) {
@@ -92,7 +92,7 @@ let reportReview = function(reviewId, callback) {
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
-      'Authorization': `${config.TOKEN}`
+      'Authorization': `${authToken}`
     };
   axios.put(optionsURL, optionsConfig)
     .then(function (response) {
