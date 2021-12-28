@@ -47,16 +47,16 @@ router.post('/reviews', (req, res) => {
   res.send('add review');
 });
 
-router.put(`/reviews/:revietId/helpful`, (req, res) => {
+router.put(`/reviews/:reviewId/helpful`, (req, res) => {
   res.send('Mark a review as helpful');
 });
 
-router.put(`/reviews/:revietId/report`, (req, res) => {
+router.put(`/reviews/:reviewId/report`, (req, res) => {
   res.send('report review');
 });
 
 //Q&A
-router.get(`/qa/questions/:questiotId/answers`, (req, res) => {
+router.get(`/qa/questions/:questionId/answers`, (req, res) => {
   res.send('answers');
 });
 
@@ -64,7 +64,7 @@ router.get('/qa/questions', (req, res) => {
   res.send('questions');
 });
 
-router.post(`/qa/questions/:questiotId/answers`, (req, res) => {
+router.post(`/qa/questions/:questionId/answers`, (req, res) => {
   res.send('add answer')
 });
 
@@ -72,19 +72,19 @@ router.post('/qa/questions', (req, res) => {
   res.send('add question')
 });
 
-router.put(`/qa/questions/:questiotId/helpful`, (req, res) => {
+router.put(`/qa/questions/:questionId/helpful`, (req, res) => {
   res.send('mark as helpful')
 });
 
-router.put(`/qa/questions/:questiotId/report`, (req, res) => {
+router.put(`/qa/questions/:questionId/report`, (req, res) => {
   res.send('report question');
 });
 
-router.put(`/qa/questions/:answetId/helpful`, (req, res) => {
+router.put(`/qa/questions/:answerId/helpful`, (req, res) => {
   res.send('mark answer as helpful')
 });
 
-router.put(`/qa/questions/:answetId/report`, (req, res) => {
+router.put(`/qa/questions/:answerId/report`, (req, res) => {
   res.send('report answer')
 });
 
