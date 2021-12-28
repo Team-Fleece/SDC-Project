@@ -43573,11 +43573,49 @@ var QuestionsAndAnswers = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, QuestionsAndAnswers);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {//Data needed from api
+      //All related questions and answers
+      //Data that may be sent to API
+      //New Question
+      //New Answer (and associated question id)
+      //report/helpful tally (and associated Q or A id)
+    };
     return _this;
-  }
+  } //Functional discussion
+
+  /* HELPER FUNCTIONS */
+  //OnChange - Utilized to update question/answer text boxes
+
 
   _createClass(QuestionsAndAnswers, [{
+    key: "onChange",
+    value: function onChange(e) {//Event handler, use e.target.value to update state
+    }
+  }, {
+    key: "loadMoreQuestions",
+    value: function loadMoreQuestions() {//Populate 2 more question and answer elements
+      //Call on load?
+    }
+  }, {
+    key: "submitAnswer",
+    value: function submitAnswer() {//pass answer input value to axios post request, then update question data
+    }
+  }, {
+    key: "submitQuestion",
+    value: function submitQuestion() {//pass question input value to axios post request, then update question data
+    }
+    /****** QA Helpful/Report Functions ******/
+    //QuestionHelpful
+    //QuestionReport
+    //AnswerHelpful
+    //AnswerReport
+
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {//Update state with api data
+      //Render some number of QA elements
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
