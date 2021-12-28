@@ -5,13 +5,12 @@ const express = require('express')
 const axios = require('axios')
 const PORT = 3000
 const path = require('path')
-
+const routes = require('./controllers');
 //Assembling app controller/listener
 const app = express()
 app.use(express.json()) //Add middleware to interpret req/res as JS
 const pathName = path.join(__dirname + '/../bundle')
-console.log(pathName)
-
+app.use('/', routes);
 // var options = {
 //   dotfiles: 'ignore',
 //   etag: false,
@@ -24,7 +23,6 @@ console.log(pathName)
 //   }
 // }
 app.use('/', express.static(pathName)) //Add middleware to serve static react
-
 
 //Modules
 
@@ -39,3 +37,4 @@ app.listen(PORT, function (err) {
   console.log('Server listening on localhost:' + PORT)
 })
 
+module.exports.app = app;
