@@ -15,7 +15,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      shitWorks: true
+      product_id: 38204
     }
   }
   render(){
