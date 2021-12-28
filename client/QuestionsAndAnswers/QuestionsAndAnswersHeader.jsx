@@ -7,14 +7,15 @@ class QuestionsAndAnswersHeader extends React.Component {
     this.state = {}
   }
 
+
   render () {
     return (
       <div>
         <div>Questions and Answers</div>
-        <form className="quesSearchForm">
-          <input type='text' className='quesSearchField'/>
+        <form className='quesSearchForm'>
+          <input type='text' className='quesSearchField' />
           <button className='quesSearchButton' type='submit'>
-            <img source={QASearchButtonIcon} />
+            <img src={QASearchButtonIcon} />
           </button>
         </form>
       </div>
