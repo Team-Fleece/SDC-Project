@@ -1,20 +1,24 @@
 import React from 'react'
 
-
-
-
 class QuestionAnswerElement extends React.Component {
   constructor (props) {
-    super (props);
-    this.state = {
-
-    }
+    super(props)
+    this.state = {}
   }
 
-  render() {
+  render () {
     return (
-      <div>QuestionAnswerElement</div>
-
+      <div className='quesElementWrapper'>
+        <div className='quesQuestionText'>Q: Does it fly?</div>
+        <div className='quesHRWrapper'>
+          <div className='quesQHelpful'>
+            <div>Helpful?</div>
+            <div>Yes</div>
+            <div>(2)</div>
+          </div>
+          <div className='quesQReport'> question reported</div>
+        </div>
+      </div>
     )
   }
 }

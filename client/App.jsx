@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom'
 //Import Modules
 import {ProductDetails} from './ProductDetails/ProductDetails.jsx'
 import {RelatedProducts} from './RelatedProducts/RelatedProducts.jsx'
-import {QuestionsAndAnswers} from './QuestionsAndAnswers/QuestionsAndAnswers.jsx'
+import {QuestionsAndAnswers} from './QuestionsAndAnswers/QuestionsAndAnswersMainWrapper.jsx'
 import {RatingsAndReviews} from './RatingsAndReviews/RatingsAndReviews.jsx'
 
 class App extends React.Component {

@@ -1,19 +1,17 @@
 import React from 'react'
 
-
-
-
 class QALoadAndAdd extends React.Component {
   constructor (props) {
-    super (props);
-    this.state = {
-
-    }
+    super(props)
+    this.state = {}
   }
 
-  render() {
+  render () {
     return (
-<div>QALoadAndAdd</div>
+      <div className='quesLoadAndAddWrapper'>
+        <div className='quesLoadMore'> Load More </div>
+        <div className='quesAddQuestion'> Add New Question </div>
+      </div>
     )
   }
 }

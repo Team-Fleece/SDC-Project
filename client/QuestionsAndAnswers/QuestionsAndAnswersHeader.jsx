@@ -1,5 +1,7 @@
 import React from 'react'
 import QASearchButtonIcon from '../assets/QASearchButtonIcon.png'
+import QASearchClearIcon from '../assets/QASearchClearIcon.png'
+
 
 class QuestionsAndAnswersHeader extends React.Component {
   constructor (props) {
@@ -7,17 +9,21 @@ class QuestionsAndAnswersHeader extends React.Component {
     this.state = {}
   }
 
-
   render () {
     return (
       <div>
-        <div>Questions and Answers</div>
-        <form className='quesSearchForm'>
-          <input type='text' className='quesSearchField' />
+        <h4 className='quesAnsHeader'> Questions and Answers </h4>
+        <div className='quesSearchForm'>
           <button className='quesSearchButton' type='submit'>
             <img src={QASearchButtonIcon} />
           </button>
-        </form>
+          <input type='text' placeholder='Search Questions' className='quesSearchField' />
+
+          <button className='quesSearchClear' type='reset'>
+            <img src={QASearchClearIcon} />
+
+          </button>
+        </div>
       </div>
     )
   }
