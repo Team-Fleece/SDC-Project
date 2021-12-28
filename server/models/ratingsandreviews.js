@@ -1,15 +1,20 @@
 const axios = require('axios');
-const {authToken} = require('./config.js');
+const {authToken} = require('../config.js');
 // needs to be updated with imported config file so can submit requests with proper authorization
 
-let getReviews = function (productId, callback) {
+let getReviews = function (request, callback) {
   let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews`;
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
       'Authorization': `${authToken}`
     },
-    params: { 'product_id': productId}
+    params: {
+      'product_id': request.product_id,
+      'page': request.page,
+      'count': request.count,
+      'sort': request.sort
+    }
   }
   axios.get(optionsURL, optionsConfig)
     .then (function(response) {
@@ -21,14 +26,14 @@ let getReviews = function (productId, callback) {
     })
 };
 
-let getMetadata = function(productId, callback) {
+let getMetadata = function(request, callback) {
   let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta`;
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
       'Authorization': `${authToken}`
     },
-    params: { 'product_id': productId}
+    params: { 'product_id': request.product_id}
   }
   axios.get(optionsURL, optionsConfig)
     .then (function(response) {
@@ -47,21 +52,24 @@ let createReview = function(review, callback) {
       'User-Agent': 'request',
       'Authorization': `${authToken}`
     },
-    params: {
-      'product_id': review.productId,
+  }
+  let optionsParams = {
+
+      'product_id': review.product_id,
       'rating': review.rating,
       'summary': review.summary,
-      'body': review.recommend,
+      'body': review.body,
+      'recommend': review.recommend,
       'name': review.name,
       'email': review.email,
-      'photos': review.photos
+      'photos': review.photos,
       'characteristics': review.characteristics
-    }
+
   }
-  axios.post(optionsURL, optionsConfig)
+  axios.post(optionsURL, optionsParams, optionsConfig)
   //note  that may need to reformat this post request such that there is a param between both options
     .then (function(response) {
-      callback(null, response.data);
+      callback(null, response);
     })
     .catch (function(error) {
       console.log('createReview did not work:', error);
@@ -70,15 +78,16 @@ let createReview = function(review, callback) {
 };
 
 let markHelpful = function(reviewId, callback) {
-  let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${reviewId}/helpful`;
+  let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${reviewId.review_id}/helpful`;
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
       'Authorization': `${authToken}`
-    };
-  axios.put(optionsURL, optionsConfig)
+    }
+  };
+  axios.put(optionsURL, null, optionsConfig)
     .then(function (response) {
-      callback(null, response.data);
+      callback(null, response);
     })
     .catch(function (error) {
       console.log('markHelpful Error:', error);
@@ -88,15 +97,16 @@ let markHelpful = function(reviewId, callback) {
 };
 
 let reportReview = function(reviewId, callback) {
-  let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${reviewId}/report`;
+  let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${reviewId.review_id}/report`;
   let optionsConfig = {
     headers: {
       'User-Agent': 'request',
       'Authorization': `${authToken}`
-    };
-  axios.put(optionsURL, optionsConfig)
+    }
+  };
+  axios.put(optionsURL, null, optionsConfig)
     .then(function (response) {
-      callback(null, response.data);
+      callback(null, response);
     })
     .catch(function (error) {
       console.log('reportReview Error:', error);

@@ -16,7 +16,22 @@ const getSpecificProduct = function (productID, callback) {
     });
 }
 
+const getRelatedProducts = function (productID, callback) {
+  axios.get(`${url}/products/${productID}/related`, {headers: {Authorization: authToken}})
+    .then(function (response) {
+      callback(null, response.data);
+    });
+}
+
+const getStyleOfProduct = function (productID, callback) {
+  axios.get(`${url}/products/${productID}/styles`, {headers: {Authorization: authToken}})
+    .then(function (response) {
+      callback(null, response.data);
+    });
+}
 module.exports = {
   getAllProducts,
-  getSpecificProduct
+  getSpecificProduct,
+  getRelatedProducts,
+  getStyleOfProduct
 }

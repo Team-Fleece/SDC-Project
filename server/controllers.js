@@ -1,105 +1,161 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var {getAllProducts, getSpecificProduct} = require('./models/models');
+var {
+  getReviews,
+  getMetadata,
+  createReview,
+  markHelpful,
+  reportReview,
+} = require("./models/ratingsandreviews.js");
+
+var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts} = require('./models/productModels');
 
 //PRODUCTS
 router.get(`/products/:productId/styles`, (req, res) => {
-  res.send('for all styles');
-});
-
-
-router.get(`/products/:productId/related`, (req, res) => {
-  res.send('for related');
-});
-
-router.get('/products/:productId', (req, res) => {
-  getSpecificProduct(req.params.productId, (err, product) => {
+  getStyleOfProduct(req.params.productId, (err, product) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      console.log('got specific product');
+      console.log('got styles of product');
       res.send(product);
     }
   });
 });
 
-router.get('/products', (req, res) => {
+router.get(`/products/:productId/related`, (req, res) => {
+  getRelatedProducts(req.params.productId, (err, product) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log('got related products');
+      res.send(product);
+    }
+  });
+});
+
+router.get("/products/:productId", (req, res) => {
+  getSpecificProduct(req.params.productId, (err, product) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("got specific product");
+      res.send(product);
+    }
+  });
+});
+
+router.get("/products", (req, res) => {
   getAllProducts((err, products) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      console.log('got products');
+      console.log("got products");
       res.send(products);
     }
   });
 });
 
 //REVIEWS
-router.get('/reviews/meta', (req, res) => {
-  res.send('Meta data');
+router.get("/reviews/meta", (req, res) => {
+  getMetadata(req.body, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("got the metadata!");
+      res.send(result);
+    }
+  });
 });
 
-router.get('/reviews', (req, res) => {
-  res.send('Reviews for product');
+router.get("/reviews", (req, res) => {
+  getReviews(req.body, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("got the reviews!");
+      res.send(result);
+    }
+  });
 });
 
-router.post('/reviews', (req, res) => {
-  res.send('add review');
+router.post("/reviews", (req, res) => {
+  createReview(req.body, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("created a review!");
+      res.status(201).send("this worked");
+    }
+  });
 });
 
 router.put(`/reviews/:reviewId/helpful`, (req, res) => {
-  res.send('Mark a review as helpful');
+  markHelpful(req.body, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("marked as helpful!");
+      res.status(204).send("this worked");
+    }
+  });
 });
 
 router.put(`/reviews/:reviewId/report`, (req, res) => {
-  res.send('report review');
+  reportReview(req.body, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("reported a review!");
+      res.status(204).send("this worked");
+    }
+  });
 });
 
 //Q&A
 router.get(`/qa/questions/:questionId/answers`, (req, res) => {
-  res.send('answers');
+  res.send("answers");
 });
 
-router.get('/qa/questions', (req, res) => {
-  res.send('questions');
+router.get("/qa/questions", (req, res) => {
+  res.send("questions");
 });
 
 router.post(`/qa/questions/:questionId/answers`, (req, res) => {
-  res.send('add answer')
+  res.send("add answer");
 });
 
-router.post('/qa/questions', (req, res) => {
-  res.send('add question')
+router.post("/qa/questions", (req, res) => {
+  res.send("add question");
 });
 
 router.put(`/qa/questions/:questionId/helpful`, (req, res) => {
-  res.send('mark as helpful')
+  res.send("mark as helpful");
 });
 
 router.put(`/qa/questions/:questionId/report`, (req, res) => {
-  res.send('report question');
+  res.send("report question");
 });
 
 router.put(`/qa/questions/:answerId/helpful`, (req, res) => {
-  res.send('mark answer as helpful')
+  res.send("mark answer as helpful");
 });
 
 router.put(`/qa/questions/:answerId/report`, (req, res) => {
-  res.send('report answer')
+  res.send("report answer");
 });
 
 //CART
 router.get(`/cart`, (req, res) => {
-  res.send('get cart');
+  res.send("get cart");
 });
 
 router.post(`/cart`, (req, res) => {
-  res.send('add to cart');
+  res.send("add to cart");
 });
 
 //INTERACTIONS
 router.get(`/interactions`, (req, res) => {
-  res.send('log interaction');
+  res.send("log interaction");
 });
 
 module.exports = router;
