@@ -1,4 +1,5 @@
 const axios = require('axios');
+const config = require('./config.js');
 // needs to be updated with imported config file so can submit requests with proper authorization
 
 let getReviews = function (productId, callback) {
@@ -53,7 +54,7 @@ let createReview = function(review, callback) {
       'body': review.recommend,
       'name': review.name,
       'email': review.email,
-      'photos': review.photos.
+      'photos': review.photos
       'characteristics': review.characteristics
     }
   }
