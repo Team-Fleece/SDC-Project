@@ -32465,7 +32465,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      shitWorks: true
+      product_id: 38204
     };
     return _this;
   }

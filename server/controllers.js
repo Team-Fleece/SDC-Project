@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var { getAllProducts, getSpecificProduct } = require("./models/models");
 var {
   getReviews,
   getMetadata,
@@ -9,13 +8,29 @@ var {
   reportReview,
 } = require("./models/ratingsandreviews.js");
 
+var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts} = require('./models/productModels');
+
 //PRODUCTS
 router.get(`/products/:productId/styles`, (req, res) => {
-  res.send("for all styles");
+  getStyleOfProduct(req.params.productId, (err, product) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log('got styles of product');
+      res.send(product);
+    }
+  });
 });
 
 router.get(`/products/:productId/related`, (req, res) => {
-  res.send("for related");
+  getRelatedProducts(req.params.productId, (err, product) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log('got related products');
+      res.send(product);
+    }
+  });
 });
 
 router.get("/products/:productId", (req, res) => {
