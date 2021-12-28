@@ -1,14 +1,18 @@
 /* Author: */
 //Import Library Dependencies
 import React from 'react'
+
+//Import Component
+import QuestionsAndAnswersHeader from './QuestionsAndAnswersHeader.jsx'
+import QuestionAnswerElement from './QuestionAnswerElement.jsx'
+import QALoadAndAdd from './QALoadAndAdd.jsx'
+
 class QuestionsAndAnswers extends React.Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       //Data needed from api
       //All related questions and answers
-
-
       //Data that may be sent to API
       //New Question
       //New Answer (and associated question id)
@@ -20,23 +24,21 @@ class QuestionsAndAnswers extends React.Component {
   /* HELPER FUNCTIONS */
 
   //OnChange - Utilized to update question/answer text boxes
-  onChange(e) {//Event handler, use e.target.value to update state
-
+  onChange (e) {
+    //Event handler, use e.target.value to update state
   }
 
-
-  loadMoreQuestions() {//Populate 2 more question and answer elements
-
+  loadMoreQuestions () {
+    //Populate 2 more question and answer elements
     //Call on load?
   }
 
-  submitAnswer() { //pass answer input value to axios post request, then update question data
-
-
+  submitAnswer () {
+    //pass answer input value to axios post request, then update question data
   }
 
-  submitQuestion () {//pass question input value to axios post request, then update question data
-
+  submitQuestion () {
+    //pass question input value to axios post request, then update question data
   }
 
   /****** QA Helpful/Report Functions ******/
@@ -45,34 +47,29 @@ class QuestionsAndAnswers extends React.Component {
   //AnswerHelpful
   //AnswerReport
 
-
-
-
-
-
-
-
-
-
-
-  componentDidMount() {
+  componentDidMount () {
     //Update state with api data
     //Render some number of QA elements
   }
 
+  render () {
+    return (
+      <div>
+        <QuestionsAndAnswersHeader />
+        <QuestionAnswerElement />
+        <QALoadAndAdd />
+      </div>
+    );
+  }
+}
+export { QuestionsAndAnswers }
 
-
-
-render() {
-  return (
-    <div className='questAns'>
+/* placeholder
+<div className='questAns'>
   questAns
   <div className='quesTop'>quesTop</div>
   <div className='quesMid'>quesMid</div>
   <div className='quesBot'>quesBot</div>
 </div>
 
-  )
-}
-}
-export { QuestionsAndAnswers }
+*/
