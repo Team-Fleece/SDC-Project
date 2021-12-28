@@ -25,6 +25,8 @@ console.log(pathName)
 // }
 app.use('/', express.static(pathName)) //Add middleware to serve static react
 
+// product router is created and exported from controllers.js
+app.use(productRouter);
 
 //Modules
 
@@ -39,3 +41,4 @@ app.listen(PORT, function (err) {
   console.log('Server listening on localhost:' + PORT)
 })
 
+module.exports.app = app;
