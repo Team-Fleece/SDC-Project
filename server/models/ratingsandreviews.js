@@ -35,9 +35,27 @@ let getMetadata = function(request, callback) {
     },
     params: { 'product_id': request.product_id}
   }
+  let sum = 0;
+  let ratingSum = 0;
   axios.get(optionsURL, optionsConfig)
     .then (function(response) {
-      callback(null, response.data);
+      console.log(response.data);
+      for (var key in response.data.ratings) {
+        let value = Number(response.data.ratings[key])
+        sum += value;
+        ratingSum += (Number(key) * value);
+      }
+      console.log(sum);
+      console.log(ratingSum / sum);
+      let percentages = {
+        avg: (ratingSum / sum).toFixed(1),
+        1: (Number(response.data.ratings['1']) / sum) * 100,
+        2: (Number(response.data.ratings['2']) / sum) * 100,
+        3: (Number(response.data.ratings['3']) / sum) * 100,
+        4: (Number(response.data.ratings['4']) / sum) * 100,
+        5: (Number(response.data.ratings['5']) / sum) * 100
+      }
+      callback(null, percentages);
     })
     .catch (function(error) {
       console.log('getMetadata did not work:', error);

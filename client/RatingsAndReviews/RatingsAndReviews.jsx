@@ -1,25 +1,24 @@
 /* Author: */
 //Import Library Dependencies
 import React from 'react'
+import ReviewList from './ReviewList.jsx'
+import RatingsBreakdown from './RatingsBreakdown.jsx'
 
 
-class RatingsAndReviews extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-
-render() {
+let RatingsAndReviews = (props) => {
+  console.log(props);
   return (
-    <div className='rateRev'>
-  rateRev
-  <div className='ratings'>ratings</div>
-  <div className='reviews'>reviews</div>
-</div>
+    <div className='rateRev'>rateRev
+      <div className='ratings'>
+        <RatingsBreakdown ratings={props.ratings}/>
+      </div>
+      <div className='reviews'>reviews
+        <ReviewList />
+      </div>
+
+    </div>
 
   )
-}
+
 }
 export {RatingsAndReviews}
