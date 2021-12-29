@@ -1,6 +1,6 @@
 import React from 'react'
 import QASearchButtonIcon from '../assets/QASearchButtonIcon.png'
-import QASearchClearIcon from '../assets/QASearchClearIcon.png'
+import QASearchClearIcon from '../assets/QAExitIcon.png'
 
 
 class QuestionsAndAnswersHeader extends React.Component {

@@ -6,7 +6,7 @@ import RatingsBreakdown from "./RatingsBreakdown.jsx";
 import MoreReviewsButton from './MoreReviewsButton.jsx';
 
 let RatingsAndReviews = (props) => {
-  console.log("ratings and reviews props:", props);
+  //console.log("ratings and reviews props:", props);
   return (
     <div className="rateRev">
       rateRev

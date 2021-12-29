@@ -10,14 +10,19 @@ class QuestionWrapper extends React.Component {
       answerCount: 2
     }
     this.loadMoreAnswers = this.loadMoreAnswers.bind(this)
+    this.questionHelpful = this.questionHelpful.bind(this)
   }
 componentDidUpdate() {
 
   //console.log(this.state.questionData)
 }
+questionHelpful() {
+  console.log(this.state.questionData)
+}
 
 loadMoreAnswers() {
   this.setState({answerCount:(this.state.answerCount+=2)})
+  axios.put()
 }
   render () {
     const answerArray=[];
@@ -32,11 +37,11 @@ loadMoreAnswers() {
         <div className='QuesElementWrapper'>
           <div className='QuestionText'>{this.state.questionData.question_body}</div>
           <div className='QAQHRWrapper'>
-            <div className='QAQHelpful'>
+            <button onClick={this.questionHelpful} className='QAQHelpful'>
               <div >Helpful?</div>
-              <div className='QAQHelpfulTxt'>Yes</div>
-              <div className='QAQHelpfulTxt'>(2)</div>
-            </div>
+              <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>Yes</div>
+              <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>(2)</div>
+            </button>
             <div className='QAQReport'> Report Question?</div>
           </div>
         </div>
