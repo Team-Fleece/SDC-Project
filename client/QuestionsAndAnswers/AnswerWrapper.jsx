@@ -10,7 +10,7 @@ class AnswerWrapper extends React.Component {
 
   render() {
     return (
-
+<div>Got an answer here</div>
     )
   }
 }

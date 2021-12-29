@@ -1,4 +1,8 @@
 import React from 'react'
+import QuestionWrapper from './QuestionWrapper.jsx'
+import AnswersBody from './AnswersBody.jsx'
+
+
 
 class QuestionAnswerElement extends React.Component {
   constructor (props) {
@@ -8,17 +12,10 @@ class QuestionAnswerElement extends React.Component {
 
   render () {
     return (
-      <div className='quesElementWrapper'>
-        <div className='quesQuestionText'>Q: Does it fly?</div>
-        <div className='quesHRWrapper'>
-          <div className='quesQHelpful'>
-            <div>Helpful?</div>
-            <div>Yes</div>
-            <div>(2)</div>
-          </div>
-          <div className='quesQReport'> question reported</div>
-        </div>
-      </div>
+<div>
+  <QuestionWrapper />
+  <AnswersBody />
+</div>
     )
   }
 }
