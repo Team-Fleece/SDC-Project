@@ -18,10 +18,19 @@ class App extends React.Component {
     this.state = {
       product_id: 38204, //DUMMY VALUE, gets passed to all components
       reviews: [],
+      reviewCount: 2,
       ratings: {},
+<<<<<<< HEAD
+      recommendedPercentage: 0
+
+    };
+    this.onMoreReviewsClick = this.onMoreReviewsClick.bind(this);
+    this.getReviews = this.getReviews.bind(this);
+=======
       recommendedPercentage: 0,
       ratingsCount: 0
     }
+>>>>>>> 5a3ee7ef430042f036d3aa556567a3c13fa612ff
   }
   getMetadata () {
     let that = this
@@ -31,9 +40,14 @@ class App extends React.Component {
       .then(function (response) {
         that.setState({
           ratings: response.data.ratings,
+<<<<<<< HEAD
+          recommendedPercentage: response.data.recommended
+        });
+=======
           recommendedPercentage: response.data.recommended,
           ratingsCount: response.data.ratingsCount
         })
+>>>>>>> 5a3ee7ef430042f036d3aa556567a3c13fa612ff
       })
       .catch(function (error) {
         console.log('Metadata GET Error:', error)
@@ -42,7 +56,7 @@ class App extends React.Component {
   getReviews () {
     let that = this
     axios
-      .get(`/reviews?product_id=${this.state.product_id}&count=2&sort=relevant`)
+      .get(`/reviews?product_id=${this.state.product_id}&count=${this.state.reviewCount}&sort=relevant`)
       .then(function (response) {
         console.log('response Data:', response.data.results)
         that.setState({
@@ -53,9 +67,39 @@ class App extends React.Component {
         console.log('Reviews GET Error:', error)
       })
   }
+<<<<<<< HEAD
+  onMoreReviewsClick(callback) {
+    let that = this;
+
+    let newCount = this.state.reviewCount + 2;
+
+    let addReviews = () => {
+      return new Promise (function (resolve, reject) {
+        that.setState({reviewCount: newCount}, function (error, result) {
+          if (error) {
+            reject (error);
+          } else {
+            resolve(result);
+          }
+        })
+      })
+    }
+    addReviews()
+      .then(function(result) {
+        that.getReviews();
+      })
+      .catch(function(error) {
+        console.log("More Reviews Error:", error);
+      })
+  }
+  componentDidMount() {
+    this.getMetadata();
+    this.getReviews();
+=======
   componentDidMount () {
     this.getMetadata()
     this.getReviews()
+>>>>>>> 5a3ee7ef430042f036d3aa556567a3c13fa612ff
   }
 
   render () {
@@ -71,7 +115,7 @@ class App extends React.Component {
             <RatingsAndReviews
               ratings={this.state.ratings}
               recommended={this.state.recommendedPercentage}
-              reviews={this.state.reviews}
+              reviews={this.state.reviews} onClick={this.onMoreReviewsClick}
             />
           </div>
           <div className='footer'>footer</div>
