@@ -4,7 +4,7 @@ class AnswerLoadAndAdd extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-
+      isShown:false
     }
   }
 
