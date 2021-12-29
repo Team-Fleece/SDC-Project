@@ -54,7 +54,7 @@ class QuestionsAndAnswers extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='quesElementWrapper'>
         <QuestionsAndAnswersHeader />
         <QuestionAnswerBody />
         <QALoadAndAdd />
