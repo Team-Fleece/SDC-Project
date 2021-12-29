@@ -1,6 +1,8 @@
 /* Author: */
 //Import Library Dependencies
 import React from 'react'
+import {ProductGallery} from './ProductGallery.jsx'
+
 
 class ProductDetails extends React.Component {
   constructor (props) {
@@ -12,19 +14,36 @@ class ProductDetails extends React.Component {
 
 render() {
   return (
-    <div className='overviewWrapper'>
-  <div className='overviewLeft'>
-    overviewLeft
-    <div className='overviewLeft2'>
-      <div className='overviewProductImg'>
-        <div className='productThumbs'>productThumbs</div>
-        overviewProductImg##########
+    <div className="overviewWrapper">overviewWrapper
+    <div className="overviewProductDescriptionContainer">
+      <ProductGallery className="overviewImageGallery" />
+      <div className="overviewInformationContainer">
+        <div className="overviewReviews">
+          overviewReviews
+        </div>
+        <div className="overviewNameAndCat">
+          overviewNameAndCat
+        </div>
+        <div className="overviewStyle">
+          overviewStyle
+        </div>
+        <div className="overviewSizeSelector">
+          overviewSizeSelector
+        </div>
+        <div className="overviewBagAndStar">
+          overviewBagAndStar
+        </div>
+      </div>
+    </div>
+    <div className="overviewProductDescriptionContainer">
+      <div className="overviewDescriptionText">
+        overviewDescriptionText
+      </div>
+      <div className="overviewDescriptionChecklist">
+        overviewDescriptionChecklist
       </div>
     </div>
   </div>
-  <div className='overviewRight'>overviewRight</div>
-</div>
-
   )
 }
 }

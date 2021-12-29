@@ -13,6 +13,27 @@ const config = {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        include: path.resolve(__dirname, './node_modules/react-image-gallery/styles/scss/image-gallery.scss'),
+        test: /\.(s[ac]ss|css)$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },

@@ -6,10 +6,12 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 
 //Import Modules
-import { ProductDetails } from "./ProductDetails/ProductDetails.jsx";
-import { RelatedProducts } from "./RelatedProducts/RelatedProducts.jsx";
-import { QuestionsAndAnswers } from "./QuestionsAndAnswers/QuestionsAndAnswers.jsx";
-import { RatingsAndReviews } from "./RatingsAndReviews/RatingsAndReviews.jsx";
+import {ProductDetails} from './ProductDetails/ProductDetails.jsx'
+import {RelatedProducts} from './RelatedProducts/RelatedProducts.jsx'
+import {QuestionsAndAnswers} from './QuestionsAndAnswers/QuestionsAndAnswersMainWrapper.jsx'
+import {RatingsAndReviews} from './RatingsAndReviews/RatingsAndReviews.jsx'
+import {ProductGallery} from './ProductDetails/ProductGallery.jsx'
+
 
 class App extends React.Component {
   constructor(props) {
