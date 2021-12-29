@@ -1,22 +1,24 @@
-import React from 'react';
+import React from "react";
 
 class RatingsBreakdown extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
-  render () {
+
+  render() {
     return (
       <>
         <div>Star Ratings</div>
         <div>{this.props.ratings.avg}</div>
-        <div>1: {this.props.ratings['1']}%</div>
-        <div>2: {this.props.ratings['2']}%</div>
-        <div>3: {this.props.ratings['3']}%</div>
-        <div>4: {this.props.ratings['4']}%</div>
-        <div>5: {this.props.ratings['5']}%</div>
+        <div>{this.props.recommended}% of reviews recommend this product</div>
+        <div>1: {this.props.ratings["1"]}%</div>
+        <div>2: {this.props.ratings["2"]}%</div>
+        <div>3: {this.props.ratings["3"]}%</div>
+        <div>4: {this.props.ratings["4"]}%</div>
+        <div>5: {this.props.ratings["5"]}%</div>
       </>
-    )
+    );
   }
 }
 

@@ -1,17 +1,17 @@
-import React from 'react';
-import ReviewTile from './ReviewTile.jsx';
+import React from "react";
+import ReviewTile from "./ReviewTile.jsx";
 
 class ReviewList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
   render() {
     return (
       <>
-        <ReviewTile />
+        <ReviewTile reviews={this.props.reviews} />
       </>
-    )
+    );
   }
 }
-export default ReviewList
+export default ReviewList;

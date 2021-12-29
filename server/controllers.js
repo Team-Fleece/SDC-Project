@@ -69,7 +69,8 @@ router.get("/reviews/meta", (req, res) => {
 });
 
 router.get("/reviews", (req, res) => {
-  getReviews(req.body, (err, result) => {
+  console.log('GET REVIEWS REQ:', req.query);
+  getReviews(req.query, (err, result) => {
     if (err) {
       res.status(500).send(err);
     } else {
