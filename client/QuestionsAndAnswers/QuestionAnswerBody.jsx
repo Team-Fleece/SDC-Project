@@ -7,6 +7,12 @@ class QuestionAnswerBody extends React.Component {
     this.state = {}
   }
 
+  //Function to map out elements
+
+  componentDidMount() {
+    //populate
+  }
+
   render () {
     return (
       <div>
