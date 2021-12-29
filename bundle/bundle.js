@@ -43922,6 +43922,7 @@ __webpack_require__.r(__webpack_exports__);
 var ReviewImages = function ReviewImages(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, props.images.map(function (image) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      className: "reviewImage",
       src: image.url,
       key: image.id
     });

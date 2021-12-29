@@ -4,7 +4,7 @@ let ReviewImages = (props) => {
   return (
     <div>
       {props.images.map((image) => (
-        <img src={image.url} key={image.id} />
+        <img className="reviewImage" src={image.url} key={image.id} />
       ))}
     </div>
   );

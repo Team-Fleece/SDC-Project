@@ -146,6 +146,11 @@
   flex: 3;
 }
 
+.reviewImage {
+  height: 100px;
+  width: 100px
+}
+
 /*###########################~~FOOTER~~################################*/
 .footer {
   background-color: rgb(236, 252, 5);
