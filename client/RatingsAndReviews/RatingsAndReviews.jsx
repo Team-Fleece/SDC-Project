@@ -3,6 +3,7 @@
 import React from "react";
 import ReviewList from "./ReviewList.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
+import MoreReviewsButton from './MoreReviewsButton.jsx';
 
 let RatingsAndReviews = (props) => {
   console.log("ratings and reviews props:", props);
@@ -18,6 +19,7 @@ let RatingsAndReviews = (props) => {
       <div className="reviews">
         reviews
         <ReviewList reviews={props.reviews} />
+        <MoreReviewsButton onClick={props.onClick}/>
       </div>
     </div>
   );
