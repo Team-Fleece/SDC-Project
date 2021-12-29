@@ -1,4 +1,5 @@
 import React from 'react'
+import QAModal from './QAModal.jsx'
 
 class AnswerLoadAndAdd extends React.Component {
   constructor (props) {
@@ -13,7 +14,7 @@ class AnswerLoadAndAdd extends React.Component {
     return (
       <div className='QALoadAndAddWrapper'>
         <button className='QALoadMore' onClick={this.props.loadMoreAnswers}> Load More Answers</button>
-        <button className='QAAddQuestion'> Add New Answer </button>
+        <QAModal />
       </div>
     )
   }

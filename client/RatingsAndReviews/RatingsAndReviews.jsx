@@ -5,7 +5,7 @@ import ReviewList from "./ReviewList.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
 
 let RatingsAndReviews = (props) => {
-  console.log("ratings and reviews props:", props);
+  //console.log("ratings and reviews props:", props);
   return (
     <div className="rateRev">
       rateRev
