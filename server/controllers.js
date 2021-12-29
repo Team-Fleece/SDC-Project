@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+router.use(express.json())
 var {
   getReviews,
   getMetadata,
@@ -7,8 +8,9 @@ var {
   markHelpful,
   reportReview,
 } = require("./models/ratingsandreviews.js");
-
+const {getQuestions} = require('./models/QAModels.js')
 var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts} = require('./models/productModels');
+
 
 //PRODUCTS
 router.get(`/products/:productId/styles`, (req, res) => {
@@ -117,10 +119,19 @@ router.put(`/reviews/:reviewId/report`, (req, res) => {
 router.get(`/qa/questions/:questionId/answers`, (req, res) => {
   res.send("answers");
 });
-
 router.get("/qa/questions", (req, res) => {
-  res.send("questions");
+
+  getQuestions(req.originalUrl, (err, data)=>{
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("got questions correctly!");
+      //console.log(data)
+      res.status(200).send(data);
+    }
+  })
 });
+
 
 router.post(`/qa/questions/:questionId/answers`, (req, res) => {
   res.send("add answer");
