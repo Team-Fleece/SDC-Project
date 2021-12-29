@@ -60,7 +60,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className='App'>
+      <div id='App' className='App'>
         <div className='container'>
           <div className='header'>header</div>
           <div className='banner'>banner</div>
