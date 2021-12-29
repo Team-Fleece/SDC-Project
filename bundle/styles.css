@@ -234,58 +234,6 @@
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
-<<<<<<< HEAD
-}
-.quesQHRWrapper {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  justify-content: flex-end;
-}
-
-.quesQHelpful {
-  color: rgb(7, 176, 255);
-  text-decoration: underline;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: row;
-  flex: 2;
-  font-size: 14px;
-  max-width: 95px;
-  min-width: 95px;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.quesQReport {
-  color: rgb(7, 176, 255);
-  text-decoration: underline;
-  background-color: rgb(255, 255, 255);
-  flex: 2;
-  font-size: 14px;
-  max-width: 100px;
-  min-width: 100px;
-  margin-top: 10px;
-  text-align: center;
-}
-/*##### Answer Element #####*/
-.quesAnsElementWrapper {
-  background-color: rgb(10, 224, 107);
-  border: 1px solid grey;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-}
-.quesAnsText {
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
-  font-size: 16px;
-=======
->>>>>>> origin
 }
 .quesAnsHRWrapper {
   background-color: rgb(255, 255, 255);
