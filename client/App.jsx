@@ -17,7 +17,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      product_id: 38204
+      product_id: 37311
     }
   }
   render(){
@@ -27,7 +27,7 @@ class App extends React.Component {
           <div className='header'>header</div>
           <div className='banner'>banner</div>
           <div className='wrapper'>
-            <ProductDetails />
+            <ProductDetails product_id={this.state.product_id}/>
             <RelatedProducts />
             <QuestionsAndAnswers />
             <RatingsAndReviews />

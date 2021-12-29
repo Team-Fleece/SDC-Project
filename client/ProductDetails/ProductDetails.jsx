@@ -16,7 +16,7 @@ render() {
   return (
     <div className="overviewWrapper">overviewWrapper
     <div className="overviewProductDescriptionContainer">
-      <ProductGallery className="overviewImageGallery" />
+      <ProductGallery className="overviewImageGallery" product_id={this.props.product_id}/>
       <div className="overviewInformationContainer">
         <div className="overviewReviews">
           overviewReviews

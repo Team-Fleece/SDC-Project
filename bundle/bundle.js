@@ -32467,7 +32467,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      product_id: 38204
+      product_id: 37311
     };
     return _this;
   }
@@ -32485,7 +32485,9 @@ var App = /*#__PURE__*/function (_React$Component) {
         className: "banner"
       }, "banner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetails_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_4__.ProductDetails, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedProducts_RelatedProducts_jsx__WEBPACK_IMPORTED_MODULE_5__.RelatedProducts, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsAndAnswers_QuestionsAndAnswersMainWrapper_jsx__WEBPACK_IMPORTED_MODULE_6__.QuestionsAndAnswers, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_7__.RatingsAndReviews, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetails_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_4__.ProductDetails, {
+        product_id: this.state.product_id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedProducts_RelatedProducts_jsx__WEBPACK_IMPORTED_MODULE_5__.RelatedProducts, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsAndAnswers_QuestionsAndAnswersMainWrapper_jsx__WEBPACK_IMPORTED_MODULE_6__.QuestionsAndAnswers, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_7__.RatingsAndReviews, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "footer"
       }, "footer")));
     }
@@ -43445,7 +43447,8 @@ var ProductDetails = /*#__PURE__*/function (_React$Component) {
       }, "overviewWrapper", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "overviewProductDescriptionContainer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductGallery_jsx__WEBPACK_IMPORTED_MODULE_1__.ProductGallery, {
-        className: "overviewImageGallery"
+        className: "overviewImageGallery",
+        product_id: this.props.product_id
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "overviewInformationContainer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -43483,10 +43486,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ProductGallery": () => (/* binding */ ProductGallery)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var react_image_gallery_styles_scss_image_gallery_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(48);
-/* harmony import */ var react_image_gallery_styles_css_image_gallery_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58);
-/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(60);
-/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_image_gallery__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_image_gallery_styles_scss_image_gallery_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(48);
+/* harmony import */ var react_image_gallery_styles_css_image_gallery_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(58);
+/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(60);
+/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_image_gallery__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43514,20 +43519,39 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ProductGallery = /*#__PURE__*/function (_React$Component) {
   _inherits(ProductGallery, _React$Component);
 
   var _super = _createSuper(ProductGallery);
 
-  function ProductGallery() {
+  function ProductGallery(props) {
+    var _this;
+
     _classCallCheck(this, ProductGallery);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      currentProduct: []
+    };
+    return _this;
   }
 
   _createClass(ProductGallery, [{
     key: "render",
     value: function render() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/products/".concat(this.props.product_id, "/styles"), {
+        params: {
+          productId: this.props.product_id
+        }
+      }).then(function (response) {
+        // handle success
+        console.log('RESPONSEEEEEE: ', response);
+        console.log(response);
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
       var images = [{
         original: 'https://picsum.photos/id/1018/1000/600/',
         thumbnail: 'https://picsum.photos/id/1018/250/150/'
@@ -43538,7 +43562,7 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
         original: 'https://picsum.photos/id/1019/1000/600/',
         thumbnail: 'https://picsum.photos/id/1019/250/150/'
       }];
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_image_gallery__WEBPACK_IMPORTED_MODULE_3___default()), {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_image_gallery__WEBPACK_IMPORTED_MODULE_4___default()), {
         items: images,
         thumbnailPosition: "left",
         showPlayButton: false,
@@ -43548,7 +43572,8 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return ProductGallery;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component); // console.log('RED PARAMMMMMMMMMMM PRODUCT IDDDDD: ', req.params.productId)
+
 
 
 
