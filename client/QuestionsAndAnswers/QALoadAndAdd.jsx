@@ -8,9 +8,9 @@ class QALoadAndAdd extends React.Component {
 
   render () {
     return (
-      <div className='quesLoadAndAddWrapper'>
-        <div className='quesLoadMore'> Load More </div>
-        <div className='quesAddQuestion'> Add New Question </div>
+      <div className='QALoadAndAddWrapper'>
+        <div className='QALoadMore'> Load More </div>
+        <div className='QAAddQuestion'> Add New Question </div>
       </div>
     )
   }

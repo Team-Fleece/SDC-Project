@@ -10,16 +10,16 @@ class QuestionWrapper extends React.Component {
 
   render () {
     return (
-      <div className='quesElementWrapper'>
-        <div className='quesQElementWrapper'>
-          <div className='quesQuestionText'>Q: Does it fly?</div>
-          <div className='quesQHRWrapper'>
-            <div className='quesQHelpful'>
-              <div>Helpful?</div>
-              <div>Yes</div>
-              <div>(2)</div>
+      <div className='QAElementWrapper'>
+        <div className='QuesElementWrapper'>
+          <div className='QuestionText'>Q: Does it fly?</div>
+          <div className='QAQHRWrapper'>
+            <div className='QAQHelpful'>
+              <div >Helpful?</div>
+              <div className='QAQHelpfulTxt'>Yes</div>
+              <div className='QAQHelpfulTxt'>(2)</div>
             </div>
-            <div className='quesQReport'> Report Question?</div>
+            <div className='QAQReport'> Report Question?</div>
           </div>
         </div>
 
