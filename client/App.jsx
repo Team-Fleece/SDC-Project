@@ -44,7 +44,7 @@ class App extends React.Component {
     axios
       .get(`/reviews?product_id=${this.state.product_id}&count=2&sort=relevant`)
       .then(function (response) {
-        console.log('response Data:', response.data.results)
+        //console.log('response Data:', response.data.results)
         that.setState({
           reviews: response.data.results
         })
