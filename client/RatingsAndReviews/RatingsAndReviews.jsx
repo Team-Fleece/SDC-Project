@@ -43,7 +43,7 @@ class RatingsAndReviews extends React.Component {
         `/reviews?product_id=${this.state.product_id}&count=${this.state.reviewCount}&sort=relevant`
       )
       .then(function (response) {
-        console.log("response Data:", response.data.results);
+        //console.log("response Data:", response.data.results);
         that.setState({
           reviews: response.data.results,
         });

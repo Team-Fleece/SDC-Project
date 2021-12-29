@@ -20,7 +20,7 @@ export default function Card({ current }) {
     return () => { isMounted = false }
   }, [current])
 
-  console.log('asdf', styles, current)
+  //console.log('asdf', styles, current)
   if (!styles || !productCategory) return <div>loading...</div>
 
 
