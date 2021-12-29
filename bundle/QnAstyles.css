@@ -1,39 +1,29 @@
 
 /*###########################~~QUESTION AND ANSWERS~~################################*/
-.questAns {
-  background-color: rgb(7, 247, 39);
+
+
+.QABodyWrapper {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.quesMid {
-  background-color: rgb(255, 255, 255);
-  flex: 5;
-  margin: 10px;
-}
-
-.quesBot {
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
 }
 
 /*##### Header #####*/
-.quesAnsHeader {
+.QAAnsHeader {
   background-color: rgb(255, 255, 255);
   flex: 1;
   margin: 10px;
 }
 
-.quesSearchForm {
+.QASearchForm {
   position: relative;
   display: flex;
   flex-direction: row;
   min-width: 100px;
 }
-.quesSearchField {
+.QASearchField {
   border: 1px solid grey;
   border-radius: 5px;
   height: 20px;
@@ -44,7 +34,7 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-.quesSearchButton {
+.QASearchButton {
   position: absolute;
   top: 2px;
   left: 3px;
@@ -53,12 +43,12 @@
   outline: none;
   margin-left: 0px;
 }
-.quesSearchButton img {
+.QASearchButton img {
   width: 20px;
   height: 20px;
   object-fit: cover;
 }
-.quesSearchClear {
+.QASearchClear {
   background: transparent;
   position: absolute;
   top: 4px;
@@ -68,7 +58,7 @@
   border: none;
   cursor: pointer;
 }
-.quesSearchClear img {
+.QASearchClear img {
   width: 10px;
   height: 10px;
   object-fit: cover;
@@ -76,29 +66,38 @@
 
 /*##### QuestionAnswer Wrapper #####*/
 
-.quesElementWrapper {
+.QAElementWrapper {
   background-color: rgb(255, 255, 255);
   border: 1px solid grey;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
-
-/*##### Question Element #####*/
-.quesQElementWrapper {
-  background-color: rgb(188, 211, 61);
-  margin: 10px;
+.QuesElementWrapper {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 5px;
   display: flex;
   flex-direction: row;
 }
-.quesQuestionText {
+.AnsElementWrapper {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+/*##### Question Element #####*/
+.QuestionText {
   background-color: rgb(255, 255, 255);
   flex: 1;
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
 }
-.quesAnsHRWrapper {
+.QAQHRWrapper {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
@@ -109,19 +108,24 @@
   justify-content: flex-start;
 }
 
-.quesAHelpful {
-  color: rgb(7, 176, 255);
-  text-decoration: underline;
+.QAQHelpful {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex: 2;
+  margin-top: 10px;
   font-size: 14px;
   max-width: 95px;
+  min-width: 95px;
 }
-
-.quesAReport {
+.QAQHelpfulTxt {
+  color: rgb(7, 176, 255);
+  text-decoration: underline;
+  margin-left: 2px;
+  margin-right: 1px;
+}
+.QAQReport {
   color: rgb(7, 176, 255);
   text-decoration: underline;
   background-color: rgb(255, 255, 255);
@@ -129,42 +133,79 @@
   flex-direction: column;
   flex-wrap: wrap;
   flex: 2;
+  margin-top: 10px;
   font-size: 14px;
   max-width: 100px;
+  min-width: 10px;
 }
-
-/*##### Footer #####*/
-
-.quesLoadAndAddWrapper {
-  background-color: rgb(40, 88, 0);
+/*##### Answer Element #####*/
+.AnswerText {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
   margin: 10px;
-  display: flex;
-  flex-direction: column;
+  font-size: 16px;
 }
-.quesLoadAndAddWrapper {
-  background-color: rgb(6, 255, 39);
+.QAAHRWrapper {
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  justify-content: flex-start;
 }
 
-.quesLoadMore {
+.QAAHelpful {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 2;
+  margin: 10px;
+  font-size: 10px;
+  max-width: 70px;
+  min-width: 70px;
+}
+.QAAHelpfulTxt {
+  color: rgb(7, 176, 255);
+  text-decoration: underline;
+  margin-left: 2px;
+  margin-right: 1px;
+}
+.QAAReport {
+  color: rgb(7, 176, 255);
+  text-decoration: underline;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 10px;
   flex: 2;
+  margin: 10px;
+  font-size: 10px;
+  max-width: 70px;
+  min-width: 70px;
 }
 
-.quesAddQuestion {
+/*##### Footer #####*/
+
+.QALoadAndAddWrapper {
   background-color: rgb(255, 255, 255);
+  margin: 0px;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.QALoadMore {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
   margin: 10px;
-  flex: 2;
+  flex: 1;
+}
+
+.QAAddQuestion {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  margin: 10px;
+  flex: 1;
 }
