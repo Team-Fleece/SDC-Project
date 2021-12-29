@@ -17,9 +17,32 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      product_id: 37311
+      product_id: 37311,
+      currentProduct: []
     }
+    this.componentDidMount = this.componentDidMount.bind(this)
+    // this.setState = this.setState.bind(this)
   }
+
+  componentDidMount() {
+    axios.get(`/products/${this.state.product_id}/styles`, {
+      params: {
+        productId: this.state.product_id
+      }
+  })
+    .then(function (response) {
+      // handle success
+      console.log('RESPONSEEEEEE: ', response.data)
+      console.log(response.data);
+      this.setState({currentProduct: response.data})
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+  }
+
+
   render(){
     return(
       <div className='App'>
