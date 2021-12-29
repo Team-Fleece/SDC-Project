@@ -4,13 +4,14 @@ class AnswerWrapper extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      answerData: this.props.answerData
     }
   }
 
   render () {
     return (
       <div className='AnsElementWrapper'>
-        <div className='AnswerText'>A: Yeah it soars</div>
+        <div className='AnswerText'>{this.props.answerData.body}</div>
         <div className='QAAHRWrapper'>
           <div className='QAAHelpful'>
             <div>Helpful?</div>
