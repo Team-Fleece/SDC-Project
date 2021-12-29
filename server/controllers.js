@@ -64,14 +64,13 @@ router.get("/reviews/meta", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      console.log("got the metadata!");
+     console.log("got the reviews metadata!");
       res.send(result);
     }
   });
 });
 
 router.get("/reviews", (req, res) => {
-  console.log('GET REVIEWS REQ:', req.query);
   getReviews(req.query, (err, result) => {
     if (err) {
       res.status(500).send(err);
@@ -125,8 +124,7 @@ router.get("/qa/questions", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      console.log("got questions correctly!");
-      //console.log(data)
+      console.log("got the questions!");
       res.status(200).send(data);
     }
   })
