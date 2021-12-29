@@ -16,9 +16,48 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      product_id: 38204 //DUMMY VALUE, gets passed to all components
+      product_id: 38204, //DUMMY VALUE, gets passed to all components
+      reviews: [],
+      ratings: {},
+      recommendedPercentage: 0,
+      ratingsCount: 0
     }
   }
+  getMetadata () {
+    let that = this
+
+    axios
+      .get(`/reviews/meta?product_id=${this.state.product_id}`)
+      .then(function (response) {
+        that.setState({
+          ratings: response.data.ratings,
+          recommendedPercentage: response.data.recommended,
+          ratingsCount: response.data.ratingsCount
+        })
+      })
+      .catch(function (error) {
+        console.log('Metadata GET Error:', error)
+      })
+  }
+  getReviews () {
+    let that = this
+    axios
+      .get(`/reviews?product_id=${this.state.product_id}&count=2&sort=relevant`)
+      .then(function (response) {
+        console.log('response Data:', response.data.results)
+        that.setState({
+          reviews: response.data.results
+        })
+      })
+      .catch(function (error) {
+        console.log('Reviews GET Error:', error)
+      })
+  }
+  componentDidMount () {
+    this.getMetadata()
+    this.getReviews()
+  }
+
   render () {
     return (
       <div className='App'>
@@ -29,7 +68,11 @@ class App extends React.Component {
             <ProductDetails product_id={this.state.product_id} />
             <RelatedProducts product_id={this.state.product_id} />
             <QuestionsAndAnswers product_id={this.state.product_id} />
-            <RatingsAndReviews product_id={this.state.product_id} />
+            <RatingsAndReviews
+              ratings={this.state.ratings}
+              recommended={this.state.recommendedPercentage}
+              reviews={this.state.reviews}
+            />
           </div>
           <div className='footer'>footer</div>
         </div>
