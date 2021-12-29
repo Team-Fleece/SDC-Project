@@ -12,7 +12,7 @@ class AnswerBody extends React.Component {
   render () {
     const answerArray = this.props.answerArray
     const assembledAnswers = answerArray.map((element, index) => {
-     console.log(element)
+     //console.log(element)
       return (
         <AnswerWrapper
           key={element.id}

@@ -32540,6 +32540,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        id: "App",
         className: "App"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "container"
@@ -32549,7 +32550,13 @@ var App = /*#__PURE__*/function (_React$Component) {
         className: "banner"
       }, "banner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetails_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_4__.ProductDetails, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedProducts_RelatedProducts_jsx__WEBPACK_IMPORTED_MODULE_5__.RelatedProducts, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsAndAnswers_QuestionsAndAnswersMainWrapper_jsx__WEBPACK_IMPORTED_MODULE_6__.QuestionsAndAnswers, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_7__.RatingsAndReviews, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetails_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_4__.ProductDetails, {
+        product_id: this.state.product_id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedProducts_RelatedProducts_jsx__WEBPACK_IMPORTED_MODULE_5__.RelatedProducts, {
+        product_id: this.state.product_id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsAndAnswers_QuestionsAndAnswersMainWrapper_jsx__WEBPACK_IMPORTED_MODULE_6__.QuestionsAndAnswers, {
+        product_id: this.state.product_id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_7__.RatingsAndReviews, {
         ratings: this.state.ratings,
         recommended: this.state.recommendedPercentage,
         reviews: this.state.reviews,
@@ -44432,7 +44439,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _assets_QASearchButtonIcon_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(65);
-/* harmony import */ var _assets_QASearchClearIcon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(66);
+/* harmony import */ var _assets_QAExitIcon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(66);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44494,7 +44501,7 @@ var QuestionsAndAnswersHeader = /*#__PURE__*/function (_React$Component) {
         className: "QASearchClear",
         type: "reset"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        src: _assets_QASearchClearIcon_png__WEBPACK_IMPORTED_MODULE_2__["default"]
+        src: _assets_QAExitIcon_png__WEBPACK_IMPORTED_MODULE_2__["default"]
       }))));
     }
   }]);
@@ -44680,6 +44687,7 @@ var QuestionWrapper = /*#__PURE__*/function (_React$Component) {
       answerCount: 2
     };
     _this.loadMoreAnswers = _this.loadMoreAnswers.bind(_assertThisInitialized(_this));
+    _this.questionHelpful = _this.questionHelpful.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -44688,11 +44696,17 @@ var QuestionWrapper = /*#__PURE__*/function (_React$Component) {
     value: function componentDidUpdate() {//console.log(this.state.questionData)
     }
   }, {
+    key: "questionHelpful",
+    value: function questionHelpful() {
+      console.log(this.state.questionData);
+    }
+  }, {
     key: "loadMoreAnswers",
     value: function loadMoreAnswers() {
       this.setState({
         answerCount: this.state.answerCount += 2
       });
+      axios.put();
     }
   }, {
     key: "render",
@@ -44714,11 +44728,14 @@ var QuestionWrapper = /*#__PURE__*/function (_React$Component) {
         className: "QuestionText"
       }, this.state.questionData.question_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "QAQHRWrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.questionHelpful,
         className: "QAQHelpful"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: this.questionHelpful,
         className: "QAQHelpfulTxt"
       }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: this.questionHelpful,
         className: "QAQHelpfulTxt"
       }, "(2)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "QAQReport"
@@ -44793,7 +44810,7 @@ var AnswerBody = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var answerArray = this.props.answerArray;
       var assembledAnswers = answerArray.map(function (element, index) {
-        console.log(element);
+        //console.log(element)
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AnswerWrapper_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: element.id,
           answerData: element
@@ -44895,6 +44912,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _QAModal_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(79);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44919,6 +44937,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var AnswerLoadAndAdd = /*#__PURE__*/function (_React$Component) {
   _inherits(AnswerLoadAndAdd, _React$Component);
 
@@ -44930,7 +44949,9 @@ var AnswerLoadAndAdd = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, AnswerLoadAndAdd);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      isShown: false
+    };
     return _this;
   }
 
@@ -44942,9 +44963,7 @@ var AnswerLoadAndAdd = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "QALoadMore",
         onClick: this.props.loadMoreAnswers
-      }, " Load More Answers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "QAAddQuestion"
-      }, " Add New Answer "));
+      }, " Load More Answers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAModal_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -45042,7 +45061,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var RatingsAndReviews = function RatingsAndReviews(props) {
-  console.log("ratings and reviews props:", props);
+  //console.log("ratings and reviews props:", props);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "rateRev"
   }, "rateRev", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -45301,6 +45320,69 @@ var MoreReviewsButton = function MoreReviewsButton(props) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MoreReviewsButton);
+
+/***/ }),
+/* 79 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'react-hooks-use-modal'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _assets_QAExitIcon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(66);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var QAModal = function QAModal() {
+  var _useModal = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'react-hooks-use-modal'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())('App', {
+    preventScroll: true,
+    closeOnOverlayClick: true
+  }),
+      _useModal2 = _slicedToArray(_useModal, 4),
+      Modal = _useModal2[0],
+      open = _useModal2[1],
+      close = _useModal2[2],
+      isOpen = _useModal2[3];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "QAModalBtn",
+    onClick: open
+  }, "Add New Answer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Modal, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QAModalOverlay"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QAModalHeader"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Answer Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "QAModalExit"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: _assets_QAExitIcon_png__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    className: "QAModalInputText",
+    placeholder: "Type your answer here"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "QAModalSubmit",
+    onClick: close
+  }, "Submit"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QAModal);
 
 /***/ })
 /******/ 	]);

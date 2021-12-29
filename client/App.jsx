@@ -80,20 +80,21 @@ class App extends React.Component {
         console.log("More Reviews Error:", error);
       });
   }
-  componentDidMount() {
-    this.getMetadata();
-    this.getReviews();
+
+  componentDidMount () {
+    this.getMetadata()
+    this.getReviews()
   }
   render() {
     return (
-      <div className="App">
-        <div className="container">
-          <div className="header">header</div>
-          <div className="banner">banner</div>
-          <div className="wrapper">
-            <ProductDetails />
-            <RelatedProducts />
-            <QuestionsAndAnswers />
+      <div id="App" className='App'>
+        <div className='container'>
+          <div className='header'>header</div>
+          <div className='banner'>banner</div>
+          <div className='wrapper'>
+            <ProductDetails product_id={this.state.product_id} />
+            <RelatedProducts product_id={this.state.product_id} />
+            <QuestionsAndAnswers product_id={this.state.product_id} />
             <RatingsAndReviews
               ratings={this.state.ratings}
               recommended={this.state.recommendedPercentage}
