@@ -25,46 +25,96 @@
 /*###########################~~OVERVIEW~~################################*/
 .overviewWrapper {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  flex-wrap: wrap;
-}
-
-.overviewLeft {
-  background-color: rgb(10, 30, 245);
-  padding: 10px;
-  /* flex-basis: 600px; */
   flex-direction: column;
-  flex: 2;
+  background-color: darkgrey;
+}
+
+/*productSelector*/
+
+.overviewProductSelectorContainer {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  margin-right: 10px;
+  background-color: crimson;
+  padding: 10px;
 }
 
-.overviewLeft1 {
+/*overviewInformation*/
+
+.overviewInformationContainer {
   display: flex;
+  flex-direction: column;
+  flex: 1.5;
+  background-color: gold;
+  padding: 5px;
 }
 
-.productThumbs {
-  background-color: rgb(255, 255, 255);
-  margin-left: 10px;
-  justify-content: flex-start;
-  flex-basis: 10px;
-  flex-grow: 0;
-  flex-shrink: 0;
+.overviewReviews {
   display: flex;
+  flex: 0.5;
+  background-color: rgb(255, 0, 140);
+  padding: 3px;
 }
 
-.overviewLeft2 {
+.overviewNameAndCat {
   display: flex;
-  background-color: blueviolet;
-}
-
-.overviewRight {
-  background-color: rgb(0, 251, 255);
-  flex-wrap: wrap;
   flex: 2;
+  background-color: rgb(49, 245, 10);
+  padding: 3px;
+}
+
+.overviewStyle {
+  display: flex;
+  flex: 2;
+  background-color: rgb(255, 0, 140);
+  padding: 3px;
+}
+
+.overviewSizeSelector {
+  display: flex;
+  flex: 1;
+  background-color: rgb(49, 245, 10);
+  padding: 3px;
+}
+
+.overviewBagAndStar {
+  display: flex;
+  flex: 1;
+  background-color: rgb(255, 0, 140);
+  padding: 3px;
+}
+
+/*overviewImage*/
+
+.overviewImageGallery {
+  display: flex;
+  flex: 2.5;
+  background-color: white;
+  padding: 5px;
+  min-height: 0px;
+  min-width: 0px;
+}
+
+/*productDescription*/
+
+.overviewProductDescriptionContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: cornflowerblue;
+  padding: 10px;
+}
+
+.overviewDescriptionText {
+  display: flex;
+  flex: 2.5;
+  background-color: rgb(255, 234, 0);
+}
+
+.overviewDescriptionChecklist {
+  display: flex;
+  flex: 1.5;
+  background-color: rgb(30, 255, 0);
 }
 
 /*###########################~~RELATED PRODUCTS AND COMPARISONS~~################################*/
@@ -87,165 +137,6 @@
   background-color: rgb(255, 255, 255);
   flex: 2;
   margin: 10px;
-}
-
-/*###########################~~QUESTION AND ANSWERS~~################################*/
-.questAns {
-  background-color: rgb(7, 247, 39);
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.quesMid {
-  background-color: rgb(255, 255, 255);
-  flex: 5;
-  margin: 10px;
-}
-
-.quesBot {
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
-}
-
-/*##### Header #####*/
-.quesAnsHeader {
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
-}
-
-.quesSearchForm {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  min-width: 100px;
-}
-.quesSearchField {
-  border: 1px solid grey;
-  border-radius: 5px;
-  height: 20px;
-  width: 100%;
-  padding: 2px 23px 2px 30px;
-  outline: 0;
-  background-color: #f5f5f5;
-}
-.quesSearchButton {
-  position: absolute;
-  top: 2px;
-  left: -2px;
-  background: transparent;
-  border: none;
-  outline: none;
-  margin-left: 0px;
-}
-.quesSearchButton img {
-  width: 20px;
-  height: 20px;
-  object-fit: cover;
-}
-.quesSearchClear {
-  background: transparent;
-  position: absolute;
-  top: 4px;
-  right: 10px;
-  width: 15px;
-  border: none;
-  cursor: pointer;
-}
-.quesSearchClear img {
-  width: 10px;
-  height: 10px;
-  object-fit: cover;
-}
-
-/*##### Question Element #####*/
-
-.quesElementWrapper {
-  background-color: rgb(10, 224, 107);
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.quesQuestionText {
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
-font-size: 20px;
-font-weight: bold;
-
-
-}
-.quesHRWrapper {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  justify-content: flex-start;
-}
-
-.quesQHelpful {
-  color: rgb(7, 176, 255);
-  text-decoration: underline;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 2;
-  font-size: 14px;
-  max-width: 95px;
-}
-
-.quesQReport {
-  color: rgb(7, 176, 255);
-  text-decoration: underline;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  flex: 2;
-  font-size: 14px;
-  max-width: 100px;
-}
-/*##### Footer #####*/
-
-.quesLoadAndAddWrapper {
-  background-color: rgb(40, 88, 0);
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.quesLoadAndAddWrapper {
-  background-color: rgb(6, 255, 39);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.quesLoadMore {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 10px;
-  flex: 2;
-}
-
-.quesAddQuestion {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 10px;
-  flex: 2;
 }
 
 /*###########################~~RATINGS AND REVIEWS~~################################*/

@@ -1,13 +1,17 @@
 import React from 'react'
-import QuestionAnswerElement from './QuestionAnswerElement.jsx'
+import QuestionWrapper from './QuestionWrapper.jsx'
 
 class QuestionAnswerBody extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      RenderedQuestions:[]
+    }
   }
 
   //Function to map out elements
+
+  populateTwoQuestions
 
   componentDidMount() {
     //populate
@@ -16,7 +20,7 @@ class QuestionAnswerBody extends React.Component {
   render () {
     return (
       <div>
-        <QuestionAnswerElement />
+        <QuestionWrapper/>
       </div>
     )
   }

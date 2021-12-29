@@ -1,0 +1,170 @@
+
+/*###########################~~QUESTION AND ANSWERS~~################################*/
+.questAns {
+  background-color: rgb(7, 247, 39);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.quesMid {
+  background-color: rgb(255, 255, 255);
+  flex: 5;
+  margin: 10px;
+}
+
+.quesBot {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+}
+
+/*##### Header #####*/
+.quesAnsHeader {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+}
+
+.quesSearchForm {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  min-width: 100px;
+}
+.quesSearchField {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 20px;
+  width: 100%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  background-color: #f5f5f5;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.quesSearchButton {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: 0px;
+}
+.quesSearchButton img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+.quesSearchClear {
+  background: transparent;
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  width: 15px;
+  margin-right: 5px;
+  border: none;
+  cursor: pointer;
+}
+.quesSearchClear img {
+  width: 10px;
+  height: 10px;
+  object-fit: cover;
+}
+
+/*##### QuestionAnswer Wrapper #####*/
+
+.quesElementWrapper {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*##### Question Element #####*/
+.quesQElementWrapper {
+  background-color: rgb(188, 211, 61);
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.quesQuestionText {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.quesAnsHRWrapper {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: flex-start;
+}
+
+.quesAHelpful {
+  color: rgb(7, 176, 255);
+  text-decoration: underline;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 2;
+  font-size: 14px;
+  max-width: 95px;
+}
+
+.quesAReport {
+  color: rgb(7, 176, 255);
+  text-decoration: underline;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 2;
+  font-size: 14px;
+  max-width: 100px;
+}
+
+/*##### Footer #####*/
+
+.quesLoadAndAddWrapper {
+  background-color: rgb(40, 88, 0);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.quesLoadAndAddWrapper {
+  background-color: rgb(6, 255, 39);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.quesLoadMore {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px;
+  flex: 2;
+}
+
+.quesAddQuestion {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px;
+  flex: 2;
+}
