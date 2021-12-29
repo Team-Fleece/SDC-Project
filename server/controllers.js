@@ -57,7 +57,8 @@ router.get("/products", (req, res) => {
 
 //REVIEWS
 router.get("/reviews/meta", (req, res) => {
-  getMetadata(req.body, (err, result) => {
+
+  getMetadata(req.query, (err, result) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -68,7 +69,8 @@ router.get("/reviews/meta", (req, res) => {
 });
 
 router.get("/reviews", (req, res) => {
-  getReviews(req.body, (err, result) => {
+  console.log('GET REVIEWS REQ:', req.query);
+  getReviews(req.query, (err, result) => {
     if (err) {
       res.status(500).send(err);
     } else {
