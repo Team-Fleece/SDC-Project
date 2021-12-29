@@ -17,11 +17,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       product_id: 38204, //DUMMY VALUE, gets passed to all components
-
     }
   }
-
-
 
   render () {
     return (
