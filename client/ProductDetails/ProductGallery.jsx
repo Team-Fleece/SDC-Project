@@ -12,7 +12,33 @@ class ProductGallery extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      currentProduct: []
+      currentProduct: [],
+      styleImages: [
+        {
+          thumbnail: "https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            original: "https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+        },
+        {
+            thumbnail: "https://images.unsplash.com/photo-1560567546-4c6dbc16877b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            original: "https://images.unsplash.com/photo-1560567546-4c6dbc16877b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+        },
+        {
+            thumbnail: "https://images.unsplash.com/photo-1458253329476-1ebb8593a652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            original: "https://images.unsplash.com/photo-1458253329476-1ebb8593a652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        },
+        {
+            thumbnail: "https://images.unsplash.com/photo-1422557379185-474fa15bf770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            original: "https://images.unsplash.com/photo-1422557379185-474fa15bf770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        },
+        {
+            thumbnail: "https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            original: "https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        },
+        {
+            thumbnail: "https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            original: "https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2800&q=80"
+        }
+    ]
     };
     // this.setState = this.setState.bind(this)
     // this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -24,10 +50,10 @@ class ProductGallery extends React.Component {
 
 
   render() {
-    console.log('productStyle: ', this.props.productStyle)
-    let currentStylePhoto = this.props.productStyle
+    // console.log('productStyle: ', this.props.productStyle)
+    // let currentStylePhoto = this.props.productStyle
 
-    console.log('currentStylePhoto: ', currentStylePhoto)
+    // console.log('currentStylePhoto: ', currentStylePhoto)
 
     const images = [
       {
@@ -48,10 +74,11 @@ class ProductGallery extends React.Component {
     // console.log('NEW IMAGESSSSSS: ', this.state);
     return (
     <ImageGallery
-    items={images}
+    items={this.state.styleImages}
     thumbnailPosition="left"
     showPlayButton={false}
     lazyLoad={true}
+    originalHeight="430px"
     />
     )
   }
