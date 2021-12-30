@@ -18,19 +18,25 @@ class App extends React.Component {
     this.state = {
       product_id: 37316,
     }
+    this.onRelatedProductClick = this.onRelatedProductClick.bind(this)
   }
-
-
+  onRelatedProductClick (current) {
+    this.setState({product_id: current})
+  }
+  componentDidMount() {
+    this.onRelatedProductClick
+  }
 
   render(){
     return(
-      <div className='App'>
+
+      <div id='App' className='App'>
         <div className='container'>
           <div className='header'>header</div>
           <div className='banner'>banner</div>
           <div className='wrapper'>
             <ProductDetails product_id={this.state.product_id} />
-            <RelatedProducts product_id={this.state.product_id} />
+            <RelatedProducts product_id={this.state.product_id} onRelatedProductClick={this.onRelatedProductClick}/>
             <QuestionsAndAnswers product_id={this.state.product_id} />
             <RatingsAndReviews
               product_id={this.state.product_id}
