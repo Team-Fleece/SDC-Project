@@ -32467,7 +32467,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      product_id: 37311
+      product_id: 37316
     };
     return _this;
   }
@@ -43557,6 +43557,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_image_gallery_styles_css_image_gallery_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(58);
 /* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(60);
 /* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_image_gallery__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_image_file_resizer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(66);
+/* harmony import */ var react_image_file_resizer__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_image_file_resizer__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _OnLoadData_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(71);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43587,6 +43590,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var ProductGallery = /*#__PURE__*/function (_React$Component) {
   _inherits(ProductGallery, _React$Component);
 
@@ -43600,25 +43605,7 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       currentProduct: [],
-      styleImages: [{
-        thumbnail: "https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-      }, {
-        thumbnail: "https://images.unsplash.com/photo-1560567546-4c6dbc16877b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1560567546-4c6dbc16877b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-      }, {
-        thumbnail: "https://images.unsplash.com/photo-1458253329476-1ebb8593a652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1458253329476-1ebb8593a652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-      }, {
-        thumbnail: "https://images.unsplash.com/photo-1422557379185-474fa15bf770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1422557379185-474fa15bf770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-      }, {
-        thumbnail: "https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-      }, {
-        thumbnail: "https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2800&q=80"
-      }]
+      styleImages: _OnLoadData_js__WEBPACK_IMPORTED_MODULE_8__.onLoadImages
     }; // this.setState = this.setState.bind(this)
     // this.componentDidUpdate = this.componentDidUpdate.bind(this);
     // this.componentDidMount = this.componentDidMount.bind(this);
@@ -43632,19 +43619,9 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
       // console.log('productStyle: ', this.props.productStyle)
       // let currentStylePhoto = this.props.productStyle
       // console.log('currentStylePhoto: ', currentStylePhoto)
-      var images = [{
-        original: 'https://picsum.photos/id/1018/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1018/250/150/'
-      }, {
-        original: 'https://picsum.photos/id/1015/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1015/250/150/'
-      }, {
-        original: 'https://picsum.photos/id/1019/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1019/250/150/'
-      }]; // let that = this;
+      // let that = this;
       // let newImages = this.state.currentProduct[0].photos
       // console.log('NEW IMAGESSSSSS: ', this.state);
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_image_gallery__WEBPACK_IMPORTED_MODULE_6___default()), {
         items: this.state.styleImages,
         thumbnailPosition: "left",
@@ -44564,7 +44541,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "c6c509b55945e48f95b32ff4108c8a7b.png");
 
 /***/ }),
-/* 66 */,
+/* 66 */
+/***/ ((module) => {
+
+(()=>{"use strict";var e={d:(t,a)=>{for(var r in a)e.o(a,r)&&!e.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:a[r]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};function a(e,t){for(var a=0;a<t.length;a++){var r=t[a];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}e.r(t),e.d(t,{default:()=>n});var r=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}var t,r;return t=e,r=[{key:"changeHeightWidth",value:function(e,t,a,r,n,o){return a>r&&(e=Math.round(e*r/a),a=r),e>t&&(a=Math.round(a*t/e),e=t),n&&a<n&&(e=Math.round(e*n/a),a=n),o&&e<o&&(a=Math.round(a*o/e),e=o),{height:e,width:a}}},{key:"resizeAndRotateImage",value:function(e,t,a,r,n){var o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:"jpeg",i=arguments.length>6&&void 0!==arguments[6]?arguments[6]:100,l=arguments.length>7&&void 0!==arguments[7]?arguments[7]:0,h=i/100,g=document.createElement("canvas"),u=e.width,d=e.height,c=this.changeHeightWidth(d,a,u,t,r,n);!l||90!==l&&270!==l?(g.width=c.width,g.height=c.height):(g.width=c.height,g.height=c.width),u=c.width,d=c.height;var s=g.getContext("2d");return s.fillStyle="rgba(0, 0, 0, 0)",s.fillRect(0,0,u,d),l&&(s.rotate(l*Math.PI/180),90===l?s.translate(0,-g.width):180===l?s.translate(-g.width,-g.height):270===l?s.translate(-g.height,0):0!==l&&360!==l||s.translate(0,0)),s.drawImage(e,0,0,u,d),g.toDataURL("image/".concat(o),h)}},{key:"b64toByteArrays",value:function(e,t){t=t||"image/jpeg";for(var a=atob(e.toString().replace(/^data:image\/(png|jpeg|jpg|webp);base64,/,"")),r=[],n=0;n<a.length;n+=512){for(var o=a.slice(n,n+512),i=new Array(o.length),l=0;l<o.length;l++)i[l]=o.charCodeAt(l);var h=new Uint8Array(i);r.push(h)}return r}},{key:"b64toBlob",value:function(e,t){var a=this.b64toByteArrays(e,t);return new Blob(a,{type:t,lastModified:new Date})}},{key:"b64toFile",value:function(e,t,a){var r=this.b64toByteArrays(e,a);return new File(r,t,{type:a,lastModified:new Date})}},{key:"createResizedImage",value:function(t,a,r,n,o,i,l){var h=arguments.length>7&&void 0!==arguments[7]?arguments[7]:"base64",g=arguments.length>8&&void 0!==arguments[8]?arguments[8]:null,u=arguments.length>9&&void 0!==arguments[9]?arguments[9]:null,d=new FileReader;if(!t)throw Error("File Not Found!");if(t.type&&!t.type.includes("image"))throw Error("File Is NOT Image!");d.readAsDataURL(t),d.onload=function(){var c=new Image;c.src=d.result,c.onload=function(){var d=e.resizeAndRotateImage(c,a,r,g,u,n,o,i),s="image/".concat(n);switch(h){case"blob":var f=e.b64toBlob(d,s);l(f);break;case"base64":l(d);break;case"file":var b=t.name.toString().replace(/(png|jpeg|jpg|webp)$/i,"").concat(n.toString()),v=e.b64toFile(d,b,s);l(v);break;default:l(d)}}},d.onerror=function(e){throw Error(e)}}}],null&&0,r&&a(t,r),e}();const n={imageFileResizer:function(e,t,a,n,o,i,l,h,g,u){return r.createResizedImage(e,t,a,n,o,i,l,h,g,u)}};module.exports=t})();
+
+/***/ }),
 /* 67 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -44828,7 +44810,46 @@ var AnswerWrapper = /*#__PURE__*/function (_React$Component) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AnswerWrapper);
 
 /***/ }),
-/* 71 */,
+/* 71 */
+/***/ ((module) => {
+
+var onLoadImages = [{
+  thumbnail: "https://images.unsplash.com/photo-1477420143023-6a0e0b04b69a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1477420143023-6a0e0b04b69a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1518687338977-a84d3086a934?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1518687338977-a84d3086a934?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=652&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1546367791-e7447b431084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1546367791-e7447b431084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1498168208808-4c2706938a2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1498168208808-4c2706938a2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1556812191-381c7e7d96d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1556812191-381c7e7d96d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2982&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1526330563440-3ae2174b6bce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1526330563440-3ae2174b6bce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80"
+}, {
+  thumbnail: "uhttps://images.unsplash.com/photo-1515243061678-14fc18b93935?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1515243061678-14fc18b93935?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1516199707327-5399434d0aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1516199707327-5399434d0aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1083&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1541444446610-749d3299b35e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1541444446610-749d3299b35e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1548861216-17dd1ac80d5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1548861216-17dd1ac80d5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80"
+}, {
+  thumbnail: "https://images.unsplash.com/photo-1558422504-3d17542c1799?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  original: "https://images.unsplash.com/photo-1558422504-3d17542c1799?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+}];
+module.exports.onLoadImages = onLoadImages;
+
+/***/ }),
 /* 72 */,
 /* 73 */,
 /* 74 */
