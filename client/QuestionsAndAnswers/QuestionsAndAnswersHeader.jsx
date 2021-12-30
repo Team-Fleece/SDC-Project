@@ -1,6 +1,6 @@
 import React from 'react'
 import QASearchButtonIcon from '../assets/QASearchButtonIcon.png'
-import QASearchClearIcon from '../assets/QASearchClearIcon.png'
+import QASearchClearIcon from '../assets/QAExitIcon.png'
 
 
 class QuestionsAndAnswersHeader extends React.Component {
@@ -12,14 +12,14 @@ class QuestionsAndAnswersHeader extends React.Component {
   render () {
     return (
       <div>
-        <h4 className='quesAnsHeader'> Questions and Answers </h4>
-        <div className='quesSearchForm'>
-          <button className='quesSearchButton' type='submit'>
+        <h4 className='QAHeader'> Questions and Answers </h4>
+        <div className='QASearchForm'>
+          <button className='QASearchButton' type='submit'>
             <img src={QASearchButtonIcon} />
           </button>
-          <input type='text' placeholder='Search Questions' className='quesSearchField' />
+          <input type='text' placeholder='Search Questions' className='QASearchField' />
 
-          <button className='quesSearchClear' type='reset'>
+          <button className='QASearchClear' type='reset'>
             <img src={QASearchClearIcon} />
 
           </button>

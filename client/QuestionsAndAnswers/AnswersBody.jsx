@@ -4,14 +4,26 @@ import AnswerWrapper from './AnswerWrapper.jsx'
 class AnswerBody extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      answerArray: this.props.answerArray
+    }
   }
 
   render () {
+    const answerArray = this.props.answerArray
+    const assembledAnswers = answerArray.map((element, index) => {
+     //console.log(element)
+      return (
+        <AnswerWrapper
+          key={element.id}
+          answerData={element}
+        />
+      )
+    })
     return (
-      <div>
-        <AnswerWrapper />
-      </div>
+    <div>
+      {assembledAnswers}
+    </div>
     )
   }
 }
