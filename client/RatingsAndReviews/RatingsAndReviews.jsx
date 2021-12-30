@@ -5,6 +5,7 @@ import ReviewList from "./ReviewList.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
 import MoreReviewsButton from "./MoreReviewsButton.jsx";
 import axios from "axios";
+import ProductBreakdown from './ProductBreakdown.jsx';
 // let RatingsAndReviews = (props) => {
 //   //console.log("ratings and reviews props:", props);
 
@@ -17,7 +18,8 @@ class RatingsAndReviews extends React.Component {
       reviewCount: 2,
       ratings: {},
       recommendedPercentage: 0,
-      ratingsCount: 0
+      ratingsCount: 0,
+      characteristics: {}
     };
     this.onMoreReviewsClick = this.onMoreReviewsClick.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -29,10 +31,12 @@ class RatingsAndReviews extends React.Component {
     axios
       .get(`/reviews/meta?product_id=${this.state.product_id}`)
       .then(function (response) {
+        console.log(response.data.characteristics);
         that.setState({
           ratings: response.data.ratings,
           recommendedPercentage: response.data.recommended,
-          ratingsCount: response.data.ratings.ratingsCount
+          ratingsCount: response.data.ratings.ratingsCount,
+          characteristics: response.data.characteristics
         });
       })
       .catch(function (error) {
@@ -84,6 +88,12 @@ class RatingsAndReviews extends React.Component {
     this.getMetadata();
     this.getReviews();
   }
+  componentDidUpdate(prevProps) {
+    if (this.state.product_id !== prevProps.product_id) {
+      this.getMetadata();
+      this.getReviews();
+    }
+  }
   render() {
     return (
       <div className="rateRev">
@@ -93,6 +103,7 @@ class RatingsAndReviews extends React.Component {
             ratings={this.state.ratings}
             recommended={this.state.recommendedPercentage} ratingsCount={this.state.ratingsCount}
           />
+          <ProductBreakdown characteristics={this.state.characteristics}/>
         </div>
         <div className="reviews">
           reviews
