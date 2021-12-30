@@ -1,5 +1,5 @@
 config.js
 node_modules/
 spec/
+bundle/bundle.js
 ./bundle/bundle.js
-/bundle/bundle.js
