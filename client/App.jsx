@@ -18,13 +18,22 @@ class App extends React.Component {
     super(props)
     this.state = {
       product_id: 37311,
-      currentProduct: []
+      currentProduct: [{
+        default: true,
+name: "",
+original_price: "",
+photos: [],
+sale_price: null,
+skus: {},
+style_id: 220998
+      }]
     }
-    this.componentDidMount = this.componentDidMount.bind(this)
+    this.getStyles = this.getStyles.bind(this);
+    // this.componentDidMount = this.componentDidMount.bind(this)
     // this.setState = this.setState.bind(this)
   }
-
-  componentDidMount() {
+  getStyles() {
+    let that = this;
     axios.get(`/products/${this.state.product_id}/styles`, {
       params: {
         productId: this.state.product_id
@@ -32,14 +41,19 @@ class App extends React.Component {
   })
     .then(function (response) {
       // handle success
-      console.log('RESPONSEEEEEE: ', response.data)
+      // console.log('RESPONSEEEEEE: ', response.data)
       console.log(response.data);
-      this.setState({currentProduct: response.data})
+      that.setState({currentProduct: response.data})
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     })
+
+  }
+
+  componentDidMount() {
+    this.getStyles();
   }
 
 
@@ -50,7 +64,7 @@ class App extends React.Component {
           <div className='header'>header</div>
           <div className='banner'>banner</div>
           <div className='wrapper'>
-            <ProductDetails product_id={this.state.product_id}/>
+            <ProductDetails product_id={this.state.product_id} currentProduct={this.state.currentProduct}/>
             <RelatedProducts />
             <QuestionsAndAnswers />
             <RatingsAndReviews />

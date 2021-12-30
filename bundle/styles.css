@@ -51,6 +51,7 @@
   background-color: gold;
   padding: 5px;
   padding-left: 15px;
+  min-width: 380px;
 }
 
 .overviewReviews {
@@ -61,8 +62,8 @@
 }
 
 .overviewNameAndCat {
-  display: flex;
-  flex: 2;
+  /* display: flex; */
+  /* flex: 2; */
   background-color: rgb(49, 245, 10);
   padding: 3px;
 }
@@ -95,8 +96,10 @@
   flex: 2.5;
   background-color: white;
   padding: 5px;
-  min-height: 0px;
-  min-width: 0px;
+  flex-wrap: wrap;
+  min-width: 680px;
+  /* min-height: 0px;
+  min-width: 0px; */
 }
 
 /*productDescription*/
@@ -123,7 +126,7 @@
 
 /*thumbnails*/
 .selectStyle {
-  padding-right: 5px;
+  padding: 10px;
   height: 55px;
   width: 55px;
   object-fit: cover;

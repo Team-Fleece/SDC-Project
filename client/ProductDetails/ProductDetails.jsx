@@ -1,6 +1,9 @@
 /* Author: */
 //Import Library Dependencies
 import React from 'react'
+import $ from 'jquery'
+import axios from 'axios'
+import ReactDOM from 'react-dom'
 import {ProductGallery} from './ProductGallery.jsx'
 
 
@@ -8,9 +11,31 @@ class ProductDetails extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-
+      currentProduct: []
     }
+    // this.componentDidMount = this.componentDidMount.bind(this);
   }
+
+
+  // componentDidMount() {
+  //   let that = this;
+  //   axios.get(`/products/${this.props.product_id}/styles`, {
+  //     params: {
+  //       productId: this.props.product_id
+  //     }
+  //   })
+  //   .then(function (response) {
+  //     // handle success
+  //     console.log("RESPONSE: ", response.data)
+  //     that.setState({
+  //       currentProduct: response.data
+  //     })
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  // }
 
 render() {
   const images = [
@@ -32,19 +57,19 @@ render() {
     }
   ];
 
-
   return (
     <div className="overviewWrapper">overviewWrapper
     <div className="overviewProductDescriptionContainer">
       <div className="overviewImageGallery">
-      <ProductGallery product_id={this.props.product_id}/>
+      <ProductGallery product_id={this.props.product_id} productStyle={this.props.currentProduct}/>
       </div>
       <div className="overviewInformationContainer">
         <div className="overviewReviews">
           overviewReviews
         </div>
         <div className="overviewNameAndCat">
-          <h4 className="category">CATEGORY{'\n'}<h2><strong>EXPANDED PRODUCT NAME</strong></h2> </h4>
+          <h4 className="category">CATEGORY{'\n'}</h4>
+          <h2><strong>EXPANDED PRODUCT NAME</strong></h2>
 
         </div>
         <div className="overviewStyle">
@@ -74,5 +99,9 @@ render() {
   )
 }
 }
+
+
+      // console.log('RESPONSEEEEEE: ', response.data)
+      // console.log(response.data);
 
 export {ProductDetails}

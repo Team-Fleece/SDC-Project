@@ -32468,31 +32468,46 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       product_id: 37311,
-      currentProduct: []
+      currentProduct: [{
+        "default": true,
+        name: "",
+        original_price: "",
+        photos: [],
+        sale_price: null,
+        skus: {},
+        style_id: 220998
+      }]
     };
-    _this.componentDidMount = _this.componentDidMount.bind(_assertThisInitialized(_this)); // this.setState = this.setState.bind(this)
+    _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this)); // this.componentDidMount = this.componentDidMount.bind(this)
+    // this.setState = this.setState.bind(this)
 
     return _this;
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "getStyles",
+    value: function getStyles() {
+      var that = this;
       axios__WEBPACK_IMPORTED_MODULE_2___default().get("/products/".concat(this.state.product_id, "/styles"), {
         params: {
           productId: this.state.product_id
         }
       }).then(function (response) {
         // handle success
-        console.log('RESPONSEEEEEE: ', response.data);
+        // console.log('RESPONSEEEEEE: ', response.data)
         console.log(response.data);
-        this.setState({
+        that.setState({
           currentProduct: response.data
         });
       })["catch"](function (error) {
         // handle error
         console.log(error);
       });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getStyles();
     }
   }, {
     key: "render",
@@ -32508,7 +32523,8 @@ var App = /*#__PURE__*/function (_React$Component) {
       }, "banner"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetails_ProductDetails_jsx__WEBPACK_IMPORTED_MODULE_4__.ProductDetails, {
-        product_id: this.state.product_id
+        product_id: this.state.product_id,
+        currentProduct: this.state.currentProduct
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedProducts_RelatedProducts_jsx__WEBPACK_IMPORTED_MODULE_5__.RelatedProducts, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsAndAnswers_QuestionsAndAnswersMainWrapper_jsx__WEBPACK_IMPORTED_MODULE_6__.QuestionsAndAnswers, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_7__.RatingsAndReviews, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "footer"
       }, "footer")));
@@ -43418,7 +43434,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ProductDetails": () => (/* binding */ ProductDetails)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _ProductGallery_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(47);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
+/* harmony import */ var _ProductGallery_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(47);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43446,6 +43467,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+
 var ProductDetails = /*#__PURE__*/function (_React$Component) {
   _inherits(ProductDetails, _React$Component);
 
@@ -43457,9 +43481,31 @@ var ProductDetails = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProductDetails);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      currentProduct: []
+    }; // this.componentDidMount = this.componentDidMount.bind(this);
+
     return _this;
-  }
+  } // componentDidMount() {
+  //   let that = this;
+  //   axios.get(`/products/${this.props.product_id}/styles`, {
+  //     params: {
+  //       productId: this.props.product_id
+  //     }
+  //   })
+  //   .then(function (response) {
+  //     // handle success
+  //     console.log("RESPONSE: ", response.data)
+  //     that.setState({
+  //       currentProduct: response.data
+  //     })
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  // }
+
 
   _createClass(ProductDetails, [{
     key: "render",
@@ -43483,8 +43529,9 @@ var ProductDetails = /*#__PURE__*/function (_React$Component) {
         className: "overviewProductDescriptionContainer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "overviewImageGallery"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductGallery_jsx__WEBPACK_IMPORTED_MODULE_1__.ProductGallery, {
-        product_id: this.props.product_id
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductGallery_jsx__WEBPACK_IMPORTED_MODULE_4__.ProductGallery, {
+        product_id: this.props.product_id,
+        productStyle: this.props.currentProduct
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "overviewInformationContainer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -43493,7 +43540,7 @@ var ProductDetails = /*#__PURE__*/function (_React$Component) {
         className: "overviewNameAndCat"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
         className: "category"
-      }, "CATEGORY", '\n', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "EXPANDED PRODUCT NAME")), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "CATEGORY", '\n'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "EXPANDED PRODUCT NAME"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "overviewStyle"
       }, images.map(function (image) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
@@ -43523,7 +43570,9 @@ var ProductDetails = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return ProductDetails;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component); // console.log('RESPONSEEEEEE: ', response.data)
+// console.log(response.data);
+
 
 
 
@@ -43537,12 +43586,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ProductGallery": () => (/* binding */ ProductGallery)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_image_gallery_styles_scss_image_gallery_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(48);
-/* harmony import */ var react_image_gallery_styles_css_image_gallery_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(58);
-/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(60);
-/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_image_gallery__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
+/* harmony import */ var react_image_gallery_styles_scss_image_gallery_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(48);
+/* harmony import */ var react_image_gallery_styles_css_image_gallery_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(58);
+/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(60);
+/* harmony import */ var react_image_gallery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_image_gallery__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43571,6 +43623,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var ProductGallery = /*#__PURE__*/function (_React$Component) {
   _inherits(ProductGallery, _React$Component);
 
@@ -43586,71 +43640,17 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
       currentProduct: []
     }; // this.setState = this.setState.bind(this)
     // this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    // this.componentDidMount = this.componentDidMount.bind(this);
 
-    _this.componentDidMount = _this.componentDidMount.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductGallery, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var that = this;
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/products/".concat(this.props.product_id, "/styles"), {
-        params: {
-          productId: this.props.product_id
-        }
-      }).then(function (response) {
-        // handle success
-        console.log('RESPONSEEEEEE: ', response.data);
-        console.log(response.data);
-        that.setState({
-          currentProduct: response.data
-        });
-      })["catch"](function (error) {
-        // handle error
-        console.log(error);
-      });
-    } // componentDidUpdate(prevProps) {
-    //   if (prevProps.product_id !== this.prevProps.product_id) {
-    //     console.log('currentProduct state has changed.')
-    //     axios.get(`/products/${this.props.product_id}/styles`, {
-    //       params: {
-    //         productId: this.props.product_id
-    //       }
-    //   })
-    //     .then(function (response) {
-    //       // handle success
-    //       console.log('RESPONSEEEEEE: ', response)
-    //       console.log(response);
-    //       this.setState({currentProduct: response.data})
-    //     })
-    //     .catch(function (error) {
-    //       // handle error
-    //       console.log(error);
-    //     })
-    //   }
-    // }
-
-  }, {
     key: "render",
     value: function render() {
-      //   axios.get(`/products/${this.props.product_id}/styles`, {
-      //     params: {
-      //       productId: this.props.product_id
-      //     }
-      // })
-      //   .then(function (response) {
-      //     // handle success
-      //     console.log('RESPONSEEEEEE: ', response)
-      //     console.log(response);
-      //     this.setState({
-      //       currentProduct: response.data
-      //     })
-      //   })
-      //   .catch(function (error) {
-      //     // handle error
-      //     console.log(error);
-      //   })
+      console.log('productStyle: ', this.props.productStyle);
+      var currentStylePhoto = this.props.productStyle;
+      console.log('currentStylePhoto: ', currentStylePhoto);
       var images = [{
         original: 'https://picsum.photos/id/1018/1000/600/',
         thumbnail: 'https://picsum.photos/id/1018/250/150/'
@@ -43660,8 +43660,11 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
       }, {
         original: 'https://picsum.photos/id/1019/1000/600/',
         thumbnail: 'https://picsum.photos/id/1019/250/150/'
-      }];
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_image_gallery__WEBPACK_IMPORTED_MODULE_4___default()), {
+      }]; // let that = this;
+      // let newImages = this.state.currentProduct[0].photos
+      // console.log('NEW IMAGESSSSSS: ', this.state);
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_image_gallery__WEBPACK_IMPORTED_MODULE_6___default()), {
         items: images,
         thumbnailPosition: "left",
         showPlayButton: false,
@@ -43672,6 +43675,47 @@ var ProductGallery = /*#__PURE__*/function (_React$Component) {
 
   return ProductGallery;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component); // console.log('RED PARAMMMMMMMMMMM PRODUCT IDDDDD: ', req.params.productId)
+// componentDidMount() {
+//   let that = this;
+//   axios.get(`/products/${this.props.product_id}/styles`, {
+//     params: {
+//       productId: this.props.product_id
+//     }
+//   })
+//   .then(function (response) {
+//     // handle success
+//     console.log('RESPONSEEEEEE: ', response.data)
+//     console.log(response.data);
+//     that.setState({
+//       currentProduct: response.data
+//     })
+//   })
+//   .catch(function (error) {
+//     // handle error
+//     console.log(error);
+//   })
+// }
+// componentDidUpdate(prevProps) {
+//   let that = this;
+//   if (prevProps.product_id !== this.prevProps.product_id) {
+//     console.log('currentProduct state has changed.')
+//     axios.get(`/products/${this.props.product_id}/styles`, {
+//       params: {
+//         productId: this.props.product_id
+//       }
+//   })
+//     .then(function (response) {
+//       // handle success
+//       console.log('RESPONSEEEEEE: ', response)
+//       console.log(response);
+//       this.setState({currentProduct: response.data})
+//     })
+//     .catch(function (error) {
+//       // handle error
+//       console.log(error);
+//     })
+//   }
+// }
 
 
 
