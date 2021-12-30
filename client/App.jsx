@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      product_id: 37316,
+      product_id: 38204, //DUMMY VALUE, gets passed to all components
     }
     this.onRelatedProductClick = this.onRelatedProductClick.bind(this)
   }
@@ -26,10 +26,8 @@ class App extends React.Component {
   componentDidMount() {
     this.onRelatedProductClick
   }
-
-  render(){
-    return(
-
+  render () {
+    return (
       <div id='App' className='App'>
         <div className='container'>
           <div className='header'>header</div>
