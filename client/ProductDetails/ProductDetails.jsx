@@ -232,7 +232,7 @@ return (
   {styleSizeList}
 </select>
         {/*<button className="btn quantity">*/}{/*</button>*/}
-        <select className="day" >
+        <select className="quantity" >
   {styleQuantityList}
 </select>
       </div>
