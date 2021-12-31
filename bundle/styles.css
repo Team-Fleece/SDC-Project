@@ -129,7 +129,6 @@
 
 .relatedProducts {
   background-color: rgb(250, 250, 250);
-  flex: 2;
   margin: 10px;
 }
 
@@ -139,6 +138,99 @@
   margin: 10px;
 }
 
+.row {
+  width: 600px;
+  display: inline-block;
+}
+
+.card {
+  transition: 0.3s;
+  width: 90%;
+  border: 1px solid #ccc;
+  margin: 10px;
+  position: relative;
+}
+.card-body {
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+.cardContainer {
+  padding: 2px 16px;
+}
+
+.topright {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 25px;
+  background-color: red;
+  background-image: linear-gradient(45deg, #f3ec78, #af4261);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.carousel-container {
+  position: relative;
+  margin: 5px;
+  max-height: auto;
+  padding: 5px;
+  /* overflow: hidden; */
+}
+
+.carousel-gradient {
+  height: 100%;
+  background: linear-gradient(135deg, #00c900, #0099ff);
+  padding: 2px;
+}
+.carousel-button-back {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 64px;
+  border: none;
+  font-size: 32px;
+  &[disabled] {
+    background: none;
+  }
+}
+.carousel-button-next {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 64px;
+  border: none;
+  font-size: 32px;
+  &[disabled] {
+    background: none;
+  }
+}
+.circle {
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  background:linear-gradient(135deg, #0099ff, #00c900);
+  border: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+  font: 32px Arial, sans-serif;
+}
 /*###########################~~RATINGS AND REVIEWS~~################################*/
 .rateRev {
   background-color: rgb(243, 8, 192);
