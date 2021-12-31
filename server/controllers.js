@@ -12,8 +12,6 @@ const {getQuestions} = require('./models/QAModels.js')
 var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts,getProductDetailsInfo} = require('./models/productModels');
 const {productSorter} = require('../client/ProductDetails/OnLoadData.js');
 
-// console.log("productDetailsSorter: ", productDetailsSorter)
-
 
 //PRODUCTS
 router.get(`/products/:productId/styles`, (req, res) => {

@@ -1,25 +1,33 @@
-let productDetailsSorter = function (data) {
-    let newState = [];
 
-    data.results.map(style => {
-        let stylePhotos = [];
-        style.photos.map(photo => {
-            stylePhotos.push({
-                original: photo.url,
-                thumbnail: photo.thumbnail_url
-            })
-        })
-        return newState.push({
-            style_id: style.style_id,
-            style_specs: {
-                name: style.name,
-                original_price: style.original_price,
-                sale_price: style.sale_price,
-            },
-            style_photos: stylePhotos,
-            style_skus: style.skus
-        })
-    })
+
+let productMainInfo = {
+    "id": 37316,
+    "campus": "hr-rfe",
+    "name": "Pumped Up Kicks",
+    "slogan": "Faster than a just about anything",
+    "description": "The Pumped Up serves up crisp court style with a modern look. These shoes show off tennis-whites shades and are constructed with a supple leather upper and a classic rubber cupsole.",
+    "category": "Kicks",
+    "default_price": "89.00",
+    "created_at": "2021-08-13T14:37:33.145Z",
+    "updated_at": "2021-08-13T14:37:33.145Z",
+    "features": [
+        {
+            "feature": "Sole",
+            "value": "Rubber"
+        },
+        {
+            "feature": "Material",
+            "value": "FullControlSkin"
+        },
+        {
+            "feature": "Mid-Sole",
+            "value": "ControlSupport Arch Bridge"
+        },
+        {
+            "feature": "Stitching",
+            "value": "Double Stitch"
+        }
+    ]
 }
 
 
@@ -226,57 +234,7 @@ let onloadState = [
     }
 ]
 
-let onLoadImages = [
-    {
-        thumbnail: "https://images.unsplash.com/photo-1477420143023-6a0e0b04b69a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1477420143023-6a0e0b04b69a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1518687338977-a84d3086a934?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1518687338977-a84d3086a934?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=652&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1546367791-e7447b431084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1546367791-e7447b431084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1498168208808-4c2706938a2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1498168208808-4c2706938a2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1556812191-381c7e7d96d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1556812191-381c7e7d96d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2982&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1526330563440-3ae2174b6bce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1526330563440-3ae2174b6bce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80"
-    },
-    {
-        thumbnail: "uhttps://images.unsplash.com/photo-1515243061678-14fc18b93935?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1515243061678-14fc18b93935?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1516199707327-5399434d0aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1516199707327-5399434d0aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1083&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1541444446610-749d3299b35e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1541444446610-749d3299b35e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1548861216-17dd1ac80d5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1548861216-17dd1ac80d5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80"
-    },
-    {
-        thumbnail: "https://images.unsplash.com/photo-1558422504-3d17542c1799?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-        original: "https://images.unsplash.com/photo-1558422504-3d17542c1799?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-    }
-  ]
 
-  let returnID = function(data) {
-      let value = data.product_id;
-      return value
-  }
 
 
   let productSorter = function (data) {
@@ -304,10 +262,78 @@ let onLoadImages = [
     return newState
 }
 
+let skuArray = [];
+let entryList = Object.entries(onloadState[0]);
+let skuObj = entryList[3][1];
+for (let item in skuObj) {
+    skuArray.push({
+                sku: item,
+                quantity: skuObj[item].quantity,
+                sizes: skuObj[item].size
+            })
+        };
 
 
-  module.exports.onLoadImages = onLoadImages;
-  module.exports.productDetailsSorter = productDetailsSorter;
-  module.exports.returnID = returnID;
-  module.exports.productSorter = productSorter;
-  module.exports.onloadState = onloadState;
+//PRODUCT SKU INFOOOOOO
+let getSkuInfo = function(newData) {
+let skuArray = [];
+let entryList = Object.entries(newData[0]);
+let skuObj = entryList[3][1];
+for (let item in skuObj) {
+    skuArray.push({
+                sku: item,
+                quantity: skuObj[item].quantity,
+                sizes: skuObj[item].size
+            })
+        };
+        return skuArray
+    }
+
+
+
+//PRODUCT DETAILS UTILITY FUNCTIONS
+let getCurrentSize = function(newSku) {
+    let currentSize = 0;
+    for (let i = 0; i < this.styleSkus.length; i++) {
+        if (newSku === this.styleSkus[i].sku) {
+            currentSize = this.styleSkus[i].size
+        }
+    }
+    return currentSize
+}
+
+let sizeToQuantity = function(currentSize) {
+    let maxQuantity = 0;
+    let quantities = [];
+    for (let i = 0; i < this.state.styleSkus.length; i++) {
+        if (this.state.styleSkus[i].size === currentSize) {
+            maxQuantity = this.state.styleSkus[i].quantity
+        }
+    }
+    for (let i = 1; i <= maxQuantity; i++) {
+        quantities.push(i)
+    }
+
+
+    return quantities
+}
+
+
+
+
+
+
+
+module.exports = {
+    productSorter,
+    onloadState,
+    productMainInfo,
+    skuArray,
+    getSkuInfo,
+    sizeToQuantity
+}
+
+//   module.exports.productSorter = productSorter;
+//   module.exports.onloadState = onloadState;
+//   module.exports.productMainInfo = productMainInfo;
+//   module.exports.skuArray = skuArray;
