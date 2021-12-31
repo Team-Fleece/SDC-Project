@@ -9,7 +9,8 @@ var {
   reportReview,
 } = require("./models/ratingsandreviews.js");
 const {getQuestions} = require('./models/QAModels.js')
-var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts} = require('./models/productModels');
+var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts,getProductDetailsInfo} = require('./models/productModels');
+const {productSorter} = require('../client/ProductDetails/OnLoadData.js');
 
 
 //PRODUCTS
@@ -56,6 +57,20 @@ router.get("/products", (req, res) => {
     }
   });
 });
+
+//for ProductDetails section
+router.get(`/products/:productId/styles/details`, (req, res) => {
+  getProductDetailsInfo(req.params.productId, (err, product) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log('got styles of product');
+      let results = productSorter(product);
+      res.send(results);
+    }
+  });
+});
+//end ProductDetailsSection
 
 //REVIEWS
 router.get("/reviews/meta", (req, res) => {
