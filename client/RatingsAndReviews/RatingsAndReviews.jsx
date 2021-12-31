@@ -45,6 +45,7 @@ class RatingsAndReviews extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.getCurrentProductInfo = this.getCurrentProductInfo.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.filterReviews = this.filterReviews.bind(this);
   }
   getCurrentProductInfo() {
     let that = this;
@@ -90,30 +91,27 @@ class RatingsAndReviews extends React.Component {
       )
       .then(function (response) {
         console.log("getreviews data:", response.data);
-        response.data.results.forEach((review) => {
-          if (review.rating === 1) {
-            onereviewsArr.push(review);
-          }
-          if (review.rating === 2) {
-            tworeviewsArr.push(review);
-          }
-          if (review.rating === 3) {
-            threereviewsArr.push(review);
-          }
-          if (review.rating === 4) {
-            fourreviewsArr.push(review);
-          }
-          if (review.rating === 5) {
-            fivereviewsArr.push(review);
-          }
-        });
+        // response.data.results.forEach((review) => {
+        //   if (review.rating === 1) {
+        //     onereviewsArr.push(review);
+        //   }
+        //   if (review.rating === 2) {
+        //     tworeviewsArr.push(review);
+        //   }
+        //   if (review.rating === 3) {
+        //     threereviewsArr.push(review);
+        //   }
+        //   if (review.rating === 4) {
+        //     fourreviewsArr.push(review);
+        //   }
+        //   if (review.rating === 5) {
+        //     fivereviewsArr.push(review);
+        //   }
+        // });
+        let filtered = that.filterReviews(response.data.results);
         that.setState({
-          reviews: response.data.results,
-          onereviews: onereviewsArr,
-          tworeviews: tworeviewsArr,
-          threereviews: threereviewsArr,
-          fourreviews: fourreviewsArr,
-          fivereviews: fivereviewsArr,
+          reviews: filtered,
+
         });
       })
       .catch(function (error) {
@@ -167,12 +165,67 @@ class RatingsAndReviews extends React.Component {
         console.log("Change Reviews Error:", error);
       });
   }
+  // addFilter() {
+  //   return new Promise(function (resolve, reject) {
+  //     that.setState({ [value]: true }, function (error, result) {
+  //       if (error) {
+  //         reject(error);
+  //       } else {
+  //         resolve (result);
+  //       }
+  //     });
+  //   });
+  //   addFilter()
+  //       .then(function(result) {
+  //         that.getReviews();
+  //       })
+  //       .catch(function(error) {
+  //         console.log('Add Filter Error:', error);
+  //       });
+
+  // }
   onClick(e) {
+    let that = this;
     let value = e.target.value;
+    let addFilter = () => {
+      return new Promise(function (resolve, reject) {
+        that.setState({ [value]: true }, function (error, result) {
+          if (error) {
+            reject(error);
+          } else {
+            resolve (result);
+          }
+        });
+      });
+    };
+    let removeFilter = () => {
+      return new Promise(function (resolve, reject) {
+        that.setState({ [value]: false }, function (error, result) {
+          if (error) {
+            reject(error);
+          } else {
+            resolve (result);
+          }
+        });
+      });
+    };
     if (this.state[value] === false) {
-      this.setState({ [value]: true });
+      addFilter()
+        .then(function(result) {
+          that.getReviews();
+        })
+        .catch(function(error) {
+          console.log('Add Filter Error:', error);
+        });
+
     } else if (this.state[value] === true) {
-      this.setState({ [value]: false });
+      removeFilter()
+        .then(function(result) {
+          that.getReviews();
+        })
+        .catch(function(error) {
+          console.log('Remove Filter Error:', error);
+        });
     }
     // let count = 0;
     // let tempReviews = [];
@@ -211,6 +264,31 @@ class RatingsAndReviews extends React.Component {
       this.getCurrentProductInfo();
     }
   }
+  filterReviews(reviewArray) {
+    if(this.state.showOne === false && this.state.showTwo === false && this.state.showThree === false && this.state.showFour === false && this.state.showFive === false) {
+      return reviewArray;
+    }
+    let filteredArray = [];
+    reviewArray.forEach((review) => {
+      if(this.state.showOne === true && review.rating === 1) {
+        filteredArray.push(review);
+      }
+      if(this.state.showTwo === true && review.rating === 2) {
+        filteredArray.push(review);
+      }
+      if(this.state.showThree === true && review.rating === 3) {
+        filteredArray.push(review);
+      }
+      if(this.state.showFour === true && review.rating === 4) {
+        filteredArray.push(review);
+      }
+      if(this.state.showFive === true && review.rating === 5) {
+        filteredArray.push(review);
+      }
+    });
+    return filteredArray;
+
+  }
   showModal() {
     this.setState({ show: true });
   }
@@ -221,7 +299,7 @@ class RatingsAndReviews extends React.Component {
   render() {
     return (
       <div className="rateRev">
-        rateRev
+
         <div className="ratings">
           <RatingsBreakdown
             ratings={this.state.ratings}
