@@ -1,6 +1,7 @@
 import React from "react";
 import ReviewImages from "./ReviewImages.jsx";
 import axios from "axios";
+import StarRatings from 'react-star-ratings';
 class ReviewTile extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,7 @@ class ReviewTile extends React.Component {
       review_id: this.props.review.review_id,
       marked: false
     };
+    this.renderOverallRating=this.renderOverallRating.bind(this);
   }
   convertTime(milliseconds) {
     let date = new Date(milliseconds);
@@ -55,11 +57,25 @@ class ReviewTile extends React.Component {
         console.log('PUT Error:', error);
       })
   }
+  renderOverallRating () {
+    if(this.props.review.rating !== undefined) {
+
+      return (
+        <>
+          <StarRatings
+        rating={Number(this.props.review.rating)}
+        starDimension="15px"
+        starSpacing="5px"
+      />
+        </>
+      )
+    }
+  }
   render() {
     return (
       <>
         <div key={this.props.review.review_id}>
-          <div>Star Rating: {this.props.review.rating}</div>
+          <div>{this.renderOverallRating()}</div>
           <div>User: {this.props.review.reviewer_name}</div>
           <div>
             Date: {this.convertTime(Date.parse(this.props.review.date))}

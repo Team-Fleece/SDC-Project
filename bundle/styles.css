@@ -340,6 +340,10 @@
   max-height: 100px;
   max-width: 100px
 }
+.starRatings:hover {
+  cursor: pointer;
+  /* background-color: black; */
+}
 /*###########################~~FOOTER~~################################*/
 .footer {
   background-color: rgb(236, 252, 5);

@@ -1,16 +1,32 @@
 import React from "react";
-
+import StarRatings from 'react-star-ratings';
 class RatingsBreakdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.renderOverallRating=this.renderOverallRating.bind(this);
   }
+  renderOverallRating () {
+    if(this.props.ratings.avg !== undefined) {
 
+      return (
+        <>
+        <h1>{this.props.ratings.avg}</h1>
+          <StarRatings
+        rating={Number(this.props.ratings.avg)}
+        starDimension="15px"
+        starSpacing="5px"
+      />
+        </>
+      )
+    }
+  }
   render() {
+
     return (
       <>
         <div>Star Ratings</div>
-        <div>{this.props.ratings.avg}</div>
+        {this.renderOverallRating()}
         <div>{this.props.recommended}% of {this.props.ratingsCount} reviews recommend this product</div>
         <div>Rating Breakdown</div>
         <button name ="onereviews" value="showOne" onClick={this.props.click}>1:</button>
