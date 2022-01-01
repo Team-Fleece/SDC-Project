@@ -2,6 +2,9 @@
 .container {
   display: flex;
   flex-direction: column;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*###########################~~HEADER~~################################*/
@@ -27,6 +30,8 @@
   display: flex;
   flex-direction: column;
   background-color: darkgrey;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 /*productSelector*/
@@ -47,6 +52,8 @@
   flex: 1.5;
   background-color: gold;
   padding: 5px;
+  padding-left: 15px;
+  min-width: 380px;
 }
 
 .overviewReviews {
@@ -58,7 +65,7 @@
 
 .overviewNameAndCat {
   display: flex;
-  flex: 2;
+  flex-direction: column;
   background-color: rgb(49, 245, 10);
   padding: 3px;
 }
@@ -91,8 +98,10 @@
   flex: 2.5;
   background-color: white;
   padding: 5px;
-  min-height: 0px;
-  min-width: 0px;
+  flex-wrap: wrap;
+  min-width: 680px;
+  /* min-height: 0px;
+  min-width: 0px; */
 }
 
 /*productDescription*/
@@ -108,13 +117,63 @@
 .overviewDescriptionText {
   display: flex;
   flex: 2.5;
+  flex-direction: column;
   background-color: rgb(255, 234, 0);
 }
 
 .overviewDescriptionChecklist {
   display: flex;
   flex: 1.5;
+  flex-direction: column;
   background-color: rgb(30, 255, 0);
+}
+
+/*thumbnails*/
+.selectStyle {
+  padding: 10px;
+  height: 55px;
+  width: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/*buttons*/
+.selectSize {
+  /* display: block; */
+  width: 65%;
+  margin-right: 5%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 55px;
+  min-width: 225px;
+}
+
+.quantity {
+  /* display: block; */
+  width: 30%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 55px;
+  min-width: 104px;
+}
+
+.addToBag {
+  /* display: block; */
+  width: 75%;
+  margin-right: 5%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 55px;
+  min-width: 260px;
+}
+
+.star {
+  /* display: block; */
+  width: 20%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 55px;
+  min-width: 70px;
 }
 
 /*###########################~~RELATED PRODUCTS AND COMPARISONS~~################################*/
@@ -225,7 +284,7 @@
   width: 150px;
   height: 150px;
   padding: 10px;
-  background:linear-gradient(135deg, #0099ff, #00c900);
+  background: linear-gradient(135deg, #0099ff, #00c900);
   border: 1px solid #ccc;
   color: #000;
   text-align: center;
@@ -359,18 +418,22 @@
 .reviewImage {
   max-height: 100px;
   max-width: 100px;
+
   margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
 
 }
+
+
+
 .ratingimages {
   grid-column: 1 / span 6;
   grid-row: 6;
 }
 .helpfulReview:hover {
   cursor: pointer;
-  color: lightskyblue
+  color: lightskyblue;
 }
 .helpfulReview {
   text-decoration: underline;
@@ -379,7 +442,7 @@
 }
 .reportReview:hover {
   cursor: pointer;
-  color: lightskyblue
+  color: lightskyblue;
 }
 .reportReview {
   text-decoration: underline;
@@ -407,19 +470,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
 
 .modal-main {
-  position:fixed;
+  position: fixed;
   background: white;
   width: 60%;
   height: 75%;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   overflow: scroll;
   border-radius: 5px;
   padding: 5%;
@@ -427,8 +490,6 @@
 
 .display-block {
   display: block;
-
-
 }
 
 .display-none {
@@ -442,18 +503,18 @@
 .ReviewModalExit {
   height: 20px;
 
+
   grid-column: 3;
   grid-row: 1;
+
 
 }
 .ReviewModalExit:hover {
   cursor: pointer;
-
 }
 
 .summaryInput {
-  width: 75%
-
+  width: 75%;
 }
 
 .bodyInput {
@@ -462,7 +523,6 @@
   text-align: start;
   vertical-align: top;
   overflow-wrap: break-word;
-
 }
 .bodyInput::placeholder {
   vertical-align: top;
@@ -678,6 +738,7 @@
 #ratingprog {
   grid-column: 2 / span 4;
   vertical-align: auto;
+
 }
 /*###########################~~FOOTER~~################################*/
 .footer {
