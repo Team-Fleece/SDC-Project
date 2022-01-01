@@ -322,6 +322,7 @@
 .reviewlist {
   max-height: 520px;
   overflow: scroll;
+
 }
 .sortedDiv {
   display: grid;
@@ -355,6 +356,7 @@
   padding-bottom: 10px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  height: 225px;
 
 }
 .reviewrating {
@@ -410,14 +412,16 @@
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto;
+  font-size: x-small;
 }
 .helpfulSpan {
   grid-column: 1;
   grid-row: 1;
+
 }
 .reviewImage {
-  max-height: 100px;
-  max-width: 100px;
+  max-height: 50px;
+  max-width: 50px;
 
   margin-right: 10px;
   margin-top: 10px;
@@ -439,6 +443,7 @@
   text-decoration: underline;
   grid-column: 2;
   grid-row: 1;
+  font-size: x-small;
 }
 .reportReview:hover {
   cursor: pointer;
@@ -449,6 +454,7 @@
   grid-column: 6;
   grid-row: 7;
   text-align: right;
+  font-size: x-small;
 }
 .reviewlistbuttons {
   display: grid;
