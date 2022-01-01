@@ -97,6 +97,7 @@ router.get("/reviews", (req, res) => {
 });
 
 router.post("/reviews", (req, res) => {
+
   createReview(req.body, (err, result) => {
     if (err) {
       res.status(500).send(err);
@@ -108,7 +109,7 @@ router.post("/reviews", (req, res) => {
 });
 
 router.put(`/reviews/:reviewId/helpful`, (req, res) => {
-  console.log('PUT REQUEST:', req.body)
+
   markHelpful(req.body, (err, result) => {
     if (err) {
       res.status(500).send(err);
