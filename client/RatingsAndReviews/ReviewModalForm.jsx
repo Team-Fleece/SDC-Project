@@ -30,6 +30,7 @@ class ReviewModalForm extends React.Component {
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeRating = this.changeRating.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
   }
   renderCharacteristicRadioButtons(characteristicsKeys) {
     if (characteristicsKeys.length !== undefined) {
@@ -78,21 +79,30 @@ class ReviewModalForm extends React.Component {
           5: "Runs long",
         },
       };
-      return characteristicsKeys.map((key) => (
-        <label>
-          {key}:
-          <input name={key} value={1} type="radio" onChange={this.handleRadioChange}/>
-          {characteristicOptions[key]["1"]}
-          <input name={key} value={2}  type="radio" onChange={this.handleRadioChange} />2
-          <input name={key} value={3}  type="radio" onChange={this.handleRadioChange} />3
-          <input name={key} value={4}  type="radio" onChange={this.handleRadioChange} />4
-          <input name={key} value={5}  type="radio" onChange={this.handleRadioChange} />
-          {characteristicOptions[key]["5"]}
-          <br></br>
-          <br></br>
-        </label>
+
+      return characteristicsKeys.map((key, i) => (
+        <div className="radiocharbuttons">
+          <span style={{gridColumn: 1, gridRow: (2 * i) + 1}}>{key}:</span>
+          <input name={key} value={1} type="radio" onChange={this.handleRadioChange} style={{gridColumn: 2, gridRow: (2 * i) + 1, margin: 'auto'}}/>
+          <input name={key} value={2}  type="radio" onChange={this.handleRadioChange} style={{gridColumn: 3, gridRow: (2 * i) + 1, margin: 'auto'}} />
+          <input name={key} value={3}  type="radio" onChange={this.handleRadioChange} style={{gridColumn: 4, gridRow: (2 * i) + 1, margin: 'auto'}} />
+          <input name={key} value={4}  type="radio" onChange={this.handleRadioChange} style={{gridColumn: 5, gridRow: (2 * i) + 1, margin: 'auto'}}/>
+          <input name={key} value={5}  type="radio" onChange={this.handleRadioChange} style={{gridColumn: 6, gridRow: (2 * i) + 1, margin: 'auto'}} />
+
+          <span style={{gridColumn: 6, gridRow: (2 * i) + 2, fontSize: 'small', margin: 'auto'}}>{characteristicOptions[key]["5"]}</span>
+          <span style={{gridColumn: 2, gridRow: (2 * i) + 2, fontSize: 'small', margin: 'auto'}}>{characteristicOptions[key]["1"]}</span>
+          <span style={{gridColumn: 3, gridRow: (2 * i) + 2, fontSize: 'small', margin: 'auto'}}>2</span>
+          <span style={{gridColumn: 4, gridRow: (2 * i) + 2, fontSize: 'small', margin: 'auto'}}>3</span>
+          <span style={{gridColumn: 5, gridRow: (2 * i) + 2, fontSize: 'small', margin: 'auto'}}>4</span>
+
+        <br></br>
+        </div>
       ));
     }
+  }
+  incrementCount(count) {
+    count++;
+    console.log('incremented count:', count);
   }
   handleRadioChange(e){
     this.changeValue(e.target.name, e.target.value);
@@ -178,7 +188,7 @@ class ReviewModalForm extends React.Component {
       console.log('reviewObj:', reviewObj);
       axios.post('/reviews', reviewObj)
         .then(function(response) {
-          console.log('here is the response that worked:', response);
+
         })
         .catch(function(error) {
           console.log('post review error:', error);
@@ -201,57 +211,62 @@ class ReviewModalForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
         <br></br>
             <br></br>
-          <label>
-            What is your nickname: *
-            <input
-              type="text"
-              name="name"
-              maxLength="60"
-              placeholder="Example: jackson11!"
-              onChange={this.onChange}
-            />
-            <br></br>
-            <br></br>
-          </label>
-          <label>
-            Your email: *
-            <input
-              type="text"
-              name="email"
-              maxLength="60"
-              placeholder="Example: jackson11@email.com"
-              onChange={this.onChange}
-            />
-            <br></br>
-            <br></br>
-          </label>
-          <label>
-            Overall Rating *
-            <>
-              <StarRatings
-                rating={this.state.rating}
-                starRatedColor="blue"
-                changeRating={this.changeRating}
-                numberOfStars={5}
-                name='rating'
-                starDimension="15px"
-                starSpacing="5px"
+          <div className="mainmodalform">
+
+              <span className="nicknamelabel"> What is your nickname: *</span>
+              <input
+                type="text"
+                name="name"
+                maxLength="60"
+                placeholder="Example: jackson11!"
+                className="nicknamereviewinput"
+                onChange={this.onChange}
               />
-            </>
-            <br></br>
-            <br></br>
-          </label>
-          <label>
-            Do you recommend this product? *
-            <input type="radio" name="selectedRecommend" onChange={this.handleRadioChange} value={true} />
-            Yes
-            <input type="radio" name="selectedRecommend" onChange={this.handleRadioChange} value={false} />
-            No
-            <br></br>
-            <br></br>
-          </label>
-          <div>Characteristics *</div>
+              <br></br>
+              <br></br>
+
+
+              <span className="emailspan"> Your email: *</span>
+              <input
+                type="text"
+                name="email"
+                maxLength="60"
+                placeholder="Example: jackson11@email.com"
+                className="emailreviewinput"
+                onChange={this.onChange}
+              />
+              <br></br>
+              <br></br>
+
+
+              <span className="overallratingspan">Overall Rating *</span>
+              <div className="startaker">
+                <StarRatings
+                  rating={this.state.rating}
+                  starRatedColor="blue"
+                  changeRating={this.changeRating}
+                  numberOfStars={5}
+                  name='rating'
+                  starDimension="15px"
+                  starSpacing="5px"
+                />
+              </div>
+              <br></br>
+              <br></br>
+
+
+              <span className="reviewrecommendspan">Do you recommend this product? *</span>
+              <input type="radio" className="yesradio" name="selectedRecommend" onChange={this.handleRadioChange} value={true} />
+              <span className="yesspan">Yes</span>
+              <input type="radio" className="noradio" name="selectedRecommend" onChange={this.handleRadioChange} value={false} />
+              <span className="nospan">No</span>
+              <br></br>
+              <br></br>
+
+            <div className="charreviewform">Characteristics *</div>
+          </div>
           {this.renderCharacteristicRadioButtons(Object.keys(this.props.characteristics))}
+
           <label>
             Review summary:<br></br>
             <input

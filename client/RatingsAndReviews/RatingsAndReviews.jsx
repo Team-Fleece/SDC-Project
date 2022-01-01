@@ -252,13 +252,16 @@ class RatingsAndReviews extends React.Component {
           <ProductBreakdown characteristics={this.state.characteristics} />
         </div>
         <div className="reviews">
-          reviews
+
           <SortReviews
             sort={this.state.sort}
             ratingsCount={this.state.ratingsCount}
             onSortSelection={this.onSortSelection}
           />
-          <ReviewList reviews={this.state.reviews} getRevs={this.getReviews} />
+          <br></br>
+          <div className="reviewlist">
+            <ReviewList reviews={this.state.reviews} getRevs={this.getReviews} />
+          </div>
           <MoreReviewsButton onClick={this.onMoreReviewsClick} />
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <h1>Write Your Review</h1>
@@ -271,6 +274,7 @@ class RatingsAndReviews extends React.Component {
           <button className="ReviewsButtons" onClick={this.showModal}>
             Add A Review
           </button>
+
         </div>
       </div>
     );
