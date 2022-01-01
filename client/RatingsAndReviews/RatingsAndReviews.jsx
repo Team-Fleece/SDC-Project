@@ -262,19 +262,20 @@ class RatingsAndReviews extends React.Component {
           <div className="reviewlist">
             <ReviewList reviews={this.state.reviews} getRevs={this.getReviews} />
           </div>
-          <MoreReviewsButton onClick={this.onMoreReviewsClick} />
-          <Modal show={this.state.show} handleClose={this.hideModal}>
-            <h1>Write Your Review</h1>
-            <div>About the {this.state.currentProductInfo.name}</div>
-            <ReviewModalForm
-              characteristics={this.state.characteristics}
-              product_id={this.state.product_id}
-            />
-          </Modal>
-          <button className="ReviewsButtons" onClick={this.showModal}>
-            Add A Review
-          </button>
-
+          <div className="reviewlistbuttons">
+            <MoreReviewsButton onClick={this.onMoreReviewsClick} />
+            <Modal show={this.state.show} handleClose={this.hideModal}>
+              <h1>Write Your Review</h1>
+              <div>About the {this.state.currentProductInfo.name}</div>
+              <ReviewModalForm
+                characteristics={this.state.characteristics}
+                product_id={this.state.product_id}
+              />
+            </Modal>
+            <button className="ReviewsButtons" onClick={this.showModal}>
+              Add A Review
+            </button>
+          </div>
         </div>
       </div>
     );

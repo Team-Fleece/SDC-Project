@@ -139,7 +139,7 @@ class ReviewModalForm extends React.Component {
   renderUploadedImages() {
     if (this.state.images.length > 0) {
       return this.state.images.map((image) => (
-        <div>
+        <div className="uploaddiv">
           <img className="uploads" src={image} />
         </div>
       ));
@@ -148,13 +148,14 @@ class ReviewModalForm extends React.Component {
   imageUploaderButton() {
     if (this.state.images.length < 5) {
       return (
-        <div>
-          <h1>Select Image</h1>
+        <div className="uploaderbutton">
+
           <input
             type="file"
             multiple
             name="myImage"
-            onChange={this.onImageChange}
+            onChange={this.onImageChange} className="uploaderinput"
+
           />
         </div>
       );
@@ -268,6 +269,7 @@ class ReviewModalForm extends React.Component {
           {this.renderCharacteristicRadioButtons(Object.keys(this.props.characteristics))}
 
           <label>
+            <br></br>
             Review summary:<br></br>
             <input
               className="summaryInput"
@@ -283,7 +285,7 @@ class ReviewModalForm extends React.Component {
           </label>
           <label>
             Review body: *<br></br>
-            <input
+            <textarea
               className="bodyInput"
               type="text"
               name="body"
@@ -292,14 +294,22 @@ class ReviewModalForm extends React.Component {
               value={this.state.body}
               onChange={this.onChange}
               placeholder="Why did you like the product or not?"
-            />
+            ></textarea>
             <br></br>
             {this.characterCount()}
             <br></br>
           </label>
+          <div className="imageuploaddiv">
+
+            <h1 id="selectimage">Select Image</h1>
+            {this.imageUploaderButton()}
+
+          </div>
           {this.renderUploadedImages()}
-          {this.imageUploaderButton()}
-          <input type="submit" value="Submit" />
+          <br></br>
+          <div className="formsubmit">
+            <input type="submit" value="Submit" id="formsubmitbutton"/>
+          </div>
         </form>
       </>
     );
