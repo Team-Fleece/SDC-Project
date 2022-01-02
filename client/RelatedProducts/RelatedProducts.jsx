@@ -92,8 +92,8 @@ class RelatedProducts extends React.Component {
                 <Slider>
                   {related.map((currentRelated, i) => {
                     return (
-                      <Slide>
-                        <Card key={i} current={currentRelated} onRelatedProductClick={this.props.onRelatedProductClick} Action={AddToCompare} changeAction={this.changeComparisonOn} />
+                      <Slide key={currentRelated+ "" + i}>
+                        <Card  current={currentRelated} onRelatedProductClick={this.props.onRelatedProductClick} Action={AddToCompare} changeAction={this.changeComparisonOn} />
                       </Slide>
                     );
                   })}
@@ -126,8 +126,8 @@ class RelatedProducts extends React.Component {
                   </div>
                   {favorites.map((currentFavorite, i) => {
                     return (
-                      <Slide>
-                        <Card key={i} current={currentFavorite} onRelatedProductClick={this.props.onRelatedProductClick} Action={RemoveFavorite} changeAction={this.removeFromFavorites} />
+                      <Slide key={currentFavorite + "" + i}>
+                        <Card  current={currentFavorite} onRelatedProductClick={this.props.onRelatedProductClick} Action={RemoveFavorite} changeAction={this.removeFromFavorites} />
                       </Slide>
                     );
                   })}

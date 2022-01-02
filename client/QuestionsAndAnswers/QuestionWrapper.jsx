@@ -53,11 +53,14 @@ loadMoreAnswers() {
       answerArray.push(this.state.questionData.answers[element])
     });
     const finalAnswerArray = answerArray.slice(0, this.state.answerCount)
-    //console.log(this.state.questionData)
+    console.log(this.state.questionData)
     return (
       <div className='QAElementWrapper'>
         <div className='QuesElementWrapper'>
+          <div>
+          <div className='QuestionUsernameText'>{this.state.questionData.asker_name} asks:</div>
           <div className='QuestionText'>{this.state.questionData.question_body}</div>
+          </div>
           <div className='QAQHRWrapper'>
             <div className='QAQHelpful'>
               Helpful?

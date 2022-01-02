@@ -96,6 +96,12 @@
   flex: 1;
   margin: 10px;
   font-size: 20px;
+}
+.QuestionText {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+  font-size: 22px;
   font-weight: bold;
 }
 .QAQHRWrapper {
