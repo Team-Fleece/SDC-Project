@@ -18,8 +18,7 @@ class App extends React.Component {
     this.state = {
 
       product_id: 37316, //DUMMY VALUE, gets passed to all components
-      product_styleID: 221027,
-
+      product_styleID: 221027
     }
     this.onRelatedProductClick = this.onRelatedProductClick.bind(this)
     this.onStyleThumbnailClick = this.onStyleThumbnailClick.bind(this)
