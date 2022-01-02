@@ -7,7 +7,8 @@ import MoreReviewsButton from "./MoreReviewsButton.jsx";
 import SortReviews from "./SortReviews.jsx";
 import axios from "axios";
 import ProductBreakdown from "./ProductBreakdown.jsx";
-import Modal from './NewReviewModal.jsx';
+import Modal from "./NewReviewModal.jsx";
+import ReviewModalForm from "./ReviewModalForm.jsx";
 // let RatingsAndReviews = (props) => {
 //   //console.log("ratings and reviews props:", props);
 
@@ -16,6 +17,7 @@ class RatingsAndReviews extends React.Component {
     super(props);
     this.state = {
       product_id: this.props.product_id,
+      currentProductInfo: {},
       reviews: [],
       reviewCount: 2,
       ratings: {},
@@ -23,7 +25,12 @@ class RatingsAndReviews extends React.Component {
       ratingsCount: 0,
       characteristics: {},
       sort: "relevant",
-      show: false
+
+      showOne: false,
+      showTwo: false,
+      showThree: false,
+      showFour: false,
+      showFive: false,
     };
     this.onMoreReviewsClick = this.onMoreReviewsClick.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -31,14 +38,29 @@ class RatingsAndReviews extends React.Component {
     this.onSortSelection = this.onSortSelection.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.getCurrentProductInfo = this.getCurrentProductInfo.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.filterReviews = this.filterReviews.bind(this);
+  }
+  getCurrentProductInfo() {
+    let that = this;
+    axios
+      .get(`/products/${this.props.product_id}`)
+      .then(function (response) {
+        that.setState({
+          currentProductInfo: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log("Product Info GET Error:", error);
+      });
   }
   getMetadata() {
     let that = this;
 
     axios
-      .get(`/reviews/meta?product_id=${this.state.product_id}`)
+      .get(`/reviews/meta?product_id=${this.props.product_id}`)
       .then(function (response) {
-        console.log(response.data.characteristics);
         that.setState({
           ratings: response.data.ratings,
           recommendedPercentage: response.data.recommended,
@@ -52,14 +74,19 @@ class RatingsAndReviews extends React.Component {
   }
   getReviews() {
     let that = this;
+
+
     axios
       .get(
-        `/reviews?product_id=${this.state.product_id}&count=${this.state.reviewCount}&sort=${this.state.sort}`
+        `/reviews?product_id=${this.props.product_id}&count=${this.state.reviewCount}&sort=${this.state.sort}`
       )
       .then(function (response) {
-        console.log("response Data:", response.data);
+        console.log("getreviews data:", response.data);
+
+        let filtered = that.filterReviews(response.data.results);
         that.setState({
-          reviews: response.data.results,
+          reviews: filtered,
+
         });
       })
       .catch(function (error) {
@@ -113,53 +140,138 @@ class RatingsAndReviews extends React.Component {
         console.log("Change Reviews Error:", error);
       });
   }
+
+  onClick(e) {
+    let that = this;
+    let value = e.target.value;
+    let addFilter = () => {
+      return new Promise(function (resolve, reject) {
+        that.setState({ [value]: true }, function (error, result) {
+          if (error) {
+            reject(error);
+          } else {
+            resolve (result);
+          }
+        });
+      });
+    };
+    let removeFilter = () => {
+      return new Promise(function (resolve, reject) {
+        that.setState({ [value]: false }, function (error, result) {
+          if (error) {
+            reject(error);
+          } else {
+            resolve (result);
+          }
+        });
+      });
+    };
+    if (this.state[value] === false) {
+      addFilter()
+        .then(function(result) {
+          that.getReviews();
+        })
+        .catch(function(error) {
+          console.log('Add Filter Error:', error);
+        });
+
+    } else if (this.state[value] === true) {
+      removeFilter()
+        .then(function(result) {
+          that.getReviews();
+        })
+        .catch(function(error) {
+          console.log('Remove Filter Error:', error);
+        });
+    }
+
+
+  }
   componentDidMount() {
     this.getMetadata();
     this.getReviews();
+    this.getCurrentProductInfo();
   }
-  // componentdid update needs a LOT of work
+
   componentDidUpdate(prevProps) {
-    if (this.state.product_id !== prevProps.product_id) {
-      this.setState({ product_id: prevProps.product_id });
+    if (this.props.product_id !== prevProps.product_id) {
       this.getMetadata();
       this.getReviews();
+      this.getCurrentProductInfo();
     }
-    console.log("our prev props:", prevProps);
-    console.log("our state product id:", this.state.product_id);
   }
-  showModal () {
+  filterReviews(reviewArray) {
+    if(this.state.showOne === false && this.state.showTwo === false && this.state.showThree === false && this.state.showFour === false && this.state.showFive === false) {
+      return reviewArray;
+    }
+    let filteredArray = [];
+    reviewArray.forEach((review) => {
+      if(this.state.showOne === true && review.rating === 1) {
+        filteredArray.push(review);
+      }
+      if(this.state.showTwo === true && review.rating === 2) {
+        filteredArray.push(review);
+      }
+      if(this.state.showThree === true && review.rating === 3) {
+        filteredArray.push(review);
+      }
+      if(this.state.showFour === true && review.rating === 4) {
+        filteredArray.push(review);
+      }
+      if(this.state.showFive === true && review.rating === 5) {
+        filteredArray.push(review);
+      }
+    });
+    return filteredArray;
+
+  }
+  showModal() {
     this.setState({ show: true });
-  };
+  }
 
   hideModal() {
     this.setState({ show: false });
-  };
+  }
   render() {
     return (
       <div className="rateRev">
-        rateRev
+
         <div className="ratings">
           <RatingsBreakdown
             ratings={this.state.ratings}
             recommended={this.state.recommendedPercentage}
             ratingsCount={this.state.ratingsCount}
+            getReviews={this.getReviews}
+
+            click={this.onClick}
           />
           <ProductBreakdown characteristics={this.state.characteristics} />
         </div>
         <div className="reviews">
-          reviews
+
           <SortReviews
             sort={this.state.sort}
             ratingsCount={this.state.ratingsCount}
             onSortSelection={this.onSortSelection}
           />
-          <ReviewList reviews={this.state.reviews} getRevs={this.getReviews} />
-          <MoreReviewsButton onClick={this.onMoreReviewsClick} />
-          <Modal show={this.state.show} handleClose={this.hideModal}>
-            <h1>Write Your Review</h1>
-            <h3></h3>
-          </Modal>
-          <button onClick={this.showModal}>Add A Review</button>
+          <br></br>
+          <div className="reviewlist">
+            <ReviewList reviews={this.state.reviews} getRevs={this.getReviews} />
+          </div>
+          <div className="reviewlistbuttons">
+            <MoreReviewsButton onClick={this.onMoreReviewsClick} />
+            <Modal show={this.state.show} handleClose={this.hideModal}>
+              <h1>Write Your Review</h1>
+              <div>About the <span style={{ textDecoration: 'underline' }}>{this.state.currentProductInfo.name}</span></div>
+              <ReviewModalForm
+                characteristics={this.state.characteristics}
+                product_id={this.state.product_id}
+              />
+            </Modal>
+            <button className="ReviewsButtons" onClick={this.showModal}>
+              Add A Review
+            </button>
+          </div>
         </div>
       </div>
     );
