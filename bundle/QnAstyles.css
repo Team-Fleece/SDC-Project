@@ -126,6 +126,7 @@
   text-decoration: underline;
   margin-left: 2px;
   margin-right: 1px;
+  cursor:grab;
 }
 .QAQReport {
   color: rgb(7, 176, 255);
@@ -139,6 +140,7 @@
   font-size: 14px;
   max-width: 110px;
   min-width: 110px;
+  cursor:grab;
 }
 /*##### Answer Element #####*/
 .AnswerUsernameText {
@@ -190,6 +192,7 @@
   text-decoration: underline;
   margin-left: 2px;
   margin-right: 1px;
+  cursor:grab;
 }
 .QAAReport {
   color: rgb(7, 176, 255);
@@ -204,6 +207,7 @@
   font-size: 10px;
   max-width: 80px;
   min-width: 80px;
+  cursor:grab;
 }
 
 /*##### Footer #####*/

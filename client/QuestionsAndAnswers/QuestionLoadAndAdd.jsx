@@ -37,8 +37,6 @@ class QuestionLoadAndAdd extends React.Component {
       email: this.state.emailAddressText,
       product_id: productID
     }
-    console.log(this.state.product_id)
-    console.log(dataObj)
     axios
       .post(`/qa/questions`, dataObj)
       .then(() => {

@@ -42,6 +42,20 @@ let postQuestion = (request, data, callback) => {
   axios
     .post(queryString, data, configOptions, callback)
     .then(res => {
+      console.log(res, 'got some data')
+      callback(null, res.data.results) //Needs optimization
+    })
+    .catch(res => {
+      console.log(res)
+      console.log('failure')
+    })
+}
+let markQAHR = (request, callback) => {
+  console.log(request)
+  let queryString = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe${request}`
+  axios
+    .put(queryString, null, configOptions, callback)
+    .then(res => {
       //console.log(res, 'got some data')
       callback(null, res.data.results) //Needs optimization
     })
@@ -50,4 +64,4 @@ let postQuestion = (request, data, callback) => {
       console.log('failure')
     })
 }
-module.exports = { getQuestions, postAnswer , postQuestion}
+module.exports = { getQuestions, postAnswer , postQuestion, markQAHR}
