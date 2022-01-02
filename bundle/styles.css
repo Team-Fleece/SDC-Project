@@ -617,26 +617,57 @@ h2:after {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-[name=onestar] {
+.starchooseone {
   grid-column: 2;
+  grid-row: 3;
 }
-[name=twostar] {
+.starchoosetwo {
   grid-column: 3;
+  grid-row: 3;
 }
-[name=threestar] {
+.starchoosethree {
   grid-column: 4;
+  grid-row: 3;
 }
-[name=fourstar] {
+.starchoosefour {
   grid-column: 5;
+  grid-row: 3;
 }
-[name=fivestar] {
+.starchoosefive {
   grid-column: 6;
+  grid-row: 3;
 }
+.starchooseone:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+  color: #000;
+}
+.starchoosetwo:hover {
+  cursor: pointer;
+  /* font-size: medium; */
 
+}
+.starchoosethree:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+}
+.starchoosefour:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+}
+.starchoosefive:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+}
 .startaker {
   grid-column: 2;
   grid-row: 3;
   margin: auto;
+
+}
+.startaker:hover {
+
+  cursor: pointer;
 
 }
 .reviewrecommendspan {
@@ -777,6 +808,12 @@ h2:after {
 .bigNumber {
   font-size: xxx-large;
   font-weight: bold;
+}
+.starratedspan {
+  background: linear-gradient(to right, black 90%, lightgray 10%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .recommendPercentage {
   font-size: small;

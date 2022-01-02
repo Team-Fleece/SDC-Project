@@ -17,8 +17,7 @@ class StarRatingsInput extends React.Component {
   handleClick(event) {
     let that = this;
     let value = event.target.attributes.getNamedItem('name').value;
-    console.log('event target:', event.target);
-    console.log('event value:', value);
+
     let makeRating = () => {
       return new Promise(function (resolve, reject) {
         that.setState({rating: that.state[value], [value]: true}, function (error, result) {
@@ -44,85 +43,85 @@ class StarRatingsInput extends React.Component {
   }
   starRender() {
     let starObj = this.state;
-    console.log('our starObj:', starObj);
+
     if (starObj.onestar === true) {
 
 
       return (
-        <div className="starblock">
-          <div  className="starchoose" name="onestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="twostar" onClick={this.handleClick}>&#9734; </div>
-          <div className="starchoose" name="threestar" onClick={this.handleClick}>&#9734; </div>
-          <div className="starchoose" name="fourstar" onClick={this.handleClick}>&#9734; </div>
-          <div className="starchoose" name="fivestar" onClick={this.handleClick}>&#9734; </div>
-        </div>
+        <>
+          <span  className="starchooseone" name="onestar" onClick={this.handleClick}>&#9733; </span>
+          <span className="starchoosetwo" name="twostar" onClick={this.handleClick}>&#9734; </span>
+          <span className="starchoosethree" name="threestar" onClick={this.handleClick}>&#9734; </span>
+          <span className="starchoosefour" name="fourstar" onClick={this.handleClick}>&#9734; </span>
+          <span className="starchoosefive" name="fivestar" onClick={this.handleClick}>&#9734; </span>
+        </>
         );
       }
       if (starObj.twostar === true) {
 
         return (
-          <div className="starblock">
-          <div  className="starchoose" name="onestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="twostar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="threestar" onClick={this.handleClick}>&#9734; </div>
-          <div className="starchoose" name="fourstar" onClick={this.handleClick}>&#9734; </div>
-          <div className="starchoose" name="fivestar" onClick={this.handleClick}>&#9734; </div>
-       </div>
+          <>
+            <span  className="starchooseone" name="onestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosetwo" name="twostar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosethree" name="threestar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosefour" name="fourstar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosefive" name="fivestar" onClick={this.handleClick}>&#9734; </span>
+          </>
         );
       }
       if (starObj.threestar === true) {
 
         return (
-          <div className="starblock">
-          <div  className="starchoose" name="onestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="twostar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="threestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="fourstar" onClick={this.handleClick}>&#9734; </div>
-          <div className="starchoose" name="fivestar" onClick={this.handleClick}>&#9734; </div>
-       </div>
+          <>
+            <span  className="starchooseone" name="onestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosetwo" name="twostar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosethree" name="threestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosefour" name="fourstar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosefive" name="fivestar" onClick={this.handleClick}>&#9734; </span>
+          </>
         );
       }
       if (starObj.fourstar === true) {
 
         return (
-          <div className="starblock">
-          <div  className="starchoose" name="onestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="twostar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="threestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="fourstar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="fivestar" onClick={this.handleClick}>&#9734; </div>
-       </div>
+          <>
+            <span  className="starchooseone" name="onestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosetwo" name="twostar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosethree" name="threestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosefour" name="fourstar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosefive" name="fivestar" onClick={this.handleClick}>&#9734; </span>
+          </>
         );
       }
       if (starObj.fivestar === true) {
 
         return (
-          <div className="starblock">
-          <div  className="starchoose" name="onestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="twostar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="threestar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="fourstar" onClick={this.handleClick}>&#9733; </div>
-          <div className="starchoose" name="fivestar" onClick={this.handleClick}>&#9733; </div>
-       </div>
+          <>
+            <span  className="starchooseone" name="onestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosetwo" name="twostar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosethree" name="threestar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosefour" name="fourstar" onClick={this.handleClick}>&#9733; </span>
+            <span className="starchoosefive" name="fivestar" onClick={this.handleClick}>&#9733; </span>
+          </>
         );
       }
       if (starObj.onestar === 1 && starObj.twostar === 2 && starObj.threestar === 3 && starObj.fourstar === 4 && starObj.fivestar === 5) {
         return (
-          <div className="starblock">
-            <div  className="starchoose" name="onestar" onClick={this.handleClick}>&#9734; </div>
-            <div className="starchoose" name="twostar" onClick={this.handleClick}>&#9734; </div>
-            <div className="starchoose" name="threestar" onClick={this.handleClick}>&#9734; </div>
-            <div className="starchoose" name="fourstar" onClick={this.handleClick}>&#9734; </div>
-            <div className="starchoose" name="fivestar" onClick={this.handleClick}>&#9734; </div>
-          </div>
+          <>
+            <span  className="starchooseone" name="onestar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosetwo" name="twostar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosethree" name="threestar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosefour" name="fourstar" onClick={this.handleClick}>&#9734; </span>
+            <span className="starchoosefive" name="fivestar" onClick={this.handleClick}>&#9734; </span>
+          </>
           );
       }
   }
   render() {
     return (
-      <div>
+      <>
         {this.starRender()}
-      </div>
+      </>
     )
   }
 }
