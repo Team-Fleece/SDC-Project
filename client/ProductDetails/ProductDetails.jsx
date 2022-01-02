@@ -2,7 +2,7 @@
 //Import Library Dependencies
 import React from 'react'
 import {ProductGallery} from './ProductGallery.jsx'
-import {onloadState, productMainInfo, skuArray, getSkuInfo} from './OnLoadData.js'
+import {onloadState, productMainInfo, skuArray, getSkuInfo, getStyleSkuInfo} from './OnLoadData.js'
 import $ from 'jquery'
 import axios from 'axios'
 
@@ -54,7 +54,12 @@ componentDidMount() {
 componentDidUpdate(prevProps) {
   if (this.props.product_id !== prevProps.product_id) {
     let productID = this.props.product_id;
+    let productStyleID = this.props.productStyleID;
+
     let that = this;
+    console.log("NEW PRODUCT")
+    console.log("productStyleID", productStyleID)
+
     //get styles
     axios.get(`/products/${productID}/styles/details`, {
       params: {
@@ -62,24 +67,97 @@ componentDidUpdate(prevProps) {
       }
     })
     .then(function(response) {
+          console.log("RESPONSE DATA: ", response.data)
+
+      console.log("NEW PRODUCT")
+      let newStyle = {};
+        let stylePhotos = [];
+        let newSkus = getStyleSkuInfo(response.data, productID);
+
+      // that.setState({
+      //   productInfo: response.data
+      // })
+
+      response.data.forEach(thisStyle => {
+        console.log("THIS STYLE OUTERRRR: ", thisStyle)
+        console.log("PRODUCT STYLE ID: ", productStyleID)
+        if (thisStyle.style_id === productStyleID) {
+          // newStyle.push({
+            console.log("THIS STYLE: ", thisStyle);
+            console.log("THIS STYLE . STYLE PHOTOS: ", thisStyle.style_photos);
+            newStyle = thisStyle;
+            stylePhotos = thisStyle.style_photos
+          // })
+        }
+      });
+
       that.setState({
         productInfo: response.data,
-        currentStylePhotos: response.data[0].style_photos,
-        currentStyle: response.data[0],
-        styleSkus: getSkuInfo(response.data)
+        currentStylePhotos: stylePhotos,
+        currentStyle: newStyle,
+        styleSkus: newSkus
       })
+
+      ////////
+    //   that.setState({
+    //     productInfo: response.data,
+    //     currentStylePhotos: response.data[0].style_photos,
+    //     currentStyle: response.data[0],
+    //     styleSkus: getSkuInfo(response.data)
+    //   })
     })
     .catch(function(error) {
       console.log('ERROR FROM GET STYLES: ', error)
     })
   }
 }
+//
+  // componentDidUpdate(prevProps) {
+  //   let productID = this.props.product_id;
+  //   let productStyleID = this.props.productStyleID;
+  //   let that = this;
+  //   if (this.props.productStyleID !== prevProps.productStyleID) {
+  //     let newStyleID = this.props.productStyleID;
+  //     axios.get(`/products/${productID}/styles/details`, {
+  //       params: {
+  //         productId: productID,
+  //       }
+  //     })
+  //     .then(function(response) {
+  //       console.log("RESPONSE DATA: ", response.data)
+  //       let newStyle = {};
+  //       let stylePhotos = [];
+  //       let newSkus = getStyleSkuInfo(response.data, productID);
 
+  //       that.setState({
+  //         productInfo: response.data
+  //       })
 
-handleChange(event) {
-  let that = this;
-  that.setState({currentSize: event.target.value});
-}
+  //       that.state.productInfo.forEach(thisStyle => {
+  //         if (style.style_id === productStyleID) {
+  //           // newStyle.push({
+  //             newStyle = thisStyle;
+  //             stylePhotos = thisStyle.style_photos
+  //           // })
+  //         }
+  //       });
+  //       that.setState({
+  //         currentStylePhotos: stylePhotos,
+  //         currentStyle: newStyle,
+  //         styleSkus: newSkus
+  //       })
+  //       // console.log("STYLE SKUS: ", this.state.styleSkus)
+  //     })
+  //     .catch(function(error) {
+  //       console.log('ERROR FROM GET STYLES ON STYLE CLICK: ', error)
+  //     })
+  //   }
+  // }
+
+  handleChange(event) {
+    let that = this;
+    that.setState({currentSize: event.target.value});
+  }
 
 
 
@@ -96,8 +174,8 @@ render() {
 
   //utility variables
   let styleThumbnails = this.state.productInfo;
-  let entryList = Object.entries(this.state.currentStyle);
-  let skuObj = entryList[3][1];
+  // let entryList = Object.entries(this.state.currentStyle);
+  // let skuObj = entryList[3][1];
   let productSize = this.state.currentSize;
   let productSizeString = null;
 
@@ -109,34 +187,37 @@ render() {
   }
 
   //utility functions
-  for (let item in skuObj) {
-            skuArr.push({
-                sku: item,
-                quantity: skuObj[item].quantity,
-                sizes: skuObj[item].size
-            })
-        };
+  // for (let item in skuObj) {
+  //           skuArr.push({
+  //               sku: item,
+  //               quantity: skuObj[item].quantity,
+  //               sizes: skuObj[item].size
+  //           })
+  //       };
 
   let maxQuantity = 0;
   let quantities = [];
-  console.log("INSIDE OF s2q function");
-  console.log("this.state.styleSkus: ", this.state.styleSkus);
+  // console.log("INSIDE OF s2q function");
+  // console.log("this.state.styleSkus: ", this.state.styleSkus);
   for (let i = 0; i < this.state.styleSkus.length; i++) {
-    console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
-    console.log("PRODUCT SIZE: ", productSizeString)
+    // console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
+    // console.log("PRODUCT SIZE: ", productSizeString)
     if (this.state.styleSkus[i].sizes === productSizeString) {
-        console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
+        // console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
           maxQuantity = this.state.styleSkus[i].quantity
       }
   }
   for (let i = 1; i <= maxQuantity; i++) {
-    console.log('MAKING QUANTITIES: ', quantities)
+    // console.log('MAKING QUANTITIES: ', quantities)
       quantities.push(i)
   }
 
-  //listing functions/
+  //listing functions//
   let styleThumbnailCircles = styleThumbnails.map(style => {
-    return <img src={style.style_photos[0].thumbnail} className="selectStyle"></img>
+    console.log("STYLE THUMB: ", style)
+    let ID = style.style_id;
+    console.log("IDDDDDDD: ", ID)
+    return <img src={style.style_photos[0].thumbnail} onClick={() => this.props.onStyleThumbnailClick(ID)} className="selectStyle"></img>
   });
 
   let featuresBullets = productFeatures.map(feature => {
@@ -147,9 +228,12 @@ render() {
     return <option value={sku.sizes}>{sku.sizes}</option>
   })
   let styleQuantityList = quantities.map((quantitySelected, i) => {
-    console.log('NEW QUANTITY: ', quantitySelected)
+    // console.log('NEW QUANTITY: ', quantitySelected)
     return <option value={quantitySelected}>{quantitySelected}</option>
   })
+
+  console.log("NEW STYLE PHOTOS: ", currentStylePhotos)
+  console.log("NEW STYLE PHOTOS: ", this.state.currentStylePhotos)
 
 
 

@@ -18,12 +18,17 @@ class App extends React.Component {
     this.state = {
 
       product_id: 37316, //DUMMY VALUE, gets passed to all components
+      product_styleID: 221027,
 
     }
     this.onRelatedProductClick = this.onRelatedProductClick.bind(this)
+    this.onStyleThumbnailClick = this.onStyleThumbnailClick.bind(this)
   }
   onRelatedProductClick (current) {
     this.setState({product_id: current})
+  }
+  onStyleThumbnailClick (current) {
+    this.setState({product_styleID: current})
   }
   componentDidMount() {
     this.onRelatedProductClick
@@ -35,7 +40,7 @@ class App extends React.Component {
           <div className='header'>header</div>
           <div className='banner'>banner</div>
           <div className='wrapper'>
-            <ProductDetails product_id={this.state.product_id} />
+            <ProductDetails product_id={this.state.product_id} productStyleID={this.state.product_styleID} onStyleThumbnailClick={this.onStyleThumbnailClick} />
             <RelatedProducts product_id={this.state.product_id} onRelatedProductClick={this.onRelatedProductClick}/>
             <QuestionsAndAnswers product_id={this.state.product_id} />
             <RatingsAndReviews
