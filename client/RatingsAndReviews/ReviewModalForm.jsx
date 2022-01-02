@@ -2,6 +2,17 @@ import React from "react";
 import OverallRating from './OverallRating.jsx'
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
+import StarRatingsInput from './StarRatingsInput.jsx';
+
+// {/* <StarRatings
+//                   rating={this.state.rating}
+//                   starRatedColor="blue"
+//                   changeRating={this.changeRating}
+//                   numberOfStars={5}
+//                   name='rating'
+//                   starDimension="15px"
+//                   starSpacing="5px"
+//                 /> */}
 class ReviewModalForm extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +29,8 @@ class ReviewModalForm extends React.Component {
       Length: 0,
       Fit: 0,
       selectedRecommend: '',
-      rating: 0
+      rating: 0,
+
     };
     this.renderCharacteristicRadioButtons =
     this.renderCharacteristicRadioButtons.bind(this);
@@ -31,6 +43,7 @@ class ReviewModalForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeRating = this.changeRating.bind(this);
     this.incrementCount = this.incrementCount.bind(this);
+    this.captureRating = this.captureRating.bind(this);
   }
   renderCharacteristicRadioButtons(characteristicsKeys) {
     if (characteristicsKeys.length !== undefined) {
@@ -99,6 +112,10 @@ class ReviewModalForm extends React.Component {
         </div>
       ));
     }
+  }
+  captureRating(rating) {
+    console.log('this is being triggered');
+    this.setState({rating: rating});
   }
   incrementCount(count) {
     count++;
@@ -242,15 +259,7 @@ class ReviewModalForm extends React.Component {
 
               <span className="overallratingspan">Overall Rating *</span>
               <div className="startaker">
-                <StarRatings
-                  rating={this.state.rating}
-                  starRatedColor="blue"
-                  changeRating={this.changeRating}
-                  numberOfStars={5}
-                  name='rating'
-                  starDimension="15px"
-                  starSpacing="5px"
-                />
+                <StarRatingsInput captureRating={this.captureRating}/>
               </div>
               <br></br>
               <br></br>
@@ -317,3 +326,5 @@ class ReviewModalForm extends React.Component {
 }
 
 export default ReviewModalForm;
+
+
