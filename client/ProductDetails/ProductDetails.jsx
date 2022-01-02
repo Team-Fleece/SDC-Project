@@ -7,32 +7,6 @@ import $ from 'jquery'
 import axios from 'axios'
 
 
-// let sizeToQuantity = function(currentSize) {
-//   let that = this;
-//   let maxQuantity = 0;
-//   let quantities = [];
-//   for (let i = 0; i < that.state.styleSkus.length; i++) {
-//       if (that.state.styleSkus[i].size === currentSize) {
-//           maxQuantity = that.state.styleSkus[i].quantity
-//       }
-//   }
-//   for (let i = 1; i <= maxQuantity; i++) {
-//       quantities.push(i)
-//   }
-
-
-//   return quantities
-// }
-
-// let getCurrentSize = function(newSku) {
-//   let currentSize = 0;
-//   for (let i = 0; i < this.styleSkus.length; i++) {
-//       if (newSku === this.styleSkus[i].sku) {
-//           currentSize = this.styleSkus[i].size
-//       }
-//   }
-//   return currentSize
-// }
 
 
 class ProductDetails extends React.Component {
@@ -44,7 +18,7 @@ class ProductDetails extends React.Component {
       currentStylePhotos: onloadState[0].style_photos,
       currentStyle: onloadState[0],
       styleSkus: [{quantity: 14, sizes: "7", sku: "1281202"}],
-      currentSku: 1,
+      currentQuantity: 1,
       currentSize: 7,
       itemsInStock: [1, 2, 3, 4]
   }
@@ -103,58 +77,12 @@ componentDidUpdate(prevProps) {
 
 
 handleChange(event) {
-  console.log('EVENT TARGET VALUE: ', event.target.value)
   let that = this;
-//   let sizeToQuantity = function(currentSize) {
-//     let maxQuantity = 0;
-//     let quantities = [];
-//     for (let i = 0; i < this.state.styleSkus.length; i++) {
-//         if (this.state.styleSkus[i].size === currentSize) {
-//             maxQuantity = this.state.styleSkus[i].quantity
-//         }
-//     }
-//     for (let i = 1; i <= maxQuantity; i++) {
-//         quantities.push(i)
-//     }
-//     return quantities
-// }
-let getCurrentSize = function(newSku) {
-  let currentSize = 0;
-  console.log('NEW SKUUUUU: ', newSku);
-  console.log('FUNCTION this.state.styleSkus: ', this.state)
-  for (let i = 0; i < this.state.styleSkus.length; i++) {
-      if (newSku === this.state.styleSkus[i].sku) {
-          currentSize = this.state.styleSkus[i].size
-      }
-  }
-  return currentSize
+  that.setState({currentSize: event.target.value});
 }
 
-let sizeToQuantity = function(currentSize) {
-  // let that = this;
-  let maxQuantity = 0;
-  let quantities = [];
-  for (let i = 0; i < this.state.styleSkus.length; i++) {
-      if (this.state.styleSkus[i].size === currentSize) {
-          maxQuantity = this.state.styleSkus[i].quantity
-      }
-  }
-  for (let i = 1; i <= maxQuantity; i++) {
-      quantities.push(i)
-  }
 
 
-  return quantities
-}
-
-let updatedSize = getCurrentSize(event.target.value)
-
-that.setState({
-  currentSku: event.target.value,
-  currentSize: updatedSize,
-  itemsInStock: sizeToQuantity(updatedSize)
-});
-}
 
 
 render() {
@@ -170,10 +98,18 @@ render() {
   let styleThumbnails = this.state.productInfo;
   let entryList = Object.entries(this.state.currentStyle);
   let skuObj = entryList[3][1];
+  let productSize = this.state.currentSize;
+  let productSizeString = null;
+
+
+  if (typeof productSize === "number") {
+    productSizeString = JSON.stringify(productSize)
+  } else {
+    productSizeString = productSize
+  }
 
   //utility functions
   for (let item in skuObj) {
-    //         console.log(item)
             skuArr.push({
                 sku: item,
                 quantity: skuObj[item].quantity,
@@ -181,10 +117,24 @@ render() {
             })
         };
 
+  let maxQuantity = 0;
+  let quantities = [];
+  console.log("INSIDE OF s2q function");
+  console.log("this.state.styleSkus: ", this.state.styleSkus);
+  for (let i = 0; i < this.state.styleSkus.length; i++) {
+    console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
+    console.log("PRODUCT SIZE: ", productSizeString)
+    if (this.state.styleSkus[i].sizes === productSizeString) {
+        console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
+          maxQuantity = this.state.styleSkus[i].quantity
+      }
+  }
+  for (let i = 1; i <= maxQuantity; i++) {
+    console.log('MAKING QUANTITIES: ', quantities)
+      quantities.push(i)
+  }
 
-
-
-  //listing functions
+  //listing functions/
   let styleThumbnailCircles = styleThumbnails.map(style => {
     return <img src={style.style_photos[0].thumbnail} className="selectStyle"></img>
   });
@@ -193,20 +143,13 @@ render() {
     return <li>{feature.feature}: {feature.value}</li>
   })
 
-  let styleSizeList = this.state.styleSkus.map(sku => {
-    return <option value={sku.sku}>{sku.sizes}</option>
+  let styleSizeList = this.state.styleSkus.map((sku, i) => {
+    return <option value={sku.sizes}>{sku.sizes}</option>
   })
-  let styleQuantityList = this.state.itemsInStock.map(quantitySelected => {
+  let styleQuantityList = quantities.map((quantitySelected, i) => {
+    console.log('NEW QUANTITY: ', quantitySelected)
     return <option value={quantitySelected}>{quantitySelected}</option>
   })
-
-  // console.log('SKU INFOOOOO: ', skuArr)
-
-  // let productSize = currentStyle.
-
-  // console.log('CURRENT STYLE: ', this.state.currentStyle)
-
-
 
 
 
@@ -228,11 +171,10 @@ return (
       {styleThumbnailCircles}
       </div>
       <div className="overviewSizeSelector">
-      <select className="btn selectSize" onChange={this.handleChange} value={this.state.currentSize}>
+      <select className="btn selectSize" onChange={this.handleChange}>
   {styleSizeList}
 </select>
-        {/*<button className="btn quantity">*/}{/*</button>*/}
-        <select className="quantity" >
+  <select>
   {styleQuantityList}
 </select>
       </div>
