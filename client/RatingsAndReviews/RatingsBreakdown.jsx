@@ -28,7 +28,7 @@ class RatingsBreakdown extends React.Component {
 
     return (
       <>
-        <div>Ratings & Reviews</div>
+
         <br></br>
         {this.renderOverallRating()}
         <div className="recommendPercentage">{this.props.recommended}% of {this.props.ratingsCount} reviews recommend this product</div>

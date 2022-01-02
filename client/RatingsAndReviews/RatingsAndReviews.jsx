@@ -81,7 +81,7 @@ class RatingsAndReviews extends React.Component {
         `/reviews?product_id=${this.props.product_id}&count=${this.state.reviewCount}&sort=${this.state.sort}`
       )
       .then(function (response) {
-        console.log("getreviews data:", response.data);
+
 
         let filtered = that.filterReviews(response.data.results);
         that.setState({
@@ -235,7 +235,9 @@ class RatingsAndReviews extends React.Component {
   render() {
     return (
       <div className="rateRev">
-
+        <br></br>
+        <h2>Ratings & Reviews</h2>
+        <br></br>
         <div className="ratings">
           <RatingsBreakdown
             ratings={this.state.ratings}

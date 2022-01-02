@@ -79,7 +79,7 @@ router.get("/reviews/meta", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-     console.log("got the reviews metadata!", result);
+     console.log("got the reviews metadata!");
       res.send(result);
     }
   });
