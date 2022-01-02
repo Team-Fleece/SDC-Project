@@ -5,6 +5,7 @@
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*###########################~~HEADER~~################################*/
@@ -178,16 +179,17 @@
 
 /*###########################~~RELATED PRODUCTS AND COMPARISONS~~################################*/
 .rItemsCompare {
-  background-color: rgb(204, 17, 17);
+  background-color: white;
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
+
 }
 
 .relatedProducts {
-  background-color: rgb(250, 250, 250);
+  background-color: white(250, 250, 250);
   margin: 10px;
 }
 
@@ -204,23 +206,27 @@
 
 .card {
   transition: 0.3s;
-  width: 90%;
+  width: 100%;
   border: 1px solid #ccc;
   margin: 10px;
-  position: relative;
+  flex: 2 0 21%;
+  max-width: 160px;
+  min-width: 160px;
+  display: inline-block;
+
 }
 .card-body {
-  padding: 20px 10px;
+  padding: 20px 5px;
   text-align: center;
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  white-space: -webkit-pre-wrap;
+  word-break: normal;
+  white-space: normal;
 }
 
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
-}
-
-.cardContainer {
-  padding: 2px 16px;
 }
 
 .topright {
@@ -236,63 +242,135 @@
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
+  cursor: pointer;
 }
 
 .carousel-container {
-  position: relative;
+  /* position: relative;
   margin: 5px;
   max-height: auto;
-  padding: 5px;
+  padding: 5px; */
   /* overflow: hidden; */
-}
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 
-.carousel-gradient {
-  height: 100%;
-  background: linear-gradient(135deg, #00c900, #0099ff);
-  padding: 2px;
-}
-.carousel-button-back {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 64px;
-  height: 64px;
-  border-radius: 64px;
-  border: none;
-  font-size: 32px;
-  &[disabled] {
-    background: none;
-  }
-}
-.carousel-button-next {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 64px;
-  height: 64px;
-  border-radius: 64px;
-  border: none;
-  font-size: 32px;
-  &[disabled] {
-    background: none;
-  }
 }
 .circle {
   margin: 10px;
   width: 150px;
   height: 150px;
   padding: 10px;
-  background: linear-gradient(135deg, #0099ff, #00c900);
+  background: white;
   border: 1px solid #ccc;
   color: #000;
   text-align: center;
-  font: 32px Arial, sans-serif;
+  font: 30px Arial, sans-serif;
+  max-width: 150px;
+  min-width: 150px;
+  display: inline-block;
+  padding: 50px 0 50px;
 }
+
+.comparison {
+  text-align: center;
+  transition: 0.3s;
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 10px;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.centerTable {
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+h2:before,
+h2:after {
+    content: '';
+    border-top: 2px solid;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+h2:after {
+    margin: 0 0 0 20px;
+}
+
+.small {
+  font-size: 13px;
+}
+
+.carousel-gradient {
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+.carousel-gradient::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-gradient-favorites {
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}
+.carousel-gradient-favorites::-webkit-scrollbar {
+  display: none;
+}
+.prev, .next {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  color: black;
+  transition: 0.6s ease;
+  font-size: 30px;
+}
+.next {
+  margin-left: 5px;
+}
+.prev {
+  margin-right: 5px;
+}
+.prev:hover, .next:hover {
+  color: white;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+
 /*###########################~~RATINGS AND REVIEWS~~################################*/
 .rateRev {
-  background-color: rgb(243, 8, 192);
+  /* background-color: rgb(243, 8, 192); */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -317,19 +395,138 @@
   flex-wrap: wrap;
   margin: 10px;
   flex: 3;
+
+}
+.reviewlist {
+  max-height: 520px;
+  overflow: scroll;
+
+}
+.sortedDiv {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 60px 80px auto;
 }
 
+#sorted {
+  grid-column: 1;
+  font-size: small;
+
+}
+
+.sorterdropdown {
+  grid-column: 2;
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+  font-size: small;
+}
+
+.sorterdropdown:hover {
+  cursor: pointer;
+  color: lightskyblue;
+}
+
+.reviewtile {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto 93px;
+  grid-template-rows: auto auto auto auto auto auto auto;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  height: 250px;
+
+}
+.reviewrating {
+  grid-column: 1;
+  grid-row: 1;
+}
+.ratinguser {
+  grid-column: 5;
+  grid-row: 1;
+  text-align: right;
+  font-size: small;
+
+}
+.ratingdate {
+  grid-column: 6;
+  grid-row: 1;
+  text-align: right;
+  font-size: small;
+}
+.ratingsummary {
+  grid-column: 1 / span 6;
+  grid-row: 2;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: small;
+}
+.ratingbody {
+  grid-column: 1 / span 6;
+  grid-row: 3;
+  overflow-wrap: break-word;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: small;
+}
+.ratingrecommend {
+  grid-column: 1 / span 2;
+  grid-row: 4;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: small;
+}
+.ratingresponse {
+  grid-column: 1 / span 6;
+  grid-row: 5;
+  font-weight: bold;
+  background-color: lightgray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ratingresponsetext {
+  font-weight: normal;
+}
+.helpfuldiv {
+  grid-column: 1;
+  grid-row: 7;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  font-size: x-small;
+}
+.helpfulSpan {
+  grid-column: 1;
+  grid-row: 1;
+
+}
 .reviewImage {
-  max-height: 100px;
-  max-width: 100px;
+  max-height: 50px;
+  max-width: 50px;
+
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
+
+.ratingimages {
+
+  grid-row: 6;
+}
 .helpfulReview:hover {
   cursor: pointer;
   color: lightskyblue;
 }
 .helpfulReview {
   text-decoration: underline;
+  grid-column: 2;
+  grid-row: 1;
+  font-size: x-small;
 }
 .reportReview:hover {
   cursor: pointer;
@@ -337,6 +534,26 @@
 }
 .reportReview {
   text-decoration: underline;
+  grid-column: 6;
+  grid-row: 7;
+  text-align: right;
+  font-size: x-small;
+}
+.reviewlistbuttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+.ReviewsButtons {
+  grid-column: 4;
+  grid-row: 1;
+}
+.MoreReviewsButtons {
+  grid-column: 2;
+  grid-row: 1;
+}
+.MoreReviewsButtons:hover {
+  cursor: pointer;
 }
 .modal {
   position: fixed;
@@ -350,7 +567,7 @@
 .modal-main {
   position: fixed;
   background: white;
-  width: 80%;
+  width: 60%;
   height: 75%;
   top: 50%;
   left: 50%;
@@ -372,9 +589,14 @@
   cursor: pointer;
 }
 
-.ReviewModalExit img {
+.ReviewModalExit {
   height: 20px;
-  width: 20px;
+
+
+  grid-column: 3;
+  grid-row: 1;
+
+
 }
 .ReviewModalExit:hover {
   cursor: pointer;
@@ -387,11 +609,283 @@
 .bodyInput {
   width: 75%;
   min-height: 200px;
+  text-align: start;
+  vertical-align: top;
   overflow-wrap: break-word;
+}
+.bodyInput::placeholder {
+  vertical-align: top;
 }
 .uploads {
   max-height: 100px;
   max-width: 100px;
+
+}
+
+.mainmodalform {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
+}
+.nicknamelabel {
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.nicknamereviewinput {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+  height: 30px;
+}
+.emailspan {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.emailreviewinput {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  height: 30px;
+}
+.overallratingspan {
+  grid-column: 1;
+  grid-row: 3;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.starchooseone {
+  grid-column: 2;
+  grid-row: 3;
+}
+.starchoosetwo {
+  grid-column: 3;
+  grid-row: 3;
+}
+.starchoosethree {
+  grid-column: 4;
+  grid-row: 3;
+}
+.starchoosefour {
+  grid-column: 5;
+  grid-row: 3;
+}
+.starchoosefive {
+  grid-column: 6;
+  grid-row: 3;
+}
+.starchooseone:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+  color: #000;
+}
+.starchoosetwo:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+
+}
+.starchoosethree:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+}
+.starchoosefour:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+}
+.starchoosefive:hover {
+  cursor: pointer;
+  /* font-size: medium; */
+}
+.startaker {
+  grid-column: 2;
+  grid-row: 3;
+  margin: auto;
+
+}
+.startaker:hover {
+
+  cursor: pointer;
+
+}
+.reviewrecommendspan {
+  grid-column: 1 / span 2;
+  grid-row: 4;
+  margin-top: 10px;
+
+}
+.yesradio {
+  grid-column: 3;
+  grid-row: 4;
+  margin: auto;
+}
+.noradio {
+  grid-column: 4;
+  grid-row: 4;
+  margin: auto;
+}
+.yesspan {
+  grid-column: 3;
+  grid-row: 5;
+  font-size: small;
+  margin: auto;
+}
+.nospan {
+  grid-column: 4;
+  grid-row: 5;
+  font-size: small;
+  margin: auto;
+}
+.charreviewform {
+  grid-column: 1 / span 6;
+  grid-row: 6;
+  margin-bottom: 10px;
+}
+.radiocharbuttons {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto;
+
+}
+.starRatings:hover {
+  cursor: pointer;
+  /* background-color: black; */
+
+}
+
+.imageuploaddiv {
+  display: grid;
+
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto ;
+}
+#selectimage {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.uploaderbutton {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.uploaderinput:hover {
+  cursor: pointer;
+}
+
+.formsubmit {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+}
+#formsubmitbutton {
+  grid-column: 2;
+  grid-row: 1;
+}
+#formsubmitbutton:hover {
+  cursor: pointer;
+}
+.closeModal {
+  display: grid;
+  grid-template-columns: auto auto 150px;
+  grid-template-rows: auto;
+}
+/* Product Breakdown */
+.productbreakdown {
+  font-size: x-small;
+}
+
+.prodbreakDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: 40px;
+  grid-template-rows: auto auto auto auto;
+}
+.prodbreakKey {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: small;
+  margin-bottom: 0;
+}
+.productprog {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+}
+#first {
+  grid-column: 1;
+  grid-row: 4;
+  margin-bottom: 20px;
+}
+
+#second {
+  grid-column: 2;
+  grid-row: 4;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#third {
+  grid-column: 3;
+  grid-row: 4;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+/* Rating Breakdown */
+.bigRating {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto;
+  text-align: center;
+  vertical-align: top;
+
+}
+.bigNumber {
+  font-size: xxx-large;
+  font-weight: bold;
+}
+.starratedspan {
+  background: linear-gradient(to right, black 90%, lightgray 10%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.recommendPercentage {
+  font-size: small;
+}
+.ratingBreakdown {
+  display: grid;
+  grid-template-columns: 25% auto auto auto auto;
+  min-height: 45px;
+  grid-template-rows: auto;
+  align-items: center;
+}
+
+#ratingbutton {
+  grid-column: 1;
+  height: 15px;
+  font-size: small;
+  border: none;
+  background-color: white;
+  /* margin: auto; */
+  text-align: left;
+  vertical-align: middle;
+  text-decoration: underline;
+  padding: 0px;
+}
+
+#ratingbutton:hover {
+  cursor: pointer;
+  color: lightskyblue
+}
+
+#ratingprog {
+  grid-column: 2 / span 4;
+  vertical-align: auto;
+
 }
 /*###########################~~FOOTER~~################################*/
 .footer {

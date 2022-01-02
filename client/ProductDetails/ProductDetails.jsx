@@ -111,6 +111,7 @@ componentDidUpdate(prevProps) {
     })
   }
 }
+<<<<<<< HEAD
 //
   // componentDidUpdate(prevProps) {
   //   let productID = this.props.product_id;
@@ -157,6 +158,49 @@ componentDidUpdate(prevProps) {
   handleChange(event) {
     let that = this;
     that.setState({currentSize: event.target.value});
+=======
+
+
+handleChange(event) {
+  //console.log('EVENT TARGET VALUE: ', event.target.value)
+  let that = this;
+//   let sizeToQuantity = function(currentSize) {
+//     let maxQuantity = 0;
+//     let quantities = [];
+//     for (let i = 0; i < this.state.styleSkus.length; i++) {
+//         if (this.state.styleSkus[i].size === currentSize) {
+//             maxQuantity = this.state.styleSkus[i].quantity
+//         }
+//     }
+//     for (let i = 1; i <= maxQuantity; i++) {
+//         quantities.push(i)
+//     }
+//     return quantities
+// }
+let getCurrentSize = function(newSku) {
+  let currentSize = 0;
+  //console.log('NEW SKUUUUU: ', newSku);
+  //console.log('FUNCTION this.state.styleSkus: ', this.state)
+  for (let i = 0; i < this.state.styleSkus.length; i++) {
+      if (newSku === this.state.styleSkus[i].sku) {
+          currentSize = this.state.styleSkus[i].size
+      }
+  }
+  return currentSize
+}
+
+let sizeToQuantity = function(currentSize) {
+  // let that = this;
+  let maxQuantity = 0;
+  let quantities = [];
+  for (let i = 0; i < this.state.styleSkus.length; i++) {
+      if (this.state.styleSkus[i].size === currentSize) {
+          maxQuantity = this.state.styleSkus[i].quantity
+      }
+  }
+  for (let i = 1; i <= maxQuantity; i++) {
+      quantities.push(i)
+>>>>>>> 4d554643c65b3ab83523342e583fc7b0c767099c
   }
 
 
