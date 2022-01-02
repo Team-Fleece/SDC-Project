@@ -137,15 +137,30 @@
   flex: 2;
   margin-top: 10px;
   font-size: 14px;
-  max-width: 100px;
-  min-width: 10px;
+  max-width: 110px;
+  min-width: 110px;
 }
 /*##### Answer Element #####*/
-.AnswerText {
+.AnswerUsernameText {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin: 10px;
+  font-weight: Bold;
+  font-size: 16px;
+}
+.AnswerBodyText {
   background-color: rgb(255, 255, 255);
   flex: 1;
   margin: 10px;
   font-size: 16px;
+}
+.answerHeaderWrapper {
+  display:flex;
+  flex-direction:row;
+  justify-content:stretch;
+}
+.answerDate {
+  margin-right: 10px;
 }
 .QAAHRWrapper {
   background-color: rgb(255, 255, 255);
@@ -167,8 +182,8 @@
   margin-top: 10px;
   margin-left: 10px;
   font-size: 10px;
-  max-width: 70px;
-  min-width: 70px;
+  max-width: 80px;
+  min-width: 80px;
 }
 .QAAHelpfulTxt {
   color: rgb(7, 176, 255);
@@ -187,8 +202,8 @@
   margin-top: 10px;
   margin-left: 10px;
   font-size: 10px;
-  max-width: 70px;
-  min-width: 70px;
+  max-width: 80px;
+  min-width: 80px;
 }
 
 /*##### Footer #####*/
@@ -232,6 +247,7 @@
   border: 1px solid rgb(0, 89, 255);
   border-radius: 5px;
   margin: 2px;
+  position:static;
   display: flex;
   flex-direction: column;
 }
@@ -242,7 +258,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.QAModalInputText {
+.QAModalUsernameInputText {
   background-color: rgb(255, 255, 255);
   border: 1px solid grey;
   border-radius: 5px;
@@ -250,7 +266,19 @@
   flex: 1;
   text-align: center;
   min-width: 200px;
-  min-height: 200px;
+}
+.QAModalAnswerInputText {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 10x;
+  flex: 1;
+  text-align: center;
+  min-width: 200px;
+  min-height: 40px;
+}
+.QACloseAndSubmitBtns {
+  flex:1
 }
 .QAModalExit {
   background: rgb(252, 184, 176);
@@ -265,4 +293,16 @@
 }
 .QAModalSubmit {
   background-color: rgb(193, 248, 193);
+}
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }

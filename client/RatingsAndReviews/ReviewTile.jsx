@@ -41,7 +41,7 @@ class ReviewTile extends React.Component {
     if (this.state.marked === false) {
       axios.put("/reviews/:reviewId/helpful", {review_id: this.state.review_id})
         .then(function(response) {
-          console.log('this worked:', response);
+          //console.log('this worked:', response);
           that.setState({marked: true})
           that.props.getRevs();
         })
@@ -54,7 +54,7 @@ class ReviewTile extends React.Component {
     let that = this;
     axios.put("/reviews/:reviewId/report", {review_id: this.state.review_id})
       .then(function(response) {
-        console.log('this worked:', response);
+        //console.log('this worked:', response);
         that.props.getRevs();
       })
       .catch(function(error) {

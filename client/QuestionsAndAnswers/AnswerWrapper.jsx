@@ -9,9 +9,16 @@ class AnswerWrapper extends React.Component {
   }
 
   render () {
+    const date = this.state.answerData.date.split("T")
     return (
       <div className='AnsElementWrapper'>
-        <div className='AnswerText'>{this.props.answerData.body}</div>
+        <div className="answerHeaderWrapper">
+          <div className='AnswerUsernameText'>
+            {this.props.answerData.answerer_name} answers
+          </div>
+          <div className="answerDate"> {date[0]}</div>
+        </div>
+        <div className='AnswerBodyText'>{this.props.answerData.body}</div>
         <div className='QAAHRWrapper'>
           <div className='QAAHelpful'>
             <div>Helpful?</div>

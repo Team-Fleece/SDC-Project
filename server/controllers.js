@@ -8,7 +8,7 @@ var {
   markHelpful,
   reportReview,
 } = require("./models/ratingsandreviews.js");
-const {getQuestions} = require('./models/QAModels.js')
+const {getQuestions, postAnswer, postQuestion} = require('./models/QAModels.js')
 var {getAllProducts, getSpecificProduct, getStyleOfProduct, getRelatedProducts,getProductDetailsInfo} = require('./models/productModels');
 const {productSorter} = require('../client/ProductDetails/OnLoadData.js');
 
@@ -79,7 +79,7 @@ router.get("/reviews/meta", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-     console.log("got the reviews metadata!", result);
+     console.log("got the reviews metadata!");
       res.send(result);
     }
   });
@@ -149,10 +149,27 @@ router.get("/qa/questions", (req, res) => {
 
 
 router.post(`/qa/questions/:questionId/answers`, (req, res) => {
+  postAnswer(req.originalUrl, req.body, (err, data)=>{
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("sent an answer!");
+      res.status(200).send(data);
+    }
+  })
   res.send("add answer");
 });
 
 router.post("/qa/questions", (req, res) => {
+  //console.log(req.body)
+  postQuestion(req.originalUrl, req.body, (err, data)=>{
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      console.log("sent a question!");
+      res.status(200).send(data);
+    }
+  })
   res.send("add question");
 });
 

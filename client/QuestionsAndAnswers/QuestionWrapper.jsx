@@ -46,7 +46,7 @@ loadMoreAnswers() {
         </div>
 
         <AnswersBody answerArray={finalAnswerArray}/>
-        <AnswerLoadAndAdd loadMoreAnswers={this.loadMoreAnswers}/>
+        <AnswerLoadAndAdd loadMoreAnswers={this.loadMoreAnswers} question_id={this.state.questionData.question_id}/>
       </div>
     )
   }

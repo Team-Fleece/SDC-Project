@@ -102,7 +102,7 @@ class ReviewModalForm extends React.Component {
   }
   incrementCount(count) {
     count++;
-    console.log('incremented count:', count);
+    //console.log('incremented count:', count);
   }
   handleRadioChange(e){
     this.changeValue(e.target.name, e.target.value);
@@ -124,7 +124,7 @@ class ReviewModalForm extends React.Component {
   onImageChange(e) {
     let newImages = this.state.images;
     if (e.target.files) {
-      console.log(e.target.files);
+      //console.log(e.target.files);
 
       let img = e.target.files[0];
       let imgURL = URL.createObjectURL(img);
@@ -186,7 +186,7 @@ class ReviewModalForm extends React.Component {
         characteristicsObj[this.props.characteristics[key]['id']] = Number(this.state[key]);
       }
       reviewObj['characteristics'] = characteristicsObj;
-      console.log('reviewObj:', reviewObj);
+      //console.log('reviewObj:', reviewObj);
       axios.post('/reviews', reviewObj)
         .then(function(response) {
 
