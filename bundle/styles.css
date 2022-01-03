@@ -378,6 +378,14 @@ h2:after {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.closeButton {
+  max-height: 55px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-width: 150px;
+  width: 65%;
+}
+
 /*###########################~~RATINGS AND REVIEWS~~################################*/
 .rateRev {
   /* background-color: rgb(243, 8, 192); */
