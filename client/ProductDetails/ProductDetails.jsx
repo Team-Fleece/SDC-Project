@@ -5,6 +5,7 @@ import {ProductGallery} from './ProductGallery.jsx'
 import {onloadState, productMainInfo, skuArray, getSkuInfo, getStyleSkuInfo} from './OnLoadData.js'
 import $ from 'jquery'
 import axios from 'axios'
+import {StarRating} from './starRatingBar.jsx'
 
 
 
@@ -51,15 +52,18 @@ componentDidMount() {
 }
 
 
+
+
+
+
+
+
+
+
 componentDidUpdate(prevProps) {
   if (this.props.product_id !== prevProps.product_id) {
     let productID = this.props.product_id;
-    let productStyleID = this.props.productStyleID;
-
     let that = this;
-    console.log("NEW PRODUCT")
-    console.log("productStyleID", productStyleID)
-
     //get styles
     axios.get(`/products/${productID}/styles/details`, {
       params: {
@@ -67,51 +71,93 @@ componentDidUpdate(prevProps) {
       }
     })
     .then(function(response) {
-          console.log("RESPONSE DATA: ", response.data)
-
-      console.log("NEW PRODUCT")
-      let newStyle = {};
-        let stylePhotos = [];
-        let newSkus = getStyleSkuInfo(response.data, productID);
-
-      // that.setState({
-      //   productInfo: response.data
-      // })
-
-      response.data.forEach(thisStyle => {
-        console.log("THIS STYLE OUTERRRR: ", thisStyle)
-        console.log("PRODUCT STYLE ID: ", productStyleID)
-        if (thisStyle.style_id === productStyleID) {
-          // newStyle.push({
-            console.log("THIS STYLE: ", thisStyle);
-            console.log("THIS STYLE . STYLE PHOTOS: ", thisStyle.style_photos);
-            newStyle = thisStyle;
-            stylePhotos = thisStyle.style_photos
-          // })
-        }
-      });
-
       that.setState({
         productInfo: response.data,
-        currentStylePhotos: stylePhotos,
-        currentStyle: newStyle,
-        styleSkus: newSkus
+        currentStylePhotos: response.data[0].style_photos,
+        currentStyle: response.data[0],
+        styleSkus: getSkuInfo(response.data)
       })
-
-      ////////
-    //   that.setState({
-    //     productInfo: response.data,
-    //     currentStylePhotos: response.data[0].style_photos,
-    //     currentStyle: response.data[0],
-    //     styleSkus: getSkuInfo(response.data)
-    //   })
     })
     .catch(function(error) {
       console.log('ERROR FROM GET STYLES: ', error)
     })
   }
 }
-<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+// componentDidUpdate(prevProps) {
+//   if (this.props.product_id !== prevProps.product_id) {
+//     let productID = this.props.product_id;
+//     let productStyleID = this.props.productStyleID;
+
+//     let that = this;
+//     console.log("NEW PRODUCT")
+//     console.log("productID", productID)
+//     console.log("productStyleID", productStyleID)
+
+//     //get styles
+//     axios.get(`/products/${productID}/styles/details`, {
+//       params: {
+//         productId: productID,
+//       }
+//     })
+//     .then(function(response) {
+//           // console.log("RESPONSE DATA: ", response.data)
+
+//       console.log("NEW PRODUCT")
+//       let newStyle = {};
+//         let stylePhotos = [];
+//         let newSkus = getStyleSkuInfo(response.data, productID);
+
+//       // that.setState({
+//       //   productInfo: response.data
+//       // })
+// //
+//       response.data.forEach(thisStyle => {
+//         console.log("THIS STYLE OUTERRRR: ", thisStyle)
+//         console.log("PRODUCT STYLE ID: ", productStyleID)
+//         if (thisStyle.style_id !== productStyleID) {
+//           // newStyle.push({
+//             console.log("THIS STYLE: ", thisStyle);
+//             console.log("THIS STYLE . STYLE PHOTOS: ", thisStyle.style_photos);
+//             newStyle = thisStyle;
+//             stylePhotos = thisStyle.style_photos
+//           // })
+//         }
+//       });
+
+//       that.setState({
+//         productInfo: response.data,
+//         currentStylePhotos: stylePhotos,
+//         currentStyle: newStyle,
+//         styleSkus: newSkus
+//       })
+
+//       ////////
+//     //   that.setState({
+//     //     productInfo: response.data,
+//     //     currentStylePhotos: response.data[0].style_photos,
+//     //     currentStyle: response.data[0],
+//     //     styleSkus: getSkuInfo(response.data)
+//     //   })
+//     })
+//     .catch(function(error) {
+//       console.log('ERROR FROM GET STYLES: ', error)
+//     })
+//   }
+// }
+
+
+
 //
   // componentDidUpdate(prevProps) {
   //   let productID = this.props.product_id;
@@ -158,49 +204,6 @@ componentDidUpdate(prevProps) {
   handleChange(event) {
     let that = this;
     that.setState({currentSize: event.target.value});
-=======
-
-
-handleChange(event) {
-  //console.log('EVENT TARGET VALUE: ', event.target.value)
-  let that = this;
-//   let sizeToQuantity = function(currentSize) {
-//     let maxQuantity = 0;
-//     let quantities = [];
-//     for (let i = 0; i < this.state.styleSkus.length; i++) {
-//         if (this.state.styleSkus[i].size === currentSize) {
-//             maxQuantity = this.state.styleSkus[i].quantity
-//         }
-//     }
-//     for (let i = 1; i <= maxQuantity; i++) {
-//         quantities.push(i)
-//     }
-//     return quantities
-// }
-let getCurrentSize = function(newSku) {
-  let currentSize = 0;
-  //console.log('NEW SKUUUUU: ', newSku);
-  //console.log('FUNCTION this.state.styleSkus: ', this.state)
-  for (let i = 0; i < this.state.styleSkus.length; i++) {
-      if (newSku === this.state.styleSkus[i].sku) {
-          currentSize = this.state.styleSkus[i].size
-      }
-  }
-  return currentSize
-}
-
-let sizeToQuantity = function(currentSize) {
-  // let that = this;
-  let maxQuantity = 0;
-  let quantities = [];
-  for (let i = 0; i < this.state.styleSkus.length; i++) {
-      if (this.state.styleSkus[i].size === currentSize) {
-          maxQuantity = this.state.styleSkus[i].quantity
-      }
-  }
-  for (let i = 1; i <= maxQuantity; i++) {
-      quantities.push(i)
->>>>>>> 4d554643c65b3ab83523342e583fc7b0c767099c
   }
 
 
@@ -258,9 +261,9 @@ render() {
 
   //listing functions//
   let styleThumbnailCircles = styleThumbnails.map(style => {
-    console.log("STYLE THUMB: ", style)
+    // console.log("STYLE THUMB: ", style.style_id)
     let ID = style.style_id;
-    console.log("IDDDDDDD: ", ID)
+    // console.log("IDDDDDDD: ", ID)
     return <img src={style.style_photos[0].thumbnail} onClick={() => this.props.onStyleThumbnailClick(ID)} className="selectStyle"></img>
   });
 
@@ -276,13 +279,13 @@ render() {
     return <option value={quantitySelected}>{quantitySelected}</option>
   })
 
-  console.log("NEW STYLE PHOTOS: ", currentStylePhotos)
-  console.log("NEW STYLE PHOTOS: ", this.state.currentStylePhotos)
+//   console.log("NEW STYLE PHOTOS: ", currentStylePhotos)
+//   console.log("NEW STYLE PHOTOS: ", this.state.currentStylePhotos)
 
-
+// console.log("this.state.currentStyle.style_specs: ", this.state.currentStyle.style_specs)
 
 return (
-  <div className="overviewWrapper">overviewWrapper
+  <div className="overviewWrapper">
   <div className="overviewProductDescriptionContainer">
     <div className="overviewImageGallery">
     <ProductGallery currentStylePhotos={currentStylePhotos} className="overviewImageGallery" />
@@ -292,17 +295,20 @@ return (
         overviewReviews
       </div>
       <div className="overviewNameAndCat">
-        <h4 className="category">{productCategory}</h4><br/>
-        <h2><strong>{productName}</strong></h2>
+        <h5 className="category">{productCategory}</h5>
+        <h1><strong>{productName}</strong></h1>
       </div>
       <div className="overviewStyle">
-      {styleThumbnailCircles}
+        <div><strong>STYLE >  </strong> {this.state.currentStyle.style_specs.name}</div>
+      <div>{styleThumbnailCircles}</div>
       </div>
       <div className="overviewSizeSelector">
       <select className="btn selectSize" onChange={this.handleChange}>
+      <option value="" disabled selected hidden>SELECT SIZE</option>
   {styleSizeList}
 </select>
-  <select>
+  <select className="btn quantity">
+  <option value="" disabled selected hidden>QUANTITY</option>
   {styleQuantityList}
 </select>
       </div>

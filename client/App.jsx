@@ -36,8 +36,10 @@ class App extends React.Component {
     return (
       <div id='App' className='App'>
         <div className='container'>
-          <div className='header'>header</div>
-          <div className='banner'>banner</div>
+          <div className='header'> <img src="https://see.fontimg.com/api/renderfont4/3z8d8/eyJyIjoiZnMiLCJoIjo0NywidyI6MTAwMCwiZnMiOjQ3LCJmZ2MiOiIjRkFGOEY4IiwiYmdjIjoiIzBFMDAwMCIsInQiOjF9/Q2x1dGNo/rooster-personal-use.png" alt="Cursive fonts"></img> </div>
+          <div className='banner'>
+          <marquee style={{ color: 'red', fontSize: '1em' }}>  <strong>Members only sale</strong><i> - Sign up now to receive exclusive deals!</i>  </marquee>
+            </div>
           <div className='wrapper'>
             <ProductDetails product_id={this.state.product_id} productStyleID={this.state.product_styleID} onStyleThumbnailClick={this.onStyleThumbnailClick} />
             <RelatedProducts product_id={this.state.product_id} onRelatedProductClick={this.onRelatedProductClick}/>
@@ -46,7 +48,7 @@ class App extends React.Component {
               product_id={this.state.product_id}
             />
           </div>
-          <div className='footer'>footer</div>
+          <div className='footer'> &copy; <i>Kacey Holm - Winston Pantelakos - Haydenn Harper - Ian McGahren </i></div>
         </div>
       </div>
     )
