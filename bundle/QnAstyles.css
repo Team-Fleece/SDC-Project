@@ -245,7 +245,14 @@
   margin: 10px;
   flex: 1;
   text-align: center;
+  font-weight: bold;
   max-width: 140px;
+  width: 65%;
+  margin-right: 5%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 55px;
+  min-width: 225px;
 }
 .QAModalOverlay {
   background-color: rgb(255, 255, 255);
