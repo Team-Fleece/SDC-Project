@@ -46,7 +46,7 @@ class App extends React.Component {
         }
       })
       .then(function(response) {
-        console.log('RESPONSE DATA: ', response.data)
+        // console.log('RESPONSE DATA: ', response.data)
         that.setState({
           productCatInfo: response.data
         })
