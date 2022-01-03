@@ -51,8 +51,8 @@ class AnswerLoadAndAdd extends React.Component {
   }
   render () {
     const showHideClassName = this.state.btnsVisible
-      ? 'QAModalBtn display-block'
-      : 'QAModalBtn display-none'
+      ? 'addAnswerButton display-block'
+      : 'addAnswerButton display-none'
     return (
       <div className='QALoadAndAddWrapper'>
         <button
