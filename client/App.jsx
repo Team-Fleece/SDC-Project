@@ -65,17 +65,15 @@ class App extends React.Component {
           <div className='header'> <img src="https://see.fontimg.com/api/renderfont4/3z8d8/eyJyIjoiZnMiLCJoIjo0NywidyI6MTAwMCwiZnMiOjQ3LCJmZ2MiOiIjRkFGOEY4IiwiYmdjIjoiIzBFMDAwMCIsInQiOjF9/Q2x1dGNo/rooster-personal-use.png" alt="Cursive fonts"></img>
 
 
-          <div className='QASearchForm'>
+          <div className='searchWrapper'>
           <button className='QASearchButton' type='submit'>
-          {/* <FontAwesomeIcon icon="fa-regular fa-magnifying-glass" /> */}
-            {/* <img src={QASearchButtonIcon} /> */}
+
           </button>
-          <input type='text' placeholder='Search Questions' className='QASearchField' />
+          <input type='text' className='searchMain' />
 
           <button className='QASearchClear' type='reset'>
-            {/* <img src={QASearchClearIcon} /> */}
-
           </button>
+            <i class="fas fa-search"></i>
         </div>
 
           </div>
