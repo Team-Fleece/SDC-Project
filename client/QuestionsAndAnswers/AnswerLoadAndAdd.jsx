@@ -103,7 +103,7 @@ class AnswerLoadAndAdd extends React.Component {
           onClick={this.showModal}
           className={showHideClassName}
         >
-          Add New Answer
+          Add New Answer +
         </button>
       </div>
     )
