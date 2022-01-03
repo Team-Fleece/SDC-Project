@@ -75,7 +75,7 @@ let getMetadata = function (request, callback) {
         Number(response.data.recommended.false);
       let recommendedPercentage =
         (Number(response.data.recommended.true) / recommendedSum) * 100;
-        console.log('recoSum:', recommendedSum);
+        //console.log('recoSum:', recommendedSum);
       response.data.recommended = recommendedPercentage.toFixed();
       callback(null, response.data);
     })
