@@ -97,7 +97,7 @@
   margin: 10px;
   font-size: 20px;
 }
-.QuestionText {
+.QuestionUsernameText {
   background-color: rgb(255, 255, 255);
   flex: 1;
   margin: 10px;
@@ -112,7 +112,7 @@
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  justify-content: flex-start;
+  justify-content:space-evenly;
 }
 
 .QAQHelpful {
