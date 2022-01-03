@@ -14,19 +14,23 @@ class ProductDetails extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      productMainInfo: productMainInfo,
+      productCatInfo: productMainInfo,
       productInfo: onloadState,
       currentStylePhotos: onloadState[0].style_photos,
       currentStyle: onloadState[0],
       styleSkus: [{quantity: 14, sizes: "7", sku: "1281202"}],
       currentQuantity: 1,
       currentSize: 7,
-      itemsInStock: [1, 2, 3, 4]
+      itemsInStock: [1, 2, 3, 4],
+      leftPercentage: 66,
+      rightPercentage: 33
   }
   this.componentDidMount = this.componentDidMount.bind(this)
   this.componentDidUpdate = this.componentDidUpdate.bind(this)
   this.handleChange = this.handleChange.bind(this)
+  this.getMetadata = this.getMetadata.bind(this)
 }
+
 
 componentDidMount() {
   let productID = this.props.product_id;
@@ -48,16 +52,7 @@ componentDidMount() {
   .catch(function(error) {
     console.log('ERROR FROM GET STYLES: ', error)
   })
-
 }
-
-
-
-
-
-
-
-
 
 
 componentDidUpdate(prevProps) {
@@ -71,6 +66,7 @@ componentDidUpdate(prevProps) {
       }
     })
     .then(function(response) {
+      console.log('RESPONSE DATA: ', response.data)
       that.setState({
         productInfo: response.data,
         currentStylePhotos: response.data[0].style_photos,
@@ -85,146 +81,45 @@ componentDidUpdate(prevProps) {
 }
 
 
-
-
-
-
-
-
-
-
-
-// componentDidUpdate(prevProps) {
-//   if (this.props.product_id !== prevProps.product_id) {
-//     let productID = this.props.product_id;
-//     let productStyleID = this.props.productStyleID;
-
-//     let that = this;
-//     console.log("NEW PRODUCT")
-//     console.log("productID", productID)
-//     console.log("productStyleID", productStyleID)
-
-//     //get styles
-//     axios.get(`/products/${productID}/styles/details`, {
-//       params: {
-//         productId: productID,
-//       }
-//     })
-//     .then(function(response) {
-//           // console.log("RESPONSE DATA: ", response.data)
-
-//       console.log("NEW PRODUCT")
-//       let newStyle = {};
-//         let stylePhotos = [];
-//         let newSkus = getStyleSkuInfo(response.data, productID);
-
-//       // that.setState({
-//       //   productInfo: response.data
-//       // })
-// //
-//       response.data.forEach(thisStyle => {
-//         console.log("THIS STYLE OUTERRRR: ", thisStyle)
-//         console.log("PRODUCT STYLE ID: ", productStyleID)
-//         if (thisStyle.style_id !== productStyleID) {
-//           // newStyle.push({
-//             console.log("THIS STYLE: ", thisStyle);
-//             console.log("THIS STYLE . STYLE PHOTOS: ", thisStyle.style_photos);
-//             newStyle = thisStyle;
-//             stylePhotos = thisStyle.style_photos
-//           // })
-//         }
-//       });
-
-//       that.setState({
-//         productInfo: response.data,
-//         currentStylePhotos: stylePhotos,
-//         currentStyle: newStyle,
-//         styleSkus: newSkus
-//       })
-
-//       ////////
-//     //   that.setState({
-//     //     productInfo: response.data,
-//     //     currentStylePhotos: response.data[0].style_photos,
-//     //     currentStyle: response.data[0],
-//     //     styleSkus: getSkuInfo(response.data)
-//     //   })
-//     })
-//     .catch(function(error) {
-//       console.log('ERROR FROM GET STYLES: ', error)
-//     })
-//   }
-// }
-
-
-
-//
-  // componentDidUpdate(prevProps) {
-  //   let productID = this.props.product_id;
-  //   let productStyleID = this.props.productStyleID;
-  //   let that = this;
-  //   if (this.props.productStyleID !== prevProps.productStyleID) {
-  //     let newStyleID = this.props.productStyleID;
-  //     axios.get(`/products/${productID}/styles/details`, {
-  //       params: {
-  //         productId: productID,
-  //       }
-  //     })
-  //     .then(function(response) {
-  //       console.log("RESPONSE DATA: ", response.data)
-  //       let newStyle = {};
-  //       let stylePhotos = [];
-  //       let newSkus = getStyleSkuInfo(response.data, productID);
-
-  //       that.setState({
-  //         productInfo: response.data
-  //       })
-
-  //       that.state.productInfo.forEach(thisStyle => {
-  //         if (style.style_id === productStyleID) {
-  //           // newStyle.push({
-  //             newStyle = thisStyle;
-  //             stylePhotos = thisStyle.style_photos
-  //           // })
-  //         }
-  //       });
-  //       that.setState({
-  //         currentStylePhotos: stylePhotos,
-  //         currentStyle: newStyle,
-  //         styleSkus: newSkus
-  //       })
-  //       // console.log("STYLE SKUS: ", this.state.styleSkus)
-  //     })
-  //     .catch(function(error) {
-  //       console.log('ERROR FROM GET STYLES ON STYLE CLICK: ', error)
-  //     })
-  //   }
-  // }
-
   handleChange(event) {
     let that = this;
     that.setState({currentSize: event.target.value});
   }
 
 
+  getMetadata() {
+    let that = this;
+
+    axios.get(`/reviews/meta?product_id=${this.props.product_id}`)
+      .then(function (response) {
+        that.setState({
+          leftPercentage: response.data.ratings.avg * 20,
+          rightPercentage: 100 - response.data.ratings.avg * 20,
+        });
+      })
+      .catch(function (error) {
+        console.log("Metadata GET Error:", error);
+      });
+  }
+
 
 
 
 render() {
   let skuArr = [];
-  let productCategory = this.state.productMainInfo.category;
-  let productName = this.state.productMainInfo.name;
-  let productSlogan = this.state.productMainInfo.slogan;
-  let productDescription = this.state.productMainInfo.description;
-  let productFeatures = this.state.productMainInfo.features;
+  let productCategory = this.props.productCatInfo.category;
+  let productName = this.props.productCatInfo.name;
+  let productSlogan = this.props.productCatInfo.slogan;
+  let productDescription = this.props.productCatInfo.description;
+  let productFeatures = this.props.productCatInfo.features;
   let currentStylePhotos = this.state.currentStylePhotos;
 
   //utility variables
   let styleThumbnails = this.state.productInfo;
-  // let entryList = Object.entries(this.state.currentStyle);
-  // let skuObj = entryList[3][1];
   let productSize = this.state.currentSize;
   let productSizeString = null;
+  let removeCents = this.state.productInfo[0].style_specs.original_price.length -3;
+  // let removeCents = priceIndexes -2
 
 
   if (typeof productSize === "number") {
@@ -233,71 +128,51 @@ render() {
     productSizeString = productSize
   }
 
-  //utility functions
-  // for (let item in skuObj) {
-  //           skuArr.push({
-  //               sku: item,
-  //               quantity: skuObj[item].quantity,
-  //               sizes: skuObj[item].size
-  //           })
-  //       };
-
   let maxQuantity = 0;
   let quantities = [];
-  // console.log("INSIDE OF s2q function");
-  // console.log("this.state.styleSkus: ", this.state.styleSkus);
   for (let i = 0; i < this.state.styleSkus.length; i++) {
-    // console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
-    // console.log("PRODUCT SIZE: ", productSizeString)
     if (this.state.styleSkus[i].sizes === productSizeString) {
-        // console.log('this.state.styleSkus[i].sizes: ', this.state.styleSkus[i].sizes)
           maxQuantity = this.state.styleSkus[i].quantity
       }
   }
   for (let i = 1; i <= maxQuantity; i++) {
-    // console.log('MAKING QUANTITIES: ', quantities)
       quantities.push(i)
   }
 
   //listing functions//
   let styleThumbnailCircles = styleThumbnails.map(style => {
-    // console.log("STYLE THUMB: ", style.style_id)
     let ID = style.style_id;
-    // console.log("IDDDDDDD: ", ID)
     return <img src={style.style_photos[0].thumbnail} onClick={() => this.props.onStyleThumbnailClick(ID)} className="selectStyle"></img>
   });
 
   let featuresBullets = productFeatures.map(feature => {
-    return <li>{feature.feature}: {feature.value}</li>
+    return <div>&#10004;   {feature.feature}: {feature.value}</div>
   })
 
   let styleSizeList = this.state.styleSkus.map((sku, i) => {
     return <option value={sku.sizes}>{sku.sizes}</option>
   })
   let styleQuantityList = quantities.map((quantitySelected, i) => {
-    // console.log('NEW QUANTITY: ', quantitySelected)
     return <option value={quantitySelected}>{quantitySelected}</option>
   })
 
-//   console.log("NEW STYLE PHOTOS: ", currentStylePhotos)
-//   console.log("NEW STYLE PHOTOS: ", this.state.currentStylePhotos)
-
-// console.log("this.state.currentStyle.style_specs: ", this.state.currentStyle.style_specs)
 
 return (
   <div className="overviewWrapper">
+
   <div className="overviewProductDescriptionContainer">
     <div className="overviewImageGallery">
-    <ProductGallery currentStylePhotos={currentStylePhotos} className="overviewImageGallery" />
+    <ProductGallery currentStylePhotos={currentStylePhotos} productMainInfo={this.props.productCatInfo} className="overviewImageGallery" />
     </div>
     <div className="overviewInformationContainer">
       <div className="overviewReviews">
-        overviewReviews
+      <StarRating leftPercentage={this.state.leftPercentage} rightPercentage={this.state.rightPercentage}/>
       </div>
       <div className="overviewNameAndCat">
-        <h5 className="category">{productCategory}</h5>
+        <h5>{productCategory}</h5>
         <h1><strong>{productName}</strong></h1>
       </div>
+      <div className="price">${this.state.productInfo[0].style_specs.original_price.slice(0, removeCents)}</div>
       <div className="overviewStyle">
         <div><strong>STYLE >  </strong> {this.state.currentStyle.style_specs.name}</div>
       <div>{styleThumbnailCircles}</div>
@@ -317,10 +192,10 @@ return (
         <button className="btn star">STAR</button>
       </div>
     </div>
-  </div>
+    </div>
   <div className="overviewProductDescriptionContainer">
     <div className="overviewDescriptionText">
-      <h5 className="slogan">{productSlogan}</h5>
+      <h3 className="slogan">{productSlogan}</h3>
       <p className="productDescription">{productDescription}</p>
     </div>
     <div className="overviewDescriptionChecklist">
@@ -329,7 +204,7 @@ return (
       </ul>
     </div>
   </div>
-</div>
+  </div>
 )
 }
 }
