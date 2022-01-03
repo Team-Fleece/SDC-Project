@@ -97,7 +97,7 @@ class QuestionLoadAndAdd extends React.Component {
           onClick={this.showModal}
           className={showHideClassName}
         >
-          Add New Question
+          Add New Question +
         </button>
       </div>
     )
