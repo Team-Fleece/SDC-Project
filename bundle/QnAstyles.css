@@ -210,6 +210,15 @@
   min-width: 80px;
   cursor:grab;
 }
+.addAnswerButton {
+  border:none;
+  font-size: 14;
+  margin-left: 40px;
+  background-color: white;
+}
+.addAnswerButton:hover {
+  color: blue;
+}
 
 /*##### Footer #####*/
 
