@@ -228,6 +228,7 @@
   max-width: 160px;
   min-width: 160px;
   display: inline-block;
+  position: relative;
 }
 .card-body {
   padding: 20px 5px;
@@ -254,17 +255,11 @@
   background-repeat: repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
   cursor: pointer;
+  display: inline-block;
 }
 
 .carousel-container {
-  /* position: relative;
-  margin: 5px;
-  max-height: auto;
-  padding: 5px; */
-  /* overflow: hidden; */
   max-width: 1000px;
   display: flex;
   justify-content: center;
@@ -285,6 +280,7 @@
   min-width: 150px;
   display: inline-block;
   padding: 50px 0 50px;
+  cursor: pointer;
 }
 
 .comparison {
@@ -552,10 +548,12 @@ h2:after {
 .ReviewsButtons {
   grid-column: 4;
   grid-row: 1;
+  height: 55px;
 }
 .MoreReviewsButtons {
   grid-column: 2;
   grid-row: 1;
+  height: 55px;
 }
 .MoreReviewsButtons:hover {
   cursor: pointer;
@@ -637,18 +635,21 @@ h2:after {
 .nicknamereviewinput {
   grid-column: 2 / span 2;
   grid-row: 1;
-  height: 30px;
+  width: 80%;
+  margin-bottom: 10px;
 }
 .emailspan {
   grid-column: 1;
   grid-row: 2;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 .emailreviewinput {
   grid-column: 2 / span 2;
   grid-row: 2;
-  height: 30px;
+  width: 80%;
+}
+.headsup {
+  font-size: x-small;
 }
 .overallratingspan {
   grid-column: 1;
@@ -712,23 +713,23 @@ h2:after {
 }
 .yesradio {
   grid-column: 3;
-  grid-row: 4;
+  grid-row: 5;
   margin: auto;
 }
 .noradio {
   grid-column: 4;
-  grid-row: 4;
+  grid-row: 5;
   margin: auto;
 }
 .yesspan {
   grid-column: 3;
-  grid-row: 5;
+  grid-row: 4;
   font-size: small;
   margin: auto;
 }
 .nospan {
   grid-column: 4;
-  grid-row: 5;
+  grid-row: 4;
   font-size: small;
   margin: auto;
 }
@@ -841,7 +842,6 @@ h2:after {
   font-weight: bold;
 }
 .starratedspan {
-  background: linear-gradient(to right, black 90%, lightgray 10%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
