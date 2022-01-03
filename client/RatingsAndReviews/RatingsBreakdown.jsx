@@ -32,7 +32,8 @@ class RatingsBreakdown extends React.Component {
         <br></br>
         {this.renderOverallRating()}
         <div className="recommendPercentage">{this.props.recommended}% of {this.props.ratingsCount} reviews recommend this product</div>
-
+        <br></br>
+        <h4 style={{textAlign: 'center'}}>Rating Breakdown</h4>
         <div className="ratingBreakdown">
           <button name ="fivereviews" value="showFive" onClick={this.props.click} id="ratingbutton" >5 stars</button>
 

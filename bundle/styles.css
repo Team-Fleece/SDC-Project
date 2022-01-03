@@ -302,7 +302,6 @@
   border: 1px solid #ccc;
   margin: 10px;
   position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .centerTable {
   margin-left: auto;
@@ -329,20 +328,6 @@ h2:after {
 
 .small {
   font-size: 14px;
-}
-
-.comparisonModal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /*###########################~~RATINGS AND REVIEWS~~################################*/
@@ -524,10 +509,12 @@ h2:after {
 .ReviewsButtons {
   grid-column: 4;
   grid-row: 1;
+  height: 55px;
 }
 .MoreReviewsButtons {
   grid-column: 2;
   grid-row: 1;
+  height: 55px;
 }
 .MoreReviewsButtons:hover {
   cursor: pointer;
@@ -613,18 +600,24 @@ h2:after {
 .nicknamereviewinput {
   grid-column: 2 / span 2;
   grid-row: 1;
-  height: 30px;
+  width: 80%;
+  margin-bottom: 10px;
 }
 .emailspan {
   grid-column: 1;
   grid-row: 2;
   margin-top: 10px;
-  margin-bottom: 10px;
+
 }
 .emailreviewinput {
   grid-column: 2 / span 2;
   grid-row: 2;
-  height: 30px;
+  width: 80%;
+
+
+}
+.headsup {
+  font-size: x-small;
 }
 .overallratingspan {
   grid-column: 1;
@@ -693,23 +686,23 @@ h2:after {
 }
 .yesradio {
   grid-column: 3;
-  grid-row: 4;
+  grid-row: 5;
   margin: auto;
 }
 .noradio {
   grid-column: 4;
-  grid-row: 4;
+  grid-row: 5;
   margin: auto;
 }
 .yesspan {
   grid-column: 3;
-  grid-row: 5;
+  grid-row: 4;
   font-size: small;
   margin: auto;
 }
 .nospan {
   grid-column: 4;
-  grid-row: 5;
+  grid-row: 4;
   font-size: small;
   margin: auto;
 }
@@ -717,6 +710,7 @@ h2:after {
   grid-column: 1 / span 6;
   grid-row: 6;
   margin-bottom: 10px;
+
 }
 .radiocharbuttons {
   display: grid;
@@ -825,7 +819,7 @@ h2:after {
   font-weight: bold;
 }
 .starratedspan {
-  background: linear-gradient(to right, black 90%, lightgray 10%);
+
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

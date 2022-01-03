@@ -263,7 +263,7 @@ class RatingsAndReviews extends React.Component {
           <div className="reviewlistbuttons">
             <MoreReviewsButton onClick={this.onMoreReviewsClick} />
             <Modal show={this.state.show} handleClose={this.hideModal}>
-              <h1>Write Your Review</h1>
+              <h2>Write Your Review</h2>
               <div>About the <span style={{ textDecoration: 'underline' }}>{this.state.currentProductInfo.name}</span></div>
               <ReviewModalForm
                 characteristics={this.state.characteristics}
@@ -271,7 +271,7 @@ class RatingsAndReviews extends React.Component {
               />
             </Modal>
             <button className="ReviewsButtons" onClick={this.showModal}>
-              Add A Review
+              Add A Review &#43;
             </button>
           </div>
         </div>
