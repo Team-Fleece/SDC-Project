@@ -52,7 +52,7 @@ class ReviewTile extends React.Component {
   markHelpful() {
     let that = this;
     if (this.state.marked === false) {
-      axios.put("/reviews/:reviewId/helpful", {review_id: this.state.review_id})
+      axios.put("/reviews/:reviewId/helpful", {review_id: this.props.review.review_id})
         .then(function(response) {
           //console.log('this worked:', response);
           that.setState({marked: true, helpfulness: that.state.helpfulness + 1})
@@ -118,9 +118,10 @@ class ReviewTile extends React.Component {
   renderHelpfulness() {
     if (this.state.helpfulness !== undefined) {
 
-      return (<div onClick={this.markHelpful.bind(this)} className="helpfulReview">Yes({this.state.helpfulness})</div>)
+      return (<div onClick={this.markHelpful.bind(this)} name={this.props.review} className="helpfulReview">Yes({this.props.review.helpfulness})</div>)
     }
   }
+
   render() {
     return (
       <>

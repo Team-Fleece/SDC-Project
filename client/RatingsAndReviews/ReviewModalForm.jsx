@@ -3,16 +3,9 @@ import OverallRating from './OverallRating.jsx'
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import StarRatingsInput from './StarRatingsInput.jsx';
+import SubmittedMessage from './SubmittedMessage.jsx';
 
-// {/* <StarRatings
-//                   rating={this.state.rating}
-//                   starRatedColor="blue"
-//                   changeRating={this.changeRating}
-//                   numberOfStars={5}
-//                   name='rating'
-//                   starDimension="15px"
-//                   starSpacing="5px"
-//                 /> */}
+
 class ReviewModalForm extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +24,7 @@ class ReviewModalForm extends React.Component {
       Fit: 0,
       selectedRecommend: '',
       rating: 0,
+      postWorked: undefined
 
     };
     this.renderCharacteristicRadioButtons =
@@ -285,11 +279,13 @@ class ReviewModalForm extends React.Component {
       }
       reviewObj['characteristics'] = characteristicsObj;
       //console.log('reviewObj:', reviewObj);
+      let that = this;
       axios.post('/reviews', reviewObj)
         .then(function(response) {
-
+          that.setState({postWorked: true});
         })
         .catch(function(error) {
+          that.setState({postWorked: false});
           console.log('post review error:', error);
         });
 
@@ -406,6 +402,7 @@ class ReviewModalForm extends React.Component {
           <br></br>
           <div className="formsubmit">
             <input type="submit" value="Submit" id="formsubmitbutton"/>
+            <SubmittedMessage postWorked={this.state.postWorked} />
           </div>
         </form>
       </>
