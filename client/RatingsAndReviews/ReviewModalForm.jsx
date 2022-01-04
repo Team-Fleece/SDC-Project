@@ -129,6 +129,9 @@ class ReviewModalForm extends React.Component {
   }
   changeValue(name, newValue) {
     let that = this;
+    if (name === "selectedRecommend") {
+      this.setState({selectedRecommend: newValue});
+    } else {
     let characteristicOptions = {
       Size: {
         1: "A size too small",
@@ -190,7 +193,8 @@ class ReviewModalForm extends React.Component {
       })
       .catch(function(error) {
         console.log('Change Selection Error:', error);
-      })
+      });
+    }
   }
   renderSelected(char, charObj) {
     if (this.state[char] === 0) {
@@ -259,7 +263,7 @@ class ReviewModalForm extends React.Component {
     if (this.props.characteristics !== undefined) {
 
       let reviewObj = {
-        product_id: this.state.product_id,
+        product_id: this.props.product_id,
         rating: this.state.rating,
         summary: this.state.summary,
         body: this.state.body,
