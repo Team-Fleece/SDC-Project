@@ -256,7 +256,7 @@
   max-width: 160px;
   min-width: 160px;
   display: inline-block;
-  position: relative;
+  z-index: 2;
 }
 .card-body {
   padding: 20px 5px;
@@ -312,17 +312,24 @@
 }
 
 .comparison {
-  text-align: center;
   transition: 0.3s;
-  width: 100%;
   border: 1px solid #ccc;
-  margin: 10px;
-  position: relative;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  background: white;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2%;
+  z-index: 3;
+  font-size: 14px;
 }
 .centerTable {
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 h2 {
   display: flex;
@@ -412,6 +419,7 @@ h2:after {
   padding-bottom: 15px;
   max-width: 150px;
   width: 65%;
+  left: 50%;
 }
 
 /*###########################~~RATINGS AND REVIEWS~~################################*/
@@ -479,7 +487,15 @@ h2:after {
   padding-bottom: 10px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  height: 250px;
+  max-height: 300px;
+}
+.showmore {
+  font-size: small;
+  font-weight: bold;
+}
+.showmore:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .reviewrating {
   grid-column: 1;
@@ -888,7 +904,7 @@ h2:after {
 }
 .ratingBreakdown {
   display: grid;
-  grid-template-columns: 25% auto auto auto auto;
+  grid-template-columns: 25% auto auto auto auto auto;
   min-height: 45px;
   grid-template-rows: auto;
   align-items: center;
@@ -907,6 +923,10 @@ h2:after {
   padding: 0px;
 }
 
+.ratingCountSpan {
+  grid-column: 6;
+  margin: auto;
+}
 #ratingbutton:hover {
   cursor: pointer;
   color: lightskyblue;

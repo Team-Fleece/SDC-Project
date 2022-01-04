@@ -66,7 +66,8 @@ componentDidUpdate(prevProps) {
       }
     })
     .then(function(response) {
-      // console.log('RESPONSE DATA: ', response.data)
+      console.log('RESPONSE DATA: ', response.data)
+      getMetadata();
       that.setState({
         productInfo: response.data,
         currentStylePhotos: response.data[0].style_photos,
@@ -74,6 +75,15 @@ componentDidUpdate(prevProps) {
         styleSkus: getSkuInfo(response.data)
       })
     })
+    .then(
+      axios.get(`/reviews/meta?product_id=${this.props.product_id}`)
+      .then(function (response) {
+        that.setState({
+          leftPercentage: response.data.ratings.avg * 20,
+          rightPercentage: 100 - response.data.ratings.avg * 20,
+        });
+      })
+    )
     .catch(function(error) {
       console.log('ERROR FROM GET STYLES: ', error)
     })
