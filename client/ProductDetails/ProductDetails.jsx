@@ -168,12 +168,12 @@ return (
       <StarRating leftPercentage={this.state.leftPercentage} rightPercentage={this.state.rightPercentage}/>
       </div>
       <div className="overviewNameAndCat">
-        <h5>{productCategory}</h5>
+        <h5>{productCategory.toUpperCase()}</h5>
         <h1><strong>{productName}</strong></h1>
       </div>
       <div className="price">${this.state.productInfo[0].style_specs.original_price.slice(0, removeCents)}</div>
       <div className="overviewStyle">
-        <div><strong>STYLE >  </strong> {this.state.currentStyle.style_specs.name}</div>
+        <div><strong>STYLE >  </strong> {this.state.currentStyle.style_specs.name.toUpperCase()}</div>
       <div>{styleThumbnailCircles}</div>
       </div>
       <div className="overviewSizeSelector">
