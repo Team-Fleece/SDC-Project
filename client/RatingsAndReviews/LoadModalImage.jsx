@@ -2,7 +2,7 @@ import React from 'react';
 
 let LoadModalImage = (props) => {
   return (
-    <div>
+    <div className="modalImagediv">
       <img className="modalImage" src={props.image}/>
     </div>
   )
