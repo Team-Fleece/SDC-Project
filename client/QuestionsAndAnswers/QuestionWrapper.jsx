@@ -8,7 +8,8 @@ class QuestionWrapper extends React.Component {
     super(props)
     this.state = {
       questionData: this.props.questionData,
-      answerCount: 2
+      answerCount: 2,
+      questionHelpCount: this.props.questionData.question_helpfulness
     }
     this.loadMoreAnswers = this.loadMoreAnswers.bind(this)
     this.questionHelpful = this.questionHelpful.bind(this)
@@ -16,6 +17,17 @@ class QuestionWrapper extends React.Component {
   }
   componentDidUpdate () {
     //console.log(this.state.questionData)
+  }
+  convertTime (milliseconds) {
+    let date = new Date(milliseconds)
+
+    let modifiedDate = date.toString().split(' ')
+    modifiedDate.shift()
+    modifiedDate.splice(2, 0, ', ')
+    modifiedDate.splice(4, 5)
+    modifiedDate.splice(1, 0, ' ')
+    modifiedDate.join('')
+    return modifiedDate
   }
   questionHelpful () {
     let questionID = this.state.questionData.question_id
@@ -46,12 +58,14 @@ class QuestionWrapper extends React.Component {
     this.setState({ answerCount: (this.state.answerCount += 2) })
   }
   render () {
-    let questionDate = this.state.questionData.question_date.split('T');
+    console.log(this.state.questionData)
+    let questionDate = this.state.questionData.question_date.split('T')
     const answerArray = []
     Object.keys(this.state.questionData.answers).map(element => {
       //console.log(this.state.questionData.answers[element])
       answerArray.push(this.state.questionData.answers[element])
     })
+    let questionHelpCount = this.state.questionHelpCount
     const finalAnswerArray = answerArray.slice(0, this.state.answerCount)
     //console.log(this.state.questionData)
     return (
@@ -59,26 +73,32 @@ class QuestionWrapper extends React.Component {
         <div className='QuesElementWrapper'>
           <div>
             <div className='QuestionUsernameText'>
-              {this.state.questionData.asker_name} asked on{' '}
-              {questionDate[0]}
+              {'Q: '}
+              {this.state.questionData.asker_name}
             </div>
             <div className='QuestionText'>
               {this.state.questionData.question_body}
             </div>
           </div>
           <div className='QAQHRWrapper'>
+            <div className="questionDate">
+            {this.convertTime(
+              Date.parse(this.props.questionData.question_date.slice(0, 10))
+              )}
+
+              </div>
             <div className='QAQHelpful'>
               Helpful?
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
                 Yes
               </div>
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
-                (2)
+                ({questionHelpCount})
               </div>
-            </div>
-            <div onClick={this.questionReported} className='QAQReport'>
-              {' '}
-              Report Question?
+              <div onClick={this.questionReported} className='QAQReport'>
+                {''}
+                Report Question?
+              </div>
             </div>
           </div>
         </div>

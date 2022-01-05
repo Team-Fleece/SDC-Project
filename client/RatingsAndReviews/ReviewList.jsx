@@ -5,8 +5,8 @@ let ReviewList = (props) => {
 
     return (
       <>
-        {props.reviews.map((review) => (
-          <ReviewTile review={review} getRevs={props.getRevs}/>
+        {props.reviews.map((review, id) => (
+          <ReviewTile key={id} review={review} getRevs={props.getRevs}/>
         ))}
       </>
     );

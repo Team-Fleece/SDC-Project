@@ -30,7 +30,7 @@ class QuestionLoadAndAdd extends React.Component {
     this.setState({ [event.target.id]: event.target.value })
   }
   submitQuestion = () => {
-    let productID = this.state.product_id
+    let productID = this.props.product_id
     let dataObj = {
       body: this.state.questionText,
       name: this.state.usernameText,

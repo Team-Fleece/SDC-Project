@@ -66,7 +66,7 @@ class RatingsAndReviews extends React.Component {
     axios
       .get(`/reviews/meta?product_id=${this.props.product_id}`)
       .then(function (response) {
-        console.log('get meta response: ', response.data);
+        //console.log('get meta response: ', response.data);
         that.setState({
           ratings: response.data.ratings,
           recommendedPercentage: response.data.recommended,
@@ -88,7 +88,7 @@ class RatingsAndReviews extends React.Component {
         `/reviews?product_id=${this.props.product_id}&count=${this.state.reviewCount}&sort=${this.state.sort}`
       )
       .then(function (response) {
-        console.log('get response:', response);
+        //console.log('get response:', response);
         if(that.state.reviewCount > response.data.results.length) {
           that.setState({ showMoreReviews: false});
         }

@@ -42,7 +42,7 @@ let postQuestion = (request, data, callback) => {
   axios
     .post(queryString, data, configOptions, callback)
     .then(res => {
-      console.log(res, 'got some data')
+      //console.log(res, 'got some data')
       callback(null, res.data.results) //Needs optimization
     })
     .catch(res => {

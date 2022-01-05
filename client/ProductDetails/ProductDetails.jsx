@@ -12,13 +12,13 @@ import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, Pint
 
 class ProductDetails extends React.Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       productCatInfo: productMainInfo,
       productInfo: onloadState,
       currentStylePhotos: onloadState[0].style_photos,
       currentStyle: onloadState[0],
-      styleSkus: [{quantity: 14, sizes: "7", sku: "1281202"}],
+      styleSkus: [{ quantity: 14, sizes: '7', sku: '1281202' }],
       currentQuantity: 1,
       currentSize: 7,
       itemsInStock: [1, 2, 3, 4],
@@ -56,25 +56,28 @@ componentDidMount() {
   })
 }
 
-
-componentDidUpdate(prevProps, prevState) {
-  if (this.props.product_id !== prevProps.product_id || prevProps.productStyleID !== this.props.productStyleID) {
-    let productID = this.props.product_id;
-    let that = this;
-    //get styles
-    axios.get(`/products/${productID}/styles/details`, {
-      params: {
-        productId: productID,
-      }
-    })
-    .then(function(response) {
-      // console.log('RESPONSE DATA: ', response.data);
-      that.setState({
-        productInfo: response.data,
-        currentStylePhotos: response.data[0].style_photos,
-        currentStyle: response.data[0],
-        styleSkus: getSkuInfo(response.data)
-      })
+  componentDidUpdate (prevProps, prevState) {
+    if (
+      this.props.product_id !== prevProps.product_id ||
+      prevProps.productStyleID !== this.props.productStyleID
+    ) {
+      let productID = this.props.product_id
+      let that = this
+      //get styles
+      axios
+        .get(`/products/${productID}/styles/details`, {
+          params: {
+            productId: productID
+          }
+        })
+        .then(function (response) {
+          // console.log('RESPONSE DATA: ', response.data);
+          that.setState({
+            productInfo: response.data,
+            currentStylePhotos: response.data[0].style_photos,
+            currentStyle: response.data[0],
+            styleSkus: getSkuInfo(response.data)
+          })
       console.log('this.state.productInfo; ', that.state.productInfo)
       that.state.productInfo.forEach(style => {
         // console.log("STYLEEEEEEE SKUS: ", style.style_skus)
@@ -94,29 +97,26 @@ componentDidUpdate(prevProps, prevState) {
 }}
 
 
-  handleChange(event) {
-    let that = this;
-    that.setState({currentSize: event.target.value});
+  handleChange (event) {
+    let that = this
+    that.setState({ currentSize: event.target.value })
   }
 
+  getMetadata () {
+    let that = this
 
-  getMetadata() {
-    let that = this;
-
-    axios.get(`/reviews/meta?product_id=${this.props.product_id}`)
+    axios
+      .get(`/reviews/meta?product_id=${this.props.product_id}`)
       .then(function (response) {
         that.setState({
           leftPercentage: response.data.ratings.avg * 20,
-          rightPercentage: 100 - response.data.ratings.avg * 20,
-        });
+          rightPercentage: 100 - response.data.ratings.avg * 20
+        })
       })
       .catch(function (error) {
-        console.log("Metadata GET Error:", error);
-      });
+        console.log('Metadata GET Error:', error)
+      })
   }
-
-
-
 
 render() {
   const shareUrl = 'https://www.neopets.com/';
@@ -146,32 +146,51 @@ render() {
   for (let i = 0; i < this.state.styleSkus.length; i++) {
     if (this.state.styleSkus[i].sizes === productSizeString) {
           maxQuantity = this.state.styleSkus[i].quantity
+
       }
-  }
-  for (let i = 1; i <= maxQuantity; i++) {
+    }
+    for (let i = 1; i <= maxQuantity; i++) {
       quantities.push(i)
-  }
+    }
 
-  //listing functions//
-  let styleThumbnailCircles = styleThumbnails.map(style => {
-    let ID = style.style_id;
-    return <img src={style.style_photos[0].thumbnail} onClick={() => this.props.onStyleThumbnailClick(ID)} className="selectStyle"></img>
-  });
+    //listing functions//
+    let styleThumbnailCircles = styleThumbnails.map(style => {
+      let ID = style.style_id
+      return (
+        <img
+          key={ID}
+          src={style.style_photos[0].thumbnail}
+          onClick={() => this.props.onStyleThumbnailClick(ID)}
+          className='selectStyle'
+        ></img>
+      )
+    })
 
-  let featuresBullets = productFeatures.map(feature => {
-    return <div>&#10004;   {feature.feature}: {feature.value}</div>
-  })
+    let featuresBullets = productFeatures.map(feature => {
+      return (
+        <div key={feature.value}>
+          &#10004; {feature.feature}: {feature.value}
+        </div>
+      )
+    })
 
-  let styleSizeList = this.state.styleSkus.map((sku, i) => {
-    return <option value={sku.sizes}>{sku.sizes}</option>
-  })
-  let styleQuantityList = quantities.map((quantitySelected, i) => {
-    return <option value={quantitySelected}>{quantitySelected}</option>
-  })
+    let styleSizeList = this.state.styleSkus.map((sku, i) => {
+      return (
+        <option key={i} value={sku.sizes}>
+          {sku.sizes}
+        </option>
+      )
+    })
+    let styleQuantityList = quantities.map((quantitySelected, i) => {
+      return (
+        <option key={i} value={quantitySelected}>
+          {quantitySelected}
+        </option>
+      )
+    })
 
-
-return (
-  <div className="overviewWrapper">
+    return (
+      <div className='overviewWrapper'>
 
   <div className="overviewProductDescriptionContainer">
     <div className="overviewImageGallery">

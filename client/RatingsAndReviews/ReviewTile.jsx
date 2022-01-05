@@ -33,7 +33,6 @@ class ReviewTile extends React.Component {
     modifiedDate.splice(4, 5);
     modifiedDate.splice(1, 0, " ");
     modifiedDate.join("");
-
     return modifiedDate;
   }
   isRecommended(review) {

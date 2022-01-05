@@ -90,7 +90,7 @@ class ReviewModalForm extends React.Component {
       };
 
       return characteristicsKeys.map((key, i) => (
-        <div className="radiocharbuttons">
+        <div key={i} className="radiocharbuttons">
           <span key={key + 'initial'} style={{gridColumn: 1, gridRow: (2 * i) + 1, fontSize: 'small'}}>{key}:</span>
           <div style={{gridColumn: 1, gridRow: (2 * i) + 2, margin: 'auto'}}>{this.renderSelected(key, characteristicOptions[key])}</div>
           <input key={key + 'one'} name={key} value={1} type="radio" onChange={this.handleRadioChange} style={{gridColumn: 2, gridRow: (2 * i) + 2, margin: 'auto'}}/>
@@ -230,8 +230,8 @@ class ReviewModalForm extends React.Component {
   }
   renderUploadedImages() {
     if (this.state.images.length > 0) {
-      return this.state.images.map((image) => (
-        <div className="uploaddiv">
+      return this.state.images.map((image, i) => (
+        <div key={i} className="uploaddiv">
           <img className="uploads" src={image} />
         </div>
       ));
