@@ -22,8 +22,7 @@ class ReviewTile extends React.Component {
     this.renderOverallRating = this.renderOverallRating.bind(this);
     this.showMore = this.showMore.bind(this);
     this.showAllBody = this.showAllBody.bind(this);
-    // this.renderHelpfulness = this.renderHelpfulness.bind(this);
-    // this.markHelpful = this.markHelpful.bind(this);
+
   }
   convertTime(milliseconds) {
     let date = new Date(milliseconds);
@@ -54,7 +53,7 @@ class ReviewTile extends React.Component {
 
   reportReview() {
     let that = this;
-    axios.put("/reviews/:reviewId/report", {review_id: this.state.review_id})
+    axios.put("/reviews/:reviewId/report", {review_id: this.props.review.review_id})
       .then(function(response) {
         //console.log('this worked:', response);
         that.props.getRevs();
@@ -104,12 +103,7 @@ class ReviewTile extends React.Component {
     }
 
   }
-  renderHelpfulness() {
-    if (this.state.helpfulness !== undefined) {
 
-      return (<div onClick={this.markHelpful.bind(this)} name={this.props.review} className="helpfulReview">Yes({this.props.review.helpfulness})</div>)
-    }
-  }
 
   render() {
     return (
