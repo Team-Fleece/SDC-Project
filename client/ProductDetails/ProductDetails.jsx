@@ -2,11 +2,11 @@
 //Import Library Dependencies
 import React from 'react'
 import {ProductGallery} from './ProductGallery.jsx'
-import {onloadState, productMainInfo, skuArray, getSkuInfo, getStyleSkuInfo} from './OnLoadData.js'
+import {onloadState, productMainInfo, skuArray, getSkuInfo, getStyleSkuInfo, getStyleInfo} from './OnLoadData.js'
 import $ from 'jquery'
 import axios from 'axios'
 import {StarRating} from './starRatingBar.jsx'
-
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, PinterestShareButton, PinterestIcon, TumblrShareButton, TumblrIcon, EmailShareButton, EmailIcon} from 'react-share';
 
 
 
@@ -23,7 +23,8 @@ class ProductDetails extends React.Component {
       currentSize: 7,
       itemsInStock: [1, 2, 3, 4],
       leftPercentage: 66,
-      rightPercentage: 33
+      rightPercentage: 33,
+      currentPrice: 0
   }
   this.componentDidMount = this.componentDidMount.bind(this)
   this.componentDidUpdate = this.componentDidUpdate.bind(this)
@@ -46,7 +47,8 @@ componentDidMount() {
       productInfo: response.data,
       currentStylePhotos: response.data[0].style_photos,
       currentStyle: response.data[0],
-      styleSkus: getSkuInfo(response.data)
+      styleSkus: getSkuInfo(response.data),
+      currentPrice: that.props.productCatInfo.default_price
     })
   })
   .catch(function(error) {
@@ -75,38 +77,17 @@ componentDidUpdate(prevProps, prevState) {
       })
       console.log('this.state.productInfo; ', that.state.productInfo)
       that.state.productInfo.forEach(style => {
-        console.log("STYLEEEEEEE: ", style)
+        // console.log("STYLEEEEEEE SKUS: ", style.style_skus)
         if (that.props.productStyleID === style.style_id){
           that.setState({
             currentStylePhotos: style.style_photos,
             currentStyle: style,
-            // styleSkus: getSkuInfo(style)
+            styleSkus: getStyleInfo(style.style_skus)
           })
         }
       }
       )
     })
-    // .then(
-    //   axios.get(`/reviews/meta?product_id=${this.props.product_id}`)
-    //   .then(function (response) {
-    //     that.setState({
-    //       leftPercentage: response.data.ratings.avg * 20,
-    //       rightPercentage: 100 - response.data.ratings.avg * 20,
-    //     });
-    //   })
-    // )
-    // .then(
-    //   this.state.productInfo.forEach(style => {
-    //     console.log("STYLEEEEEEE: ", style)
-    //     if (this.props.productStyleID === style.style_id){
-    //       that.setState({
-    //         currentStylePhotos: style.style_photos,
-    //         currentStyle: style,
-    //         // styleSkus: getSkuInfo(style)
-    //       })
-    //     }
-    //   }
-    //   ))
     .catch(function(error) {
       console.log('ERROR FROM GET STYLES: ', error)
     })
@@ -138,6 +119,7 @@ componentDidUpdate(prevProps, prevState) {
 
 
 render() {
+  const shareUrl = 'https://www.neopets.com/';
   let skuArr = [];
   let productCategory = this.props.productCatInfo.category;
   let productName = this.props.productCatInfo.name;
@@ -198,12 +180,13 @@ return (
     <div className="overviewInformationContainer">
       <div className="overviewReviews">
       <StarRating leftPercentage={this.state.leftPercentage} rightPercentage={this.state.rightPercentage}/>
+      <a href="#rateReview" className="seeAllRatings">See All Ratings and Reviews</a>
       </div>
       <div className="overviewNameAndCat">
         <h5>{productCategory.toUpperCase()}</h5>
         <h1><strong>{productName}</strong></h1>
       </div>
-      <div className="price">${this.state.productInfo[0].style_specs.original_price.slice(0, removeCents)}</div>
+      <div className="price">${this.state.currentStyle.style_specs.original_price.slice(0, removeCents)}</div>
       <div className="overviewStyle">
         <div><strong>STYLE >  </strong> {this.state.currentStyle.style_specs.name.toUpperCase()}</div>
       <div>{styleThumbnailCircles}</div>
@@ -220,7 +203,24 @@ return (
       </div>
       <div className="overviewBagAndStar">
         <button className="btn addToBag">ADD TO BAG</button>
-        <button className="btn star">STAR</button>
+        <FacebookShareButton className="social" url={shareUrl}>
+          <FacebookIcon round={true} size={40}></FacebookIcon>
+        </FacebookShareButton>
+        <TwitterShareButton className="social" url={shareUrl}>
+          <TwitterIcon round={true} size={40}></TwitterIcon>
+        </TwitterShareButton>
+        <PinterestShareButton className="social" url={shareUrl}>
+          <PinterestIcon round={true} size={40}></PinterestIcon>
+        </PinterestShareButton>
+        <TumblrShareButton className="social" url={shareUrl}>
+          <TumblrIcon round={true} size={40}></TumblrIcon>
+        </TumblrShareButton>
+        <EmailShareButton className="social" url={shareUrl}>
+          <EmailIcon round={true} size={40}></EmailIcon>
+        </EmailShareButton>
+
+
+
       </div>
     </div>
     </div>
@@ -239,5 +239,7 @@ return (
 )
 }
 }
+
+{/* <button className="btn star">STAR</button> */}
 
 export {ProductDetails}
