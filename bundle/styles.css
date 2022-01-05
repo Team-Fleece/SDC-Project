@@ -682,6 +682,14 @@ h2:after {
 .modalImage {
   max-width: 80%;
   max-height: 80%;
+  margin: auto;
+
+}
+.modalImagediv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 .ImageModalExit {
   grid-column: 2;
@@ -696,6 +704,22 @@ h2:after {
   display: none;
 }
 
+.imagemodal-main {
+  position: fixed;
+  background: white;
+  max-width: 60%;
+  max-height: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  padding: 5%;
+  align-items: center;
+}
+/* .imagemodaldisplay {
+  display: grid;
+  grid-template-columns: auto auto auto;
+} */
 .ReviewsButtons:hover {
   cursor: pointer;
 }

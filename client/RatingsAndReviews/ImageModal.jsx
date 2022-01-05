@@ -1,12 +1,12 @@
 import '../../bundle/styles.css';
 import React from 'react';
 import QAExitIcon from '../assets/QAExitIcon.png'
-const ImageModal = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? "modal display-block" : "modal display-none";
+const ImageModal = ({ handleClose, show, children, name }) => {
+  const showHideClassName = show ? "modal imagemodaldisplay" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main imagemodal">
+      <section className="imagemodal-main">
         {children}
         <br></br>
         <div className="closeModal">
@@ -14,7 +14,7 @@ const ImageModal = ({ handleClose, show, children }) => {
 
         </div>
         <div className="modalClose">
-          <button className="ImageModalExit" type="button" onClick={handleClose}> Close
+          <button className="ImageModalExit" type="button" name={name} onClick={handleClose}> Close
 
           </button>
         </div>

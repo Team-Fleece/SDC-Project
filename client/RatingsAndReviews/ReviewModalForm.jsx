@@ -279,15 +279,21 @@ class ReviewModalForm extends React.Component {
       }
       reviewObj['characteristics'] = characteristicsObj;
       //console.log('reviewObj:', reviewObj);
-      let that = this;
-      axios.post('/reviews', reviewObj)
-        .then(function(response) {
-          that.setState({postWorked: true});
-        })
-        .catch(function(error) {
-          that.setState({postWorked: false});
-          console.log('post review error:', error);
-        });
+      let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if (!re.test(reviewObj.email) || reviewObj.body.length < 50 || reviewObj.body.length > 1000) {
+        this.setState({postWorked: false});
+      } else {
+        let that = this;
+        axios.post('/reviews', reviewObj)
+          .then(function(response) {
+            that.setState({postWorked: true});
+          })
+          .catch(function(error) {
+            that.setState({postWorked: false});
+            console.log('post review error:', error);
+          });
+      }
 
     }
   }
@@ -300,7 +306,9 @@ class ReviewModalForm extends React.Component {
     e.preventDefault();
     this.postReview();
   }
+
   render() {
+    const showHideClassName = this.state.postWorked? "modal display-none" : "thesubmitter";
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -327,7 +335,7 @@ class ReviewModalForm extends React.Component {
               <span className="emailspan"> Your email: *</span>
               <div className="emailreviewinput">
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   maxLength="60"
                   placeholder="Example: jackson11@email.com"
@@ -401,7 +409,7 @@ class ReviewModalForm extends React.Component {
           {this.renderUploadedImages()}
           <br></br>
           <div className="formsubmit">
-            <input type="submit" value="Submit" id="formsubmitbutton"/>
+            <input className={showHideClassName} type="submit" value="Submit" id="formsubmitbutton"/>
             <SubmittedMessage postWorked={this.state.postWorked} />
           </div>
         </form>
