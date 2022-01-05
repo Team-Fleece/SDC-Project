@@ -299,7 +299,7 @@ class RatingsAndReviews extends React.Component {
   }
   render() {
     return (
-      <div className="rateRev">
+      <div id="rateReview" className="rateRev">
         <br></br>
         <h2>Ratings & Reviews</h2>
         <br></br>

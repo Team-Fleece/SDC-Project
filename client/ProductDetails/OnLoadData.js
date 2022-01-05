@@ -289,6 +289,19 @@ for (let item in skuObj) {
         return skuArray
     }
 
+
+    let getStyleInfo = function(newData) {
+        let skuArray = [];
+        for (let item in newData) {
+            skuArray.push({
+                        sku: item,
+                        quantity: newData[item].quantity,
+                        sizes: newData[item].size
+                    })
+                };
+                return skuArray
+            }
+
     let getStyleSkuInfo = function(productInfo, productID) {
         // let skuArray = [];
         // let productInfo = Object.entries(newData);
@@ -360,7 +373,8 @@ module.exports = {
     skuArray,
     getSkuInfo,
     sizeToQuantity,
-    getStyleSkuInfo
+    getStyleSkuInfo,
+    getStyleInfo
 }
 
 //   module.exports.productSorter = productSorter;
