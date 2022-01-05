@@ -11,13 +11,10 @@ class QuestionsAndAnswersHeader extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.props.newSearch}>
+      <form>
         <h2 className='QAHeader'> Questions and Answers </h2>
         <div className='QASearchForm'>
-          <button className='QASearchButton' type='submit'>
-            <img src={QASearchButtonIcon} />
-          </button>
-          <input type='text' placeholder='Have a question?  Search for answers...' className='QASearchField' />
+          <input type='text' onChange={this.props.onSearchChange}  placeholder='Have a question?  Search for answers...' className='QASearchField' />
 
           <button className='QASearchClear' type='reset'>
             <img src={QASearchClearIcon} />
@@ -30,3 +27,9 @@ class QuestionsAndAnswersHeader extends React.Component {
 }
 
 export default QuestionsAndAnswersHeader
+/*
+value={this.props.query}
+          <button  className='QASearchButton'>
+            <img src={QASearchButtonIcon} />
+          </button>
+*/

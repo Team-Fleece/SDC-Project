@@ -120,18 +120,25 @@
   min-width: 95px;
 }
 .QAQHelpfulTxt {
-  color: lightskyblue;
+  color: black;
   text-decoration: underline;
   cursor: pointer;
 }
-.QAQReport {
+.QAQHelpfulTxt:hover {
   color: lightskyblue;
+}
+.QAQReport {
+  color: black;
   text-decoration: underline;
   background-color: rgb(255, 255, 255);
   font-size: 14px;
   max-width: 110px;
   min-width: 110px;
+  margin-left: 10px;
   cursor: pointer;
+}
+.QAQReport:hover {
+  color:lightskyblue;
 }
 /*##### Answer Element #####*/
 .AnswerUsernameText {
@@ -156,6 +163,12 @@
 }
 .answerDate {
   margin-right: 10px;
+  font-size: 12px;
+}
+.questionDate {
+  margin: auto;
+  width: 50%;
+
 }
 .QAAHRWrapper {
   background-color: rgb(255, 255, 255);
@@ -181,14 +194,17 @@
   min-width: 80px;
 }
 .QAAHelpfulTxt {
-  color: lightskyblue;
+  color: black;
   text-decoration: underline;
   margin-left: 2px;
   margin-right: 1px;
   cursor: pointer;
 }
+.QAAHelpfulTxt:hover{
+  color:lightskyblue
+}
 .QAAReport {
-  color: lightskyblue;
+  color: black;
   text-decoration: underline;
   background-color: rgb(255, 255, 255);
   display: flex;

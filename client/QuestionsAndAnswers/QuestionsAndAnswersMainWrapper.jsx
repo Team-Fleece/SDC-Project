@@ -22,7 +22,7 @@ class QuestionsAndAnswers extends React.Component {
     this.getQuestions = this.getQuestions.bind(this)
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
-    this.newSearch = this.newSearch.bind(this)
+    // this.newSearch = this.newSearch.bind(this)
   }
   componentDidMount () {
     //Update state with api data
@@ -59,21 +59,32 @@ class QuestionsAndAnswers extends React.Component {
         //console.log("getQuestions Fired",this.state.currentPage)
         this.setState({ currentPage: (this.state.currentPage += 1) })
       })
+      .then(() => {
+        this.setState({searchArray: this.state.questionArray})
+      })
       .catch(err => {
         console.log(err)
         console.log('Failed to get more questions')
       })
   }
 
-  newSearch () {}
-  onSearchChange (e) {}
+  onSearchChange (e) {
+    this.setState({ query: e.target.value }, () => {
+      let newSearchArray = []
+      this.state.questionArray.map((question, index) => {
+        if (question.question_body.includes(this.state.query)) {
+          newSearchArray.push(question)
+        }
+      })
+      this.setState({ searchArray: newSearchArray })
+    })
+  }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
     if (this.props.product_id !== prevProps.product_id) {
       this.setState({ questionArray: [] }, this.getQuestions())
     }
     if (this.state.query !== prevState.query) {
-
     }
   }
   render () {
@@ -84,8 +95,8 @@ class QuestionsAndAnswers extends React.Component {
       <div className='QABodyWrapper'>
         <QuestionsAndAnswersHeader
           onSearchChange={this.onSearchChange}
-          newSearch={this.newSearch}
           questionArray={questionArray}
+          query={this.state.query}
         />
         <QuestionAnswerBody questionArray={questionArray} />
         <QuestionLoadAndAdd

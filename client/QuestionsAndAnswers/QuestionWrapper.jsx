@@ -8,7 +8,8 @@ class QuestionWrapper extends React.Component {
     super(props)
     this.state = {
       questionData: this.props.questionData,
-      answerCount: 2
+      answerCount: 2,
+      questionHelpCount: this.props.questionData.question_helpfulness
     }
     this.loadMoreAnswers = this.loadMoreAnswers.bind(this)
     this.questionHelpful = this.questionHelpful.bind(this)
@@ -57,12 +58,14 @@ class QuestionWrapper extends React.Component {
     this.setState({ answerCount: (this.state.answerCount += 2) })
   }
   render () {
+    console.log(this.state.questionData)
     let questionDate = this.state.questionData.question_date.split('T')
     const answerArray = []
     Object.keys(this.state.questionData.answers).map(element => {
       //console.log(this.state.questionData.answers[element])
       answerArray.push(this.state.questionData.answers[element])
     })
+    let questionHelpCount = this.state.questionHelpCount
     const finalAnswerArray = answerArray.slice(0, this.state.answerCount)
     //console.log(this.state.questionData)
     return (
@@ -78,16 +81,19 @@ class QuestionWrapper extends React.Component {
             </div>
           </div>
           <div className='QAQHRWrapper'>
+            <div className="questionDate">
             {this.convertTime(
               Date.parse(this.props.questionData.question_date.slice(0, 10))
-            )}
+              )}
+
+              </div>
             <div className='QAQHelpful'>
               Helpful?
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
                 Yes
               </div>
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
-                (2)
+                ({questionHelpCount})
               </div>
               <div onClick={this.questionReported} className='QAQReport'>
                 {''}
