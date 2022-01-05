@@ -6,7 +6,7 @@ import {onloadState, productMainInfo, skuArray, getSkuInfo, getStyleSkuInfo, get
 import $ from 'jquery'
 import axios from 'axios'
 import {StarRating} from './starRatingBar.jsx'
-
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, PinterestShareButton, PinterestIcon, TumblrShareButton, TumblrIcon, EmailShareButton, EmailIcon} from 'react-share';
 
 
 
@@ -77,7 +77,7 @@ componentDidUpdate(prevProps, prevState) {
       })
       console.log('this.state.productInfo; ', that.state.productInfo)
       that.state.productInfo.forEach(style => {
-        console.log("STYLEEEEEEE SKUS: ", style.style_skus)
+        // console.log("STYLEEEEEEE SKUS: ", style.style_skus)
         if (that.props.productStyleID === style.style_id){
           that.setState({
             currentStylePhotos: style.style_photos,
@@ -119,6 +119,7 @@ componentDidUpdate(prevProps, prevState) {
 
 
 render() {
+  const shareUrl = 'https://www.neopets.com/';
   let skuArr = [];
   let productCategory = this.props.productCatInfo.category;
   let productName = this.props.productCatInfo.name;
@@ -202,7 +203,24 @@ return (
       </div>
       <div className="overviewBagAndStar">
         <button className="btn addToBag">ADD TO BAG</button>
-        <button className="btn star">STAR</button>
+        <FacebookShareButton className="social" url={shareUrl}>
+          <FacebookIcon round={true} size={40}></FacebookIcon>
+        </FacebookShareButton>
+        <TwitterShareButton className="social" url={shareUrl}>
+          <TwitterIcon round={true} size={40}></TwitterIcon>
+        </TwitterShareButton>
+        <PinterestShareButton className="social" url={shareUrl}>
+          <PinterestIcon round={true} size={40}></PinterestIcon>
+        </PinterestShareButton>
+        <TumblrShareButton className="social" url={shareUrl}>
+          <TumblrIcon round={true} size={40}></TumblrIcon>
+        </TumblrShareButton>
+        <EmailShareButton className="social" url={shareUrl}>
+          <EmailIcon round={true} size={40}></EmailIcon>
+        </EmailShareButton>
+
+
+
       </div>
     </div>
     </div>
@@ -221,5 +239,7 @@ return (
 )
 }
 }
+
+{/* <button className="btn star">STAR</button> */}
 
 export {ProductDetails}

@@ -32,6 +32,7 @@ class RatingsAndReviews extends React.Component {
       showThree: false,
       showFour: false,
       showFive: false,
+      showMoreReviews: true
     };
     this.onMoreReviewsClick = this.onMoreReviewsClick.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -87,7 +88,10 @@ class RatingsAndReviews extends React.Component {
         `/reviews?product_id=${this.props.product_id}&count=${this.state.reviewCount}&sort=${this.state.sort}`
       )
       .then(function (response) {
-
+        console.log('get response:', response);
+        if(that.state.reviewCount > response.data.results.length) {
+          that.setState({ showMoreReviews: false});
+        }
 
         let filtered = that.filterReviews(response.data.results);
         that.setState({
@@ -347,7 +351,7 @@ class RatingsAndReviews extends React.Component {
             <ReviewList reviews={this.state.reviews} getRevs={this.getReviews} />
           </div>
           <div className="reviewlistbuttons">
-            <MoreReviewsButton onClick={this.onMoreReviewsClick} />
+            <MoreReviewsButton onClick={this.onMoreReviewsClick} show={this.state.showMoreReviews} />
             {this.renderModal()}
             <button className="ReviewsButtons" onClick={this.showModal}>
               Add A Review &#43;
