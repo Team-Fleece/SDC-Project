@@ -15,7 +15,9 @@ class QuestionsAndAnswers extends React.Component {
       currentPage: 1,
       questionsPerLoad: 20,
       questionArray: [],
-      questionsToLoad: 4
+      questionsToLoad: 4,
+      searchArray: [],
+      query: ''
     }
     this.getQuestions = this.getQuestions.bind(this)
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this)
@@ -61,13 +63,16 @@ class QuestionsAndAnswers extends React.Component {
   }
 
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.product_id !== prevProps.product_id) {
     this.setState({questionArray:[]}, this.getQuestions())
     }
+    if (this.state.query !== prevState.query) {
+
+    }
   }
   render () {
-    let questionArray = [...this.state.questionArray]
+    let questionArray = [...this.state.searchArray]
     let spliceCount = this.state.questionsToLoad
     let remainderQuestions = questionArray.splice(this.state.questionsToLoad)
     return (

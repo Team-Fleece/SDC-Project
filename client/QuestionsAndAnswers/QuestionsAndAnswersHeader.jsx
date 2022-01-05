@@ -11,7 +11,7 @@ class QuestionsAndAnswersHeader extends React.Component {
 
   render () {
     return (
-      <div>
+      <form onSubmit={this.props.newSearch}>
         <h2 className='QAHeader'> Questions and Answers </h2>
         <div className='QASearchForm'>
           <button className='QASearchButton' type='submit'>
@@ -24,7 +24,7 @@ class QuestionsAndAnswersHeader extends React.Component {
 
           </button>
         </div>
-      </div>
+      </form>
     )
   }
 }
