@@ -58,7 +58,6 @@ class QuestionWrapper extends React.Component {
     this.setState({ answerCount: (this.state.answerCount += 2) })
   }
   render () {
-    console.log(this.state.questionData)
     let questionDate = this.state.questionData.question_date.split('T')
     const answerArray = []
     Object.keys(this.state.questionData.answers).map(element => {

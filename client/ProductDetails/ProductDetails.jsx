@@ -212,11 +212,11 @@ render() {
       </div>
       <div className="overviewSizeSelector">
       <select className="btn selectSize" onChange={this.handleChange}>
-      <option value="" disabled selected hidden>SELECT SIZE</option>
+      <option value="" disabled hidden>SELECT SIZE</option>
   {styleSizeList}
 </select>
   <select className="btn quantity">
-  <option value="" disabled selected hidden>QUANTITY</option>
+  <option value="" disabled hidden>QUANTITY</option>
   {styleQuantityList}
 </select>
       </div>
