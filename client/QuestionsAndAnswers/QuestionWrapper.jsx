@@ -17,6 +17,17 @@ class QuestionWrapper extends React.Component {
   componentDidUpdate () {
     //console.log(this.state.questionData)
   }
+  convertTime (milliseconds) {
+    let date = new Date(milliseconds)
+
+    let modifiedDate = date.toString().split(' ')
+    modifiedDate.shift()
+    modifiedDate.splice(2, 0, ', ')
+    modifiedDate.splice(4, 5)
+    modifiedDate.splice(1, 0, ' ')
+    modifiedDate.join('')
+    return modifiedDate
+  }
   questionHelpful () {
     let questionID = this.state.questionData.question_id
     axios
@@ -46,7 +57,7 @@ class QuestionWrapper extends React.Component {
     this.setState({ answerCount: (this.state.answerCount += 2) })
   }
   render () {
-    let questionDate = this.state.questionData.question_date.split('T');
+    let questionDate = this.state.questionData.question_date.split('T')
     const answerArray = []
     Object.keys(this.state.questionData.answers).map(element => {
       //console.log(this.state.questionData.answers[element])
@@ -59,14 +70,17 @@ class QuestionWrapper extends React.Component {
         <div className='QuesElementWrapper'>
           <div>
             <div className='QuestionUsernameText'>
-              {this.state.questionData.asker_name} asked on{' '}
-              {questionDate[0]}
+              {'Q: '}
+              {this.state.questionData.asker_name}
             </div>
             <div className='QuestionText'>
               {this.state.questionData.question_body}
             </div>
           </div>
           <div className='QAQHRWrapper'>
+            {this.convertTime(
+              Date.parse(this.props.questionData.question_date.slice(0, 10))
+            )}
             <div className='QAQHelpful'>
               Helpful?
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
@@ -75,10 +89,10 @@ class QuestionWrapper extends React.Component {
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
                 (2)
               </div>
-            </div>
-            <div onClick={this.questionReported} className='QAQReport'>
-              {' '}
-              Report Question?
+              <div onClick={this.questionReported} className='QAQReport'>
+                {''}
+                Report Question?
+              </div>
             </div>
           </div>
         </div>

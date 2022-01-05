@@ -15,7 +15,7 @@ class QuestionsAndAnswers extends React.Component {
       currentPage: 1,
       questionsPerLoad: 20,
       questionArray: [],
-      questionsToLoad: 2
+      questionsToLoad: 4
     }
     this.getQuestions = this.getQuestions.bind(this)
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this)
@@ -78,6 +78,7 @@ class QuestionsAndAnswers extends React.Component {
           loadMoreQuestions={this.loadMoreQuestions}
           submitQuestion={this.submitQuestion}
           product_id={this.props.product_id}
+          getQuestions
         />
       </div>
     )

@@ -11,6 +11,17 @@ class AnswerWrapper extends React.Component {
     this.answerReported = this.answerReported.bind(this)
   }
 
+  convertTime(milliseconds) {
+    let date = new Date(milliseconds);
+
+    let modifiedDate = date.toString().split(" ");
+    modifiedDate.shift();
+    modifiedDate.splice(2, 0, ", ");
+    modifiedDate.splice(4, 5);
+    modifiedDate.splice(1, 0, " ");
+    modifiedDate.join("");
+    return modifiedDate;
+  }
   answerHelpful() {
     console.log(this.state.answerData)
     let answerID = this.state.answerData.id;
@@ -46,9 +57,9 @@ class AnswerWrapper extends React.Component {
       <div className='AnsElementWrapper'>
         <div className='answerHeaderWrapper'>
           <div className='AnswerUsernameText'>
-            {this.props.answerData.answerer_name} answers
+            {'A: '}{this.props.answerData.answerer_name} answers
           </div>
-          <div className='answerDate'> {date[0]}</div>
+          <div className='answerDate'> {this.convertTime(Date.parse(this.props.answerData.date.slice(0, 10)))}</div>
         </div>
         <div className='AnswerBodyText'>{this.props.answerData.body}</div>
         <div className='QAAHRWrapper'>
