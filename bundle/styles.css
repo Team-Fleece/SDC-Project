@@ -552,6 +552,7 @@ h2:after {
   grid-column: 6;
   grid-row: 1;
   text-align: right;
+  padding-right: 5px;
   font-size: small;
 }
 .ratingsummary {
@@ -561,7 +562,7 @@ h2:after {
   overflow-wrap: break-word;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: small;
+  font-size: medium;
 }
 .ratingbody {
   grid-column: 1 / span 6;
@@ -569,7 +570,7 @@ h2:after {
   overflow-wrap: break-word;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: small;
+  font-size: medium;
 }
 .ratingrecommend {
   grid-column: 1 / span 2;
@@ -632,6 +633,7 @@ h2:after {
   grid-column: 6;
   grid-row: 7;
   text-align: right;
+  padding-right: 5px;
   font-size: x-small;
 }
 .reviewlistbuttons {
