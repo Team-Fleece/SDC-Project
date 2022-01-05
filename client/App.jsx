@@ -88,7 +88,9 @@ class App extends React.Component {
               product_id={this.state.product_id}
             />
           </div>
-          <div className='footer'> &copy; <i>Kacy Holm - Winston Pantelakos - Haydenn Harper - Ian McGahren </i></div>
+          <div className='footer'>
+             <div><img src="https://see.fontimg.com/api/renderfont4/3z8d8/eyJyIjoiZnMiLCJoIjoyNCwidyI6MTAwMCwiZnMiOjI0LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Qw/rooster-personal-use.png" alt="Cursive fonts"></img></div>
+             <div>&copy; <i>Kacy Holm - Winston Pantelakos - Haydenn Harper - Ian McGahren </i></div></div>
         </div>
       </div>
     )

@@ -1,21 +1,16 @@
 import React from "react";
 import ReviewTile from "./ReviewTile.jsx";
 
-class ReviewList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+let ReviewList = (props) => {
 
-  render() {
     return (
       <>
-        {this.props.reviews.map((review, i) => (
-          <ReviewTile key={i} review={review} getRevs={this.props.getRevs}/>
+        {props.reviews.map((review, id) => (
+          <ReviewTile key={id} review={review} getRevs={props.getRevs}/>
         ))}
       </>
     );
-  }
+
 }
 export default ReviewList;
 
