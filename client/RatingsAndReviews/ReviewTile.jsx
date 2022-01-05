@@ -3,6 +3,7 @@ import ReviewImages from "./ReviewImages.jsx";
 import axios from "axios";
 // import StarRatings from 'react-star-ratings';
 import StarRating from './StarRatingBar.jsx';
+import HelpfulnessButton from './HelpfulnessButton.jsx';
 
 // {/* <StarRatings
 //         rating={Number(this.props.review.rating)}
@@ -21,7 +22,8 @@ class ReviewTile extends React.Component {
     this.renderOverallRating = this.renderOverallRating.bind(this);
     this.showMore = this.showMore.bind(this);
     this.showAllBody = this.showAllBody.bind(this);
-    this.renderHelpfulness = this.renderHelpfulness.bind(this);
+    // this.renderHelpfulness = this.renderHelpfulness.bind(this);
+    // this.markHelpful = this.markHelpful.bind(this);
   }
   convertTime(milliseconds) {
     let date = new Date(milliseconds);
@@ -49,20 +51,7 @@ class ReviewTile extends React.Component {
       );
     }
   }
-  markHelpful() {
-    let that = this;
-    if (this.state.marked === false) {
-      axios.put("/reviews/:reviewId/helpful", {review_id: this.props.review.review_id})
-        .then(function(response) {
-          //console.log('this worked:', response);
-          that.setState({marked: true, helpfulness: that.state.helpfulness + 1})
-          // that.props.getRevs();
-        })
-        .catch(function(error) {
-          console.log('PUT Error:', error);
-        })
-    }
-  }
+
   reportReview() {
     let that = this;
     axios.put("/reviews/:reviewId/report", {review_id: this.state.review_id})
@@ -135,7 +124,9 @@ class ReviewTile extends React.Component {
           {this.showMore()}
           {this.isRecommended(this.props.review)}
           <div className="helpfuldiv"><span className="helpfulspan">Helpful?</span>
-          {this.renderHelpfulness()}
+
+          <HelpfulnessButton
+          helpfulness={this.props.review.helpfulness} review_id={this.props.review.review_id}/>
           </div>
           <div onClick={this.reportReview.bind(this)} className="reportReview">Report</div>
           {this.showResponse(this.props.review)}
