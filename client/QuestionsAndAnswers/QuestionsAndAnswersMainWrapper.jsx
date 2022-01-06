@@ -71,8 +71,10 @@ class QuestionsAndAnswers extends React.Component {
   onSearchChange (e) {
     this.setState({ query: e.target.value }, () => {
       let newSearchArray = []
+      let parsedQuery = this.state.query.toLowerCase();
       this.state.questionArray.map((question, index) => {
-        if (question.question_body.includes(this.state.query)) {
+        let parsedQuestion = question.question_body.toLowerCase()
+        if (parsedQuestion.includes(parsedQuery)) {
           newSearchArray.push(question)
         }
       })
