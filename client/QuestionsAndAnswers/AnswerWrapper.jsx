@@ -24,10 +24,10 @@ class AnswerWrapper extends React.Component {
     return modifiedDate
   }
   answerHelpful () {
-    console.log(this.state.answerData)
+    //console.log(this.state.answerData)
     let answerID = this.state.answerData.id
 
-    console.log(answerID)
+    //console.log(answerID)
     axios
       .put(`/qa/answers/${answerID}/helpful`)
       .then(() => {
@@ -57,29 +57,28 @@ class AnswerWrapper extends React.Component {
 
   render () {
     const date = this.state.answerData.date.split('T')
-    console.log(this.state.answerData)
+    //console.log(this.state.answerData)
     return (
       <div className='AnsElementWrapper'>
-        <div className='answerHeaderWrapper'>
+        <div className='answerHeaderWrapper'>{'A: '}
+        {this.props.answerData.body}
+        </div>
+        <div className='QAAHRWrapper'>
           <div className='AnswerUsernameText'>
-            {'A: '}
-            {this.props.answerData.answerer_name}
+            {'By '}
+            {this.props.answerData.answerer_name}{','}
           </div>
           <div className='answerDate'>
-            {' '}
             {this.convertTime(
               Date.parse(this.props.answerData.date.slice(0, 10))
             )}
           </div>
-        </div>
-        <div className='AnswerBodyText'>{this.props.answerData.body}</div>
-        <div className='QAAHRWrapper'>
+
           <div className='QAAHelpful'>
             <div>Helpful?</div>
             <div onClick={this.answerHelpful} className='QAAHelpfulTxt'>
-              Yes
-            </div>
-            <div className='QAAHelpfulTxt'>{this.state.answerHelpfulness}</div>
+              {'Yes ('}
+            {this.state.answerHelpfulness}{')'}</div>
           </div>
           <div onClick={this.answerReported} className='QAAReport'>
             Report answer?

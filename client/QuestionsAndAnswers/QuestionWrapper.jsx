@@ -74,11 +74,11 @@ class QuestionWrapper extends React.Component {
         //console.log (this.state.finalAnswerArray)
         let slicee = [...this.state.firstAnswerArray]
         let slicer = slicee.slice(0, this.state.answerCount)
-        console.log('load more questions did this', slicee, slicer)
+        //console.log('load more questions did this', slicee, slicer)
         this.setState({ finalAnswerArray: slicer }, () => {
           if (this.state.finalAnswerArray.length >= answerArray.length) {
             this.setState({ loadMoreShown: false }, () => {
-              console.log('answer count is: ', this.state.answerCount)
+              //console.log('answer count is: ', this.state.answerCount)
             })
           }
         })
@@ -93,16 +93,11 @@ class QuestionWrapper extends React.Component {
     let show = this.state.loadMoreShown
     const showHideClassName = show ? 'QAALoadMore' : 'QAALoadMore display-none'
     //console.log(showHideClassName)
-    console.log(
-      'Final answer array is: ',
-      this.state.finalAnswerArray,
-      this.state.answerCount,
-      this.state.questionData.question_id
-    )
+    //console.log('Final answer array is: ',this.state.finalAnswerArray,this.state.answerCount,this.state.questionData.question_id)
     return (
       <div className='QAElementWrapper'>
         <div className='QuesElementWrapper'>
-          <div>
+          <div className='QAQuestionBody'>
             <div className='QuestionUsernameText'>
               {'Q: '}
               {this.state.questionData.asker_name}
@@ -118,12 +113,9 @@ class QuestionWrapper extends React.Component {
               )}
             </div>
             <div className='QAQHelpful'>
-              Helpful?
+              {'Helpful? '}
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
-                Yes
-              </div>
-              <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
-                ({questionHelpCount})
+                {'  Yes '}{questionHelpCount}
               </div>
               <div onClick={this.questionReported} className='QAQReport'>
                 {''}

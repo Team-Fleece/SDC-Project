@@ -12,8 +12,8 @@
 .QAAnsHeader {
   background-color: rgb(255, 255, 255);
   flex: 1;
-margin-left: 0%;
-margin-right: 0%
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .QASearchForm {
@@ -69,7 +69,7 @@ margin-right: 0%
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  margin: 2px;
+  margin-bottom: 10px;
 }
 .QuesElementWrapper {
   background-color: rgb(255, 255, 255);
@@ -80,36 +80,47 @@ margin-right: 0%
 }
 .AnsElementWrapper {
   background-color: rgb(255, 255, 255);
-  margin: 2px;
+  margin-left: 3%;
+  margin-right: 3%;
   display: flex;
   flex-direction: column;
+  margin-top:10px
 }
 
 /*##### Question Element #####*/
-.QuestionText {
-  background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
-  font-size: 20px;
+.QAQuestionBody {
+  flex:5;
+  display:flex;
+  flex-direction: column;
+  max-width: 70%;
 }
 .QuestionUsernameText {
   background-color: rgb(255, 255, 255);
   flex: 1;
-  margin: 10px;
   font-size: 22px;
   font-weight: bold;
 }
+.QuestionText {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  font-size: 20px;
+}
+
 .QAQHRWrapper {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  justify-content: stretch;
+  min-width: fit-content;
+  justify-content: flex-end;
 }
-
+.questionDate {
+  font-size: 12px;
+  text-align: end;
+}
 .QAQHelpful {
   background-color: rgb(255, 255, 255);
   border: none;
@@ -118,13 +129,14 @@ margin-right: 0%
   flex-wrap: wrap;
   flex: 2;
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 12px;
   min-width: 95px;
 }
 .QAQHelpfulTxt {
   color: black;
   text-decoration: underline;
   cursor: pointer;
+  margin-left: 5px;
 }
 .QAQHelpfulTxt:hover {
   color: lightskyblue;
@@ -133,11 +145,12 @@ margin-right: 0%
   color: black;
   text-decoration: underline;
   background-color: rgb(255, 255, 255);
-  font-size: 14px;
+  font-size: 12px;
   max-width: 110px;
   min-width: 110px;
   margin-left: 10px;
   cursor: pointer;
+  text-align: end;
 }
 .QAQReport:hover {
   color:lightskyblue;
@@ -145,11 +158,9 @@ margin-right: 0%
 /*##### Answer Element #####*/
 .AnswerUsernameText {
   background-color: rgb(255, 255, 255);
-  flex: 1;
-  margin: 10px;
-  margin-left: 50px;
-  font-weight: Bold;
-  font-size: 16px;
+  font-size: 12px;
+  font-style: italic;
+  margin-right: 3px
 }
 .AnswerBodyText {
   background-color: rgb(255, 255, 255);
@@ -159,41 +170,27 @@ margin-right: 0%
   font-size: 16px;
 }
 .answerHeaderWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
+  color:grey;
 }
 .answerDate {
-  margin-right: 10px;
   font-size: 12px;
-}
-.questionDate {
-  margin: auto;
-  width: 50%;
-
 }
 .QAAHRWrapper {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   margin-bottom: 10px;
-  margin-left: 50px;
   margin-right: 10px;
-  justify-content: stretch;
 }
 
 .QAAHelpful {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  flex: 2;
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 10px;
-  max-width: 80px;
-  min-width: 80px;
+  margin-left: 20px;
+  font-size: 12px;
+  max-width: 90px;
+  min-width: 90px;
 }
 .QAAHelpfulTxt {
   color: black;
@@ -209,15 +206,10 @@ margin-right: 0%
   color: black;
   text-decoration: underline;
   background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  flex: 2;
-  margin-top: 10px;
   margin-left: 10px;
-  font-size: 10px;
-  max-width: 80px;
-  min-width: 80px;
+  font-size: 12px;
+  max-width: 90px;
+  min-width: 90px;
   cursor: pointer;
 }
 .QAAReport:hover {
@@ -301,8 +293,6 @@ margin-right: 0%
 }
 .QAModalOverlay {
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(0, 89, 255);
-  border-radius: 5px;
   margin: 2px;
   position: static;
   display: flex;
