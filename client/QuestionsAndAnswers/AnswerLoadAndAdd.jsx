@@ -56,7 +56,7 @@ class AnswerLoadAndAdd extends React.Component {
     return (
       <div className='QALoadAndAddWrapper'>
         <button
-          className={showHideClassName}
+          className={this.props.className}
           onClick={this.props.loadMoreAnswers}
         >
           {' '}

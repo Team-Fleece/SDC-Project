@@ -8,12 +8,18 @@ class QuestionWrapper extends React.Component {
     super(props)
     this.state = {
       questionData: this.props.questionData,
-      answerCount: 2,
-      questionHelpCount: this.props.questionData.question_helpfulness
+      answerCount: 0,
+      questionHelpCount: this.props.questionData.question_helpfulness,
+      loadMoreShown: true,
+      firstAnswerArray: [],
+      finalAnswerArray: []
     }
     this.loadMoreAnswers = this.loadMoreAnswers.bind(this)
     this.questionHelpful = this.questionHelpful.bind(this)
     this.questionReported = this.questionReported.bind(this)
+  }
+  componentDidMount () {
+    this.loadMoreAnswers()
   }
   componentDidUpdate () {
     //console.log(this.state.questionData)
@@ -33,6 +39,9 @@ class QuestionWrapper extends React.Component {
     let questionID = this.state.questionData.question_id
     axios
       .put(`/qa/questions/${questionID}/helpful`)
+      .then(() => {
+        this.setState({questionHelpCount:this.state.questionHelpCount+1})
+      })
       .then(() => {
         console.log(questionID)
         console.log('Marked helpful')
@@ -55,22 +64,40 @@ class QuestionWrapper extends React.Component {
       })
   }
   loadMoreAnswers () {
-    this.setState({ answerCount: (this.state.answerCount += 2) })
+    this.setState({ answerCount: (this.state.answerCount += 2) }, () => {
+      const answerArray = []
+      Object.keys(this.state.questionData.answers).map(element => {
+        answerArray.push(this.state.questionData.answers[element])
+        //console.log(answerArray)
+      })
+      this.setState({ firstAnswerArray: answerArray }, () => {
+        //console.log (this.state.finalAnswerArray)
+        let slicee = [...this.state.firstAnswerArray]
+        let slicer = slicee.slice(0, this.state.answerCount)
+        //console.log('load more questions did this', slicee, slicer)
+        this.setState({ finalAnswerArray: slicer }, () => {
+          if (this.state.finalAnswerArray.length >= answerArray.length) {
+            this.setState({ loadMoreShown: false }, () => {
+              //console.log('answer count is: ', this.state.answerCount)
+            })
+          }
+        })
+      })
+    })
   }
   render () {
     let questionDate = this.state.questionData.question_date.split('T')
-    const answerArray = []
-    Object.keys(this.state.questionData.answers).map(element => {
-      //console.log(this.state.questionData.answers[element])
-      answerArray.push(this.state.questionData.answers[element])
-    })
+
     let questionHelpCount = this.state.questionHelpCount
-    const finalAnswerArray = answerArray.slice(0, this.state.answerCount)
     //console.log(this.state.questionData)
+    let show = this.state.loadMoreShown
+    const showHideClassName = show ? 'QAALoadMore' : 'QAALoadMore display-none'
+    //console.log(showHideClassName)
+    //console.log('Final answer array is: ',this.state.finalAnswerArray,this.state.answerCount,this.state.questionData.question_id)
     return (
       <div className='QAElementWrapper'>
         <div className='QuesElementWrapper'>
-          <div>
+          <div className='QAQuestionBody'>
             <div className='QuestionUsernameText'>
               {'Q: '}
               {this.state.questionData.asker_name}
@@ -80,19 +107,15 @@ class QuestionWrapper extends React.Component {
             </div>
           </div>
           <div className='QAQHRWrapper'>
-            <div className="questionDate">
-            {this.convertTime(
-              Date.parse(this.props.questionData.question_date.slice(0, 10))
+            <div className='questionDate'>
+              {this.convertTime(
+                Date.parse(this.props.questionData.question_date.slice(0, 10))
               )}
-
-              </div>
+            </div>
             <div className='QAQHelpful'>
-              Helpful?
+              {'Helpful? '}
               <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
-                Yes
-              </div>
-              <div onClick={this.questionHelpful} className='QAQHelpfulTxt'>
-                ({questionHelpCount})
+                {'  Yes '}{questionHelpCount}
               </div>
               <div onClick={this.questionReported} className='QAQReport'>
                 {''}
@@ -102,8 +125,9 @@ class QuestionWrapper extends React.Component {
           </div>
         </div>
 
-        <AnswersBody answerArray={finalAnswerArray} />
+        <AnswersBody answerArray={this.state.finalAnswerArray} />
         <AnswerLoadAndAdd
+          className={showHideClassName}
           loadMoreAnswers={this.loadMoreAnswers}
           question_id={this.state.questionData.question_id}
         />
