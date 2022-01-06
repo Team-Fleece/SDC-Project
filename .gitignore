@@ -3,3 +3,5 @@ node_modules/
 spec/
 ./bundle/bundle.js
 /bundle/bundle.js
+.DS_Store
+client/.DS_Store
