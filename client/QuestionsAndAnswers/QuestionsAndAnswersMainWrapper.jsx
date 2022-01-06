@@ -22,6 +22,7 @@ class QuestionsAndAnswers extends React.Component {
     this.getQuestions = this.getQuestions.bind(this)
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
+    this.resetSearch = this.resetSearch.bind(this)
     // this.newSearch = this.newSearch.bind(this)
   }
   componentDidMount () {
@@ -60,7 +61,7 @@ class QuestionsAndAnswers extends React.Component {
         this.setState({ currentPage: (this.state.currentPage += 1) })
       })
       .then(() => {
-        this.setState({searchArray: this.state.questionArray})
+        this.setState({ searchArray: this.state.questionArray })
       })
       .catch(err => {
         console.log(err)
@@ -71,15 +72,20 @@ class QuestionsAndAnswers extends React.Component {
   onSearchChange (e) {
     this.setState({ query: e.target.value }, () => {
       let newSearchArray = []
+      let parsedQuery = this.state.query.toLowerCase()
       this.state.questionArray.map((question, index) => {
-        if (question.question_body.includes(this.state.query)) {
+        let parsedQuestion = question.question_body.toLowerCase()
+        if (parsedQuestion.includes(parsedQuery)) {
           newSearchArray.push(question)
         }
       })
       this.setState({ searchArray: newSearchArray })
     })
   }
-
+resetSearch(e) {
+  e.preventDefault()
+  this.setState({query:''})
+}
   componentDidUpdate (prevProps, prevState) {
     if (this.props.product_id !== prevProps.product_id) {
       this.setState({ questionArray: [] }, this.getQuestions())
@@ -92,19 +98,22 @@ class QuestionsAndAnswers extends React.Component {
     let spliceCount = this.state.questionsToLoad
     let remainderQuestions = questionArray.splice(this.state.questionsToLoad)
     return (
-      <div className='QABodyWrapper'>
+      <div>
         <QuestionsAndAnswersHeader
           onSearchChange={this.onSearchChange}
           questionArray={questionArray}
           query={this.state.query}
+          resetSearch={this.resetSearch}
         />
-        <QuestionAnswerBody questionArray={questionArray} />
-        <QuestionLoadAndAdd
-          loadMoreQuestions={this.loadMoreQuestions}
-          submitQuestion={this.submitQuestion}
-          product_id={this.props.product_id}
-          getQuestions
-        />
+        <div className='QABodyWrapper'>
+          <QuestionAnswerBody questionArray={questionArray} />
+          <QuestionLoadAndAdd
+            loadMoreQuestions={this.loadMoreQuestions}
+            submitQuestion={this.submitQuestion}
+            product_id={this.props.product_id}
+            getQuestions={this.getQuestions}
+          />
+        </div>
       </div>
     )
   }
