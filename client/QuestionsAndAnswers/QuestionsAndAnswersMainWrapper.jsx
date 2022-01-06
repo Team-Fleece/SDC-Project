@@ -17,13 +17,16 @@ class QuestionsAndAnswers extends React.Component {
       questionArray: [],
       questionsToLoad: 4,
       searchArray: [],
-      query: ''
+      query: '',
+      finalQuestionArray: [],
+      loadQButtonShown: true
     }
     this.getQuestions = this.getQuestions.bind(this)
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
     this.resetSearch = this.resetSearch.bind(this)
     // this.newSearch = this.newSearch.bind(this)
+    this.updateTime = this.updateTime.bind(this)
   }
   componentDidMount () {
     //Update state with api data
@@ -39,8 +42,33 @@ class QuestionsAndAnswers extends React.Component {
     //Event handler, use e.target.value to update state
   }
 
+  loadQuestions () {
+    const questionArray = []
+    Object.keys(this.state.searchArray).map(element => {
+      questionArray.push(this.state.searchArray[element])
+      //console.log(questionArray)
+    })
+    this.setState({ finalQuestionArray: questionArray }, () => {
+      //console.log (this.state.finalAnswerArray)
+      let slicee = [...this.state.searchArray]
+      let slicer = slicee.slice(0, this.state.questionsToLoad)
+      //console.log('load more questions did this', slicee, slicer)
+      this.setState({ finalQuestionArray: slicer }, () => {
+        if (this.state.finalQuestionArray.length >= questionArray.length) {
+          this.setState({ loadQButtonShown: false }, () => {
+            //console.log('answer count is: ', this.state.answerCount)
+          })
+        }
+      })
+    })
+  }
   loadMoreQuestions () {
-    this.setState({ questionsToLoad: this.state.questionsToLoad + 2 })
+    this.setState(
+      { questionsToLoad: (this.state.questionsToLoad += 2) },
+      () => {
+        this.loadQuestions()
+      }
+    )
   }
   getQuestions () {
     //Populate 2 more question and answer elements
@@ -52,6 +80,7 @@ class QuestionsAndAnswers extends React.Component {
         `/qa/questions/?product_id=${this.props.product_id}&page=${this.state.currentPage}&count=${this.state.questionsPerLoad}`
       )
       .then(res => {
+
         this.setState({
           questionArray: this.state.questionArray.concat(res.data)
         })
@@ -62,6 +91,9 @@ class QuestionsAndAnswers extends React.Component {
       })
       .then(() => {
         this.setState({ searchArray: this.state.questionArray })
+      })
+      .then(()=>{
+        this.loadQuestions()
       })
       .catch(err => {
         console.log(err)
@@ -82,19 +114,21 @@ class QuestionsAndAnswers extends React.Component {
       this.setState({ searchArray: newSearchArray })
     })
   }
-resetSearch(e) {
-  e.preventDefault()
-  this.setState({query:''})
-}
+  resetSearch (e) {
+    e.preventDefault()
+    this.setState({ query: '' })
+  }
+  updateTime () {
+   //insert function to regrab questions
+  }
+
   componentDidUpdate (prevProps, prevState) {
     if (this.props.product_id !== prevProps.product_id) {
       this.setState({ questionArray: [] }, this.getQuestions())
     }
-    if (this.state.query !== prevState.query) {
-    }
   }
   render () {
-    let questionArray = [...this.state.searchArray]
+    let questionArray = [...this.state.finalQuestionArray]
     let spliceCount = this.state.questionsToLoad
     let remainderQuestions = questionArray.splice(this.state.questionsToLoad)
     return (
@@ -108,8 +142,9 @@ resetSearch(e) {
         <div className='QABodyWrapper'>
           <QuestionAnswerBody questionArray={questionArray} />
           <QuestionLoadAndAdd
+            loadQButtonShown={this.state.loadQButtonShown}
             loadMoreQuestions={this.loadMoreQuestions}
-            submitQuestion={this.submitQuestion}
+            updateTime={this.updateTime}
             product_id={this.props.product_id}
             getQuestions={this.getQuestions}
           />

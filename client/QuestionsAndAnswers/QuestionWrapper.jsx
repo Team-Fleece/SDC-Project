@@ -91,7 +91,7 @@ class QuestionWrapper extends React.Component {
     let questionHelpCount = this.state.questionHelpCount
     //console.log(this.state.questionData)
     let show = this.state.loadMoreShown
-    const showHideClassName = show ? 'QAALoadMore' : 'QAALoadMore display-none'
+    const showLoadButton = show
     //console.log(showHideClassName)
     //console.log('Final answer array is: ',this.state.finalAnswerArray,this.state.answerCount,this.state.questionData.question_id)
     return (
@@ -127,7 +127,7 @@ class QuestionWrapper extends React.Component {
 
         <AnswersBody answerArray={this.state.finalAnswerArray} />
         <AnswerLoadAndAdd
-          className={showHideClassName}
+          className={show}
           loadMoreAnswers={this.loadMoreAnswers}
           question_id={this.state.questionData.question_id}
         />
