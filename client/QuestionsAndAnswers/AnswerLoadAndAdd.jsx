@@ -50,13 +50,19 @@ class AnswerLoadAndAdd extends React.Component {
       })
   }
   render () {
+    let loadButtonClass = ''
+    if(this.props.className === false || this.state.btnsVisible === false) {
+      loadButtonClass = 'QAALoadMore display-none'
+    } else {
+      loadButtonClass ='QAALoadMore'
+    }
     const showHideClassName = this.state.btnsVisible
       ? 'addAnswerButton display-block'
       : 'addAnswerButton display-none'
     return (
       <div className='QALoadAndAddWrapper'>
         <button
-          className={this.props.className}
+          className={loadButtonClass}
           onClick={this.props.loadMoreAnswers}
         >
           {' '}

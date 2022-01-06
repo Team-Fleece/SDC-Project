@@ -45,22 +45,38 @@ class QuestionLoadAndAdd extends React.Component {
       .then(() => {
         this.hideModal()
       })
+      .then(() => {
+        this.props.updateTime()
+      })
       .catch(() => {
         console.log('failure')
       })
   }
 
   render () {
+    let loadQButtonClass = ''
+    if(this.props.loadQButtonShown === false || this.state.btnsVisible === false) {
+      loadQButtonClass = 'QALoadMore display-none'
+    } else {
+      loadQButtonClass ='QALoadMore'
+    }
     const showHideClassName = this.state.btnsVisible
       ? 'QAModalBtn display-block'
       : 'QAModalBtn display-none'
     return (
       <div className='QALoadAndAddWrapper'>
         <button
-          className={showHideClassName}
+          className={loadQButtonClass}
           onClick={this.props.loadMoreQuestions}
         >
           More Answered Questions
+        </button>
+        <button
+          type='button'
+          onClick={this.showModal}
+          className={showHideClassName}
+        >
+          Add New Question +
         </button>
         <QAModal
           show={this.state.modalVisible}
@@ -93,13 +109,6 @@ class QuestionLoadAndAdd extends React.Component {
             ></input>
           </form>
         </QAModal>
-          <button
-            type='button'
-            onClick={this.showModal}
-            className={showHideClassName}
-          >
-            Add New Question +
-          </button>
       </div>
     )
   }
