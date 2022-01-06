@@ -6,6 +6,7 @@ import StarRatingsInput from './StarRatingsInput.jsx';
 import SubmittedMessage from './SubmittedMessage.jsx';
 
 
+
 class ReviewModalForm extends React.Component {
   constructor(props) {
     super(props);
@@ -237,6 +238,7 @@ class ReviewModalForm extends React.Component {
       ));
     }
   }
+
   imageUploaderButton() {
     if (this.state.images.length < 5) {
       return (
@@ -249,6 +251,7 @@ class ReviewModalForm extends React.Component {
             onChange={this.onImageChange} className="uploaderinput"
 
           />
+
         </div>
       );
     }
