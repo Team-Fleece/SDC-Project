@@ -488,6 +488,7 @@ h2:after {
   flex-wrap: wrap;
   margin: 10px;
   flex: 1;
+  min-width: 400px;
 }
 
 .reviews {
@@ -497,6 +498,7 @@ h2:after {
   flex-wrap: wrap;
   margin: 10px;
   flex: 3;
+  min-width: 550px;
 }
 .reviewlist {
   max-height: 520px;
@@ -604,7 +606,6 @@ h2:after {
   grid-template-columns: 10% 10% auto auto auto;
   grid-template-rows: auto;
   font-size: x-small;
-
 }
 .helpfulSpan {
   grid-column: 1;
