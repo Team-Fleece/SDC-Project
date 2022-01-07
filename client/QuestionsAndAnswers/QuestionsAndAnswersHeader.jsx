@@ -12,7 +12,6 @@ class QuestionsAndAnswersHeader extends React.Component {
   render () {
     return (
       <form>
-        <h2 className='QAHeader'> Questions and Answers </h2>
         <div className='QASearchForm'>
           <input type='text' onChange={this.props.onSearchChange}  placeholder='Have a question?  Search for answers...' className='QASearchField' />
 
