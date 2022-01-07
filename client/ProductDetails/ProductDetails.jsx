@@ -78,7 +78,7 @@ componentDidMount() {
             currentStyle: response.data[0],
             styleSkus: getSkuInfo(response.data)
           })
-      console.log('this.state.productInfo; ', that.state.productInfo)
+      //console.log('this.state.productInfo; ', that.state.productInfo)
       that.state.productInfo.forEach(style => {
         // console.log("STYLEEEEEEE SKUS: ", style.style_skus)
         if (that.props.productStyleID === style.style_id){
