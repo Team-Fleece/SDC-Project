@@ -56,7 +56,7 @@ class QuestionsAndAnswers extends React.Component {
       this.setState({ finalQuestionArray: slicer }, () => {
         if (this.state.finalQuestionArray.length >= questionArray.length) {
           this.setState({ loadQButtonShown: false }, () => {
-            //console.log('answer count is: ', this.state.answerCount)
+            //console.log('answer count is: ', this.state.finalQuestionArray)
           })
         }
       })
@@ -102,6 +102,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   onSearchChange (e) {
+    //console.log(e.target.value)
     this.setState({ query: e.target.value }, () => {
       let newSearchArray = []
       let parsedQuery = this.state.query.toLowerCase()
@@ -111,7 +112,9 @@ class QuestionsAndAnswers extends React.Component {
           newSearchArray.push(question)
         }
       })
-      this.setState({ searchArray: newSearchArray })
+      this.setState({ searchArray: newSearchArray }, ()=>{
+        this.loadQuestions()
+      })
     })
   }
   resetSearch (e) {
