@@ -463,6 +463,13 @@ h2:after {
   font-size: 10px;
 }
 
+/*##################QUESTIONS AND ANSWERS##################*/
+
+.QAHeader {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 /*###########################~~RATINGS AND REVIEWS~~################################*/
 .rateRev {
   /* background-color: rgb(243, 8, 192); */
@@ -481,6 +488,7 @@ h2:after {
   flex-wrap: wrap;
   margin: 10px;
   flex: 1;
+  min-width: 400px;
 }
 
 .reviews {
@@ -490,6 +498,7 @@ h2:after {
   flex-wrap: wrap;
   margin: 10px;
   flex: 3;
+  min-width: 550px;
 }
 .reviewlist {
   max-height: 520px;
@@ -597,7 +606,6 @@ h2:after {
   grid-template-columns: 10% 10% auto auto auto;
   grid-template-rows: auto;
   font-size: x-small;
-
 }
 .helpfulSpan {
   grid-column: 1;
@@ -686,13 +694,11 @@ h2:after {
   max-width: 80%;
   max-height: 80%;
   margin: auto;
-
 }
 .modalImagediv {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .ImageModalExit {
   grid-column: 2;
