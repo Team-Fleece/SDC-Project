@@ -13,6 +13,7 @@ const QAModal = ({ handleClose, submit, show, children, product_id }) => {
       <button className="QACloseAndSubmitBtns" type='button' onClick={handleClose}>
         Close
       </button>
+      <button type="file">Upload Image</button>
       <button className="QACloseAndSubmitBtns" onClick={submit}>Submit</button>
     </div>
   )
