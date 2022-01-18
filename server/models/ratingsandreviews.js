@@ -3,12 +3,12 @@ const { authToken } = require("../config.js");
 // needs to be updated with imported config file so can submit requests with proper authorization
 
 let getReviews = function (request, callback) {
-  let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews`;
+  let optionsURL = `http://localhost:3030`;
   let optionsConfig = {
-    headers: {
-      "User-Agent": "request",
-      Authorization: `${authToken}`,
-    },
+    // headers: {
+    //   "User-Agent": "request",
+    //   Authorization: `${authToken}`,
+    // },
     params: {
       product_id: request.product_id,
       page: request.page,

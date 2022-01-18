@@ -4,5 +4,5 @@ spec/
 ./bundle/bundle.js
 /bundle/bundle.js
 HR-AWS-KEY.pem
-.DS_Store
+**.DS_Store
 client/.DS_Store
