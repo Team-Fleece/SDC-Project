@@ -1,4 +1,5 @@
 const axios = require("axios");
+const query = require("../../../SDC-API/queries.js");
 const { authToken } = require("../config.js");
 // needs to be updated with imported config file so can submit requests with proper authorization
 
@@ -16,13 +17,13 @@ let getReviews = function (request, callback) {
       sort: request.sort,
     },
   };
-  axios
-    .get(optionsURL, optionsConfig)
+  query
+    .getReviews(optionsConfig.params)
     .then(function (response) {
-      callback(null, response.data);
+      console.log('results: ', response.rows)
+      callback(null, response.rows);
     })
     .catch(function (error) {
-
       callback(error);
     });
 };
@@ -30,14 +31,72 @@ let getReviews = function (request, callback) {
 let getMetadata = function (request, callback) {
   let optionsURL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta`;
   let optionsConfig = {
-    headers: {
-      "User-Agent": "request",
-      Authorization: `${authToken}`,
-    },
+    // headers: {
+    //   "User-Agent": "request",
+    //   Authorization: `${authToken}`,
+    // },
     params: { product_id: request.product_id },
   };
   let sum = 0;
   let ratingSum = 0;
+
+  query
+    .getReviewsMeta(optionsConfig.params)
+    .then(function (response) {
+      console.log('reviewsMeta response: ', response);
+      for (var key in response.data.ratings) {
+        let value = Number(response.data.ratings[key]);
+
+        sum += value;
+        ratingSum += Number(key) * value;
+      }
+      let ratingCount = {
+        1: Number(response.data.ratings["1"]),
+        2: Number(response.data.ratings["2"]),
+        3: Number(response.data.ratings["3"]),
+        4: Number(response.data.ratings["4"]),
+        5: Number(response.data.ratings["5"])
+      };
+      for (var key in ratingCount) {
+        if(Number.isNaN(ratingCount[key])) {
+          ratingCount[key] = 0;
+        }
+      }
+      response.data.ratingCount = ratingCount;
+      let ratingsPercentages = {
+        ratingsCount: sum,
+        avg: (ratingSum / sum).toFixed(1),
+        1: (Number(response.data.ratings["1"]) / sum) * 100,
+        2: (Number(response.data.ratings["2"]) / sum) * 100,
+        3: (Number(response.data.ratings["3"]) / sum) * 100,
+        4: (Number(response.data.ratings["4"]) / sum) * 100,
+        5: (Number(response.data.ratings["5"]) / sum) * 100,
+      };
+      for (var key in ratingsPercentages) {
+        if(Number.isNaN(ratingsPercentages[key])) {
+          ratingsPercentages[key] = 0;
+        }
+      }
+      response.data.ratings = ratingsPercentages;
+      if (response.data.recommended.true === undefined) {
+        response.data.recommended.true = 0;
+      }
+      if (response.data.recommended.false === undefined) {
+        response.data.recommended.false = 0;
+      }
+      let recommendedSum =
+        Number(response.data.recommended.true) +
+        Number(response.data.recommended.false);
+      let recommendedPercentage =
+        (Number(response.data.recommended.true) / recommendedSum) * 100;
+        //console.log('recoSum:', recommendedSum);
+      response.data.recommended = recommendedPercentage.toFixed();
+      callback(null, response.data);
+    })
+    .catch(function (error) {
+      console.log("getMetadata did not work:", error);
+      callback(error);
+    });
 
   axios
     .get(optionsURL, optionsConfig)

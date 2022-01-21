@@ -89,11 +89,11 @@ class RatingsAndReviews extends React.Component {
       )
       .then(function (response) {
         //console.log('get response:', response);
-        if(that.state.reviewCount > response.data.results.length) {
+        if(that.state.reviewCount > response.data.length) {
           that.setState({ showMoreReviews: false});
         }
-
-        let filtered = that.filterReviews(response.data.results);
+        console.log('response in React: ', response);
+        let filtered = that.filterReviews(response.data);
         that.setState({
           reviews: filtered,
 
